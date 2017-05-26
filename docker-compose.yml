@@ -1,0 +1,29 @@
+version: "3"
+services:
+
+  web:
+    container_name: redaxodocker
+    hostname: redaxodocker
+    build: ./docker/php-apache
+    ports:
+      - 20080:80
+    volumes:
+      - ./html:/var/www/html
+    depends_on:
+      - db
+    links:
+      - db
+
+  db:
+    container_name: redaxodocker_db
+    hostname: redaxodocker_db
+    build: ./docker/mysql
+    ports:
+      - 23306:3306
+    volumes:
+      - ./db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: redaxodocker
+      MYSQL_USER: redaxodocker
+      MYSQL_PASSWORD: redaxodocker
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"

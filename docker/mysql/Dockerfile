@@ -1,0 +1,4 @@
+FROM mariadb:10.2
+
+# use custom config (save as zzz.cnf to load it at last)
+ADD my.cnf /etc/mysql/conf.d/zzz.cnf
