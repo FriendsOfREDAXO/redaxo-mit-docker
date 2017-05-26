@@ -1,6 +1,6 @@
 # REDAXO mit Docker 🐳
 
-✌️ _Noch keine Erfahrung mit Docker? Weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-fuer-einsteiger_innen)!_
+✌️ _Noch keine Erfahrung mit Docker? Weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen)!_
 
 __Inhalt:__
 
