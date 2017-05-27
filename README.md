@@ -2,12 +2,22 @@
 
 ✌️ _Noch keine Erfahrung mit Docker? Weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen)!_
 
-__Inhalt:__
+## Inhalt
 
 * Apache 2.4
 * PHP 7.1
 * MariaDB 10.2
 * REDAXO 5.3
+
+Als Volume für den Webroot wird der Ordner `html/` verwendet. Ist dieser beim Build des Containers leer, wird ein aktuelles REDAXO runtergeladen ~~und automatisch installiert~~ (siehe #1).  
+Die Datenbank wird in den Ordner `db/` persistiert.
+
+__Dieses Docker-Setup bedient demnach zwei Anwendungsfälle:__
+
+1. Bereitstellung einer frischen REDAXO-Installation
+2. Betrieb und Pflege einer bestehenden REDAXO-Installation, vor allem zur lokalen Entwicklung
+
+## Verwendung
 
 __Docker-Container starten:__
 
@@ -28,10 +38,6 @@ __REDAXO im Browser aufrufen:__
     http://localhost:20080
 
 _Hinweis: Wir benutzen Port `20080` für HTTP und `23306` für die Datenbank, um nicht in Konflikt mit den Standardports `80`/`3306` zu kommen, sollten diese bereits verwendet werden. Das macht unser Setup robuster._
-
-## REDAXO-Container mit Auto-Setup?
-
-TODO
 
 ## Anleitung für Einsteiger\_innen
 
