@@ -106,6 +106,8 @@ Danach ist phpMyAdmin erreichbar über:
 
     http://localhost:28080
 
+---
+
 ## Anleitung für Einsteiger\_innen
 
 ### Worum geht’s?
@@ -121,13 +123,18 @@ Virtualisierung! Docker lässt verschiedene Anwendungen in Containern laufen, z.
             Dockerfile
             my.cnf
         php-apache/
-            apache.conf            docker-entrypoint.sh            Dockerfile            php.ini
+            apache.conf
+            docker-entrypoint.sh
+            Dockerfile
+            php.ini
     html/
         …
     .dockerignore
     docker-compose.yml
 
 TODO
+
+---
 
 ## Fragen oder Anmerkungen?
 
