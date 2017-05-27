@@ -9,7 +9,7 @@
 * MariaDB 10.2
 * REDAXO 5.3
 
-Als Volume für den Webroot wird der Ordner `html/` verwendet. Ist dieser beim Build des Containers leer, wird ein aktuelles REDAXO runtergeladen ~~und automatisch installiert~~ (siehe #1).  
+Als Volume für den Webroot wird der Ordner `html/` verwendet. Ist dieser beim Build des Containers leer, wird ein aktuelles REDAXO runtergeladen ~~und automatisch installiert~~ (siehe [#1](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/issues/1)).  
 Die Datenbank wird in den Ordner `db/` persistiert.
 
 __Dieses Docker-Setup bedient demnach zwei Anwendungsfälle:__
