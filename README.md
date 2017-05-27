@@ -39,6 +39,8 @@ __REDAXO im Browser aufrufen:__
 
 _Hinweis: Wir benutzen Port `20080` für HTTP und `23306` für die Datenbank, um nicht in Konflikt mit den Standardports `80`/`3306` zu kommen, sollten diese bereits verwendet werden. Das macht unser Setup robuster._
 
+---
+
 ## Konfiguration und Tipps
 
 Beachte: Immer dann, wenn du Änderungen am Container machst, musst du danach neu bauen:
