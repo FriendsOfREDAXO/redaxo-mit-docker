@@ -1,6 +1,6 @@
-# REDAXO mit Docker 🐳
+# REDAXO mit Docker :whale:
 
-✌️ _Noch keine Erfahrung mit Docker? Ganz unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen)!_
+:rocket: _Noch keine Erfahrung mit Docker? Ganz unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen)!_
 
 ## Inhalt
 
@@ -37,13 +37,13 @@ __REDAXO im Browser aufrufen:__
 
     http://localhost:20080
 
-_Hinweis: Wir benutzen Port `20080` für HTTP und `23306` für die Datenbank, um nicht in Konflikt mit den Standardports `80`/`3306` zu kommen, sollten diese bereits verwendet werden. Das macht unser Setup robuster._
+:point_right: _Wir benutzen Port `20080` für HTTP und `23306` für die Datenbank, um nicht in Konflikt mit den Standardports `80`/`3306` zu kommen, sollten diese bereits verwendet werden. Das macht unser Setup robuster._
 
 ---
 
 ## Konfiguration und Tipps
 
-Beachte: Immer dann, wenn du Änderungen am Container machst, musst du danach neu bauen:
+:warning: Beachte: Immer dann, wenn du Änderungen am Container machst, musst du danach neu bauen:
 
     $ docker-compose build
 
@@ -51,7 +51,7 @@ Beachte: Immer dann, wenn du Änderungen am Container machst, musst du danach ne
 
 Einfach `docker/php-apache/php.ini` anpassen und neu bauen.
 
-Falls du eine andere PHP-Version verwenden möchtest, etwa 5.6 für ältere REDAXOs, musst du nur das Dockerfile anpassen und neu bauen:
+Falls du eine andere PHP-Version verwenden möchtest, etwa 5.6 für ältere REDAXOs, musst du nur das Dockerfile anpassen und neu bauen.
 
 ```dockerfile
 FROM php:5.6-apache
@@ -67,13 +67,13 @@ Manche Extensions müssen konfiguriert werden, wie du bei GD siehst, die meisten
     && docker-php-ext-install -j$(nproc) gd pdo_mysql exif opcache
 ```
 
-_Tip: Um herauszufinden, welche Extensions das PHP-Apache-Image bereits mitbringt, kannst du `<?php phpinfo(); ?>` benutzen._
+:point_right: _Tip: Um herauszufinden, welche Extensions das PHP-Apache-Image bereits mitbringt, kannst du `<?php phpinfo(); ?>` benutzen._
 
 ### Datenbank konfigurieren
 
 Einfach `docker/mysql/my.cnf` anpassen und neu bauen.
 
-Falls du eine andere Version oder MySQL statt MariaDB verwenden möchtest, musst du nur das Dockerfile anpassen und neu bauen:
+Falls du eine andere Version oder MySQL statt MariaDB verwenden möchtest, musst du nur das Dockerfile anpassen und neu bauen.
 
 ```dockerfile
 FROM mysql:5.5
@@ -98,7 +98,7 @@ phpmyadmin:
     PMA_PASSWORD: redaxodocker
 ```
 
-_Beachten: Hier verwenden wir ein fertiges Image für den Container, das wir nicht mehr nachträglich anpassen. Deshalb können wir es direkt mittels `image: phpmyadmin/phpmyadmin` einbinden und benötigen kein separates Dockerfile im `docker/`-Ordner, so wie bei unseren anderen Containern._
+:point_right: _Beachte: Hier verwenden wir ein fertiges Image für den Container, das wir nicht mehr nachträglich anpassen. Deshalb können wir es direkt mittels `image: phpmyadmin/phpmyadmin` einbinden und benötigen kein separates Dockerfile im `docker/`-Ordner, so wie bei unseren anderen Containern._
 
 Docker-Container neustarten:
 
