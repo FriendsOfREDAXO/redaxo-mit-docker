@@ -1,11 +1,11 @@
 # REDAXO mit Docker :whale:
 
-:rocket: _Noch keine Erfahrung mit Docker? Gar kein Problem, weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen)!_
+:rocket: _Noch keine Erfahrung mit Docker? Gar kein Problem, weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-rocket)!_
 
 * [Paketinhalt](#paketinhalt)
 * [Verwendung](#verwendung)
 * [Konfiguration und Tipps](#konfiguration-und-tipps)
-* [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen)
+* [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen-rocket)
 * [Fragen oder Anmerkungen?](#fragen-oder-anmerkungen)
 
 ## Paketinhalt
