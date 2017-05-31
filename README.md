@@ -8,6 +8,8 @@
 * [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen-rocket)
 * [Fragen oder Anmerkungen?](#fragen-oder-anmerkungen)
 
+---
+
 ## Paketinhalt
 
 * Apache 2.4
@@ -149,9 +151,13 @@ Du solltest dich etwas mit Docker beschäftigen und vertiefst dich am besten in 
 
 Wir gehen mal von oben nach unten durch:
 
+#### Datenbank
+
     db/
     
 In diesen Ordner wird die __Datenbank__ des Containers _persistiert_, also dauerhaft auf deinem System gespeichert. Würden wir das nicht machen, wäre die Datenbank jedesmal aufs Neue leer, wenn du den Container baust. Weil wir aber dauerhaft am REDAXO arbeiten wollen, das sich in diesem Paket befindet, müssen wir die Datenbank außerhalb des Containers hinterlegen.
+
+#### Container-Konfiguration
 
     docker/
         mysql/
@@ -169,14 +175,20 @@ Das Dockerfile für MySQL ist ganz schlicht, denn es enthält lediglich die Anga
 
 Die anderen Dateien enthalten Konfigurationen für PHP, Apache und die Datenbank.
 
+#### Webroot
+
     html/
 
 Dieses Verzeichnis bildet den __Webroot__, der oben bereits genannt wurde. Es ist verknüpft mit dem Verzeichnis des Containers (ein Debian GNU/Linux übrigens), in dem der Apache-Webserver die Website hinterlegt. Wenn du also Anpassungen am REDAXO vornimmst, stehen diese unmittelbar dem Server zur Verfügung, und ebenso andersrum.  
 Das bedeutet: Ebenso wie die Datenbank liegt dein REDAXO dauerhaft auf deinem System und kann von dir bearbeitet werden, während Docker dir nur die notwendige Serverumgebung bereitstellt.
 
+#### Ignore
+
     .dockerignore
 
 In [dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore-file) wird definiert, welche Dateien und Ordner _nicht_ an den Docker-Daemon überreicht werden. Wenn dein Projektordner sehr voll ist, kannst du die für Docker unwichtigen Daten übergehen und sparst damit Ressourcen.
+
+#### Compose
 
     docker-compose.yml
 
