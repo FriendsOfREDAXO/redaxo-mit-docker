@@ -1,8 +1,14 @@
 # REDAXO mit Docker :whale:
 
-:rocket: _Noch keine Erfahrung mit Docker? Ganz unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen)!_
+:rocket: _Noch keine Erfahrung mit Docker? Gar kein Problem, weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen)!_
 
-## Inhalt
+* [Paketinhalt](#paketinhalt)
+* [Verwendung](#verwendung)
+* [Konfiguration und Tipps](#konfiguration-und-tipps)
+* [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen)
+* [Fragen oder Anmerkungen?](#fragen-oder-anmerkungen)
+
+## Paketinhalt
 
 * Apache 2.4
 * PHP 7.1
@@ -110,16 +116,43 @@ Danach ist phpMyAdmin erreichbar über:
 
 ---
 
-## Anleitung für Einsteiger\_innen
+## Anleitung für Einsteiger\_innen :rocket:
 
-### Worum geht’s?
+### Worum geht es?
 
-Virtualisierung! Docker lässt verschiedene Anwendungen in Containern laufen, z. B. eine Datenbank, einen Webserver und ein REDAXO dazu. Diese Container werden auf deinem System ausgeführt und benutzen dessen Ressourcen. …TODO…
+Virtualisierung! Docker lässt verschiedene Anwendungen in Containern laufen, z. B. eine Datenbank, einen Webserver und in unserem Fall ein REDAXO dazu. Diese Container werden auf deinem System ausgeführt und benutzen dessen Ressourcen, laufen aber trotzdem vollständig isoliert. Anders als virtuelle Maschinen, die komplette Betriebssysteme ausführen — wie z. B. Windows auf einem Mac, um Websites im Internet Explorer zu testen oder die Steuererklärung zu machen — sind Docker-Container sehr klein und performant. Man kann problemlos zahlreiche Container auf einem Sytem starten.
 
-### Verzeichnisstruktur
+Wir benutzen Docker in diesem Projekt, um uns aus verschiedenen Containern eine Entwicklungsumgebung _zusammenzustecken_, in der wir REDAXO betreiben können: Ein Container enthält die Datenbank, ein anderer den Apache-Webserver mit PHP, und ein dritter Container enthält phpMyAdmin — vor allem deshalb, um zu zeigen, wie man Container miteinander verknüpft und Daten austauscht.
+
+Deine lokale Entwicklungsumgebung, die du vorher auf deinem System eingerichtet hast — vielleicht auch mit Hilfe von Tools wie XAMPP (Windows) oder MAMP (Mac) — wird damit überflüssig, denn sie wird nun über Docker-Container abgebildet. Und das bringt viele Vorteile mit, von denen für uns erstmal nur diese relevant sind:
+
+1. Die Container sind transportabel. Du kannst sie innerhalb des Team verteilen, so dass damit ohne besonderen Aufwand alle in der gleichen Entwicklungsumgebung arbeiten.
+2. Du kannst deine lokale Umgebung so modellieren, dass sie der Live-Umgebung entspricht.
+
+Wenn man Docker weiter treibt, geht es in Richtung [Microservices](https://de.wikipedia.org/wiki/Microservices), Skalierung und Automatisierung. Das kann uns erstmal egal sein, denn wir wollen unser Docker-Setup ganz einfach halten und nur für die lokale REDAXO-Entwicklung benutzen.
+
+### Was wird benötigt?
+
+Du musst nur [Docker (Community Edition) für dein System](https://www.docker.com/community-edition#/download) installieren, mehr wird nicht benötigt. Danach begibt du dich in deiner Konsole in den Ordner dieses Repos und startest die Container:
+
+    $ docker-compose up -d
+
+Das wird beim ersten Mal ein kleines Weilchen dauern, weil zuerst die _Images_ runtergeladen werden müssen, aus denen Docker dann lauffähige Container baut. Danach steht dir ein frisches REDAXO im Browser zur Verfügung unter:
+
+    http://localhost:20080
+    
+### Wie geht es weiter?
+
+Du solltest dich etwas mit Docker beschäftigen und vertiefst dich am besten in die [offizielle Dokumentation](https://docs.docker.com). Lass dich dabei nicht abschrecken, denn Docker kann furchtbar kompliziert werden, wenn man es in großem Stil nutzt. Und selbst in unserem kleinen Kontext ist nicht alles ganz einfach zu verstehen. Mit diesem Setup hast du eine funktionierende Entwicklungsumgebung für REDAXO, die du nach und nach im Detail verstehen wirst, wenn du dich länger mit Docker beschäftigst.
+
+### Welche Funktion haben die Dateien und Ordner dieses Pakets?
+
+Wir gehen mal von oben nach unten durch:
 
     db/
-        …
+    
+In diesen Ordner wird die __Datenbank__ des Containers _persistiert_, also dauerhaft auf deinem System gespeichert. Würden wir das nicht machen, wäre die Datenbank jedesmal aufs Neue leer, wenn du den Container baust. Weil wir aber dauerhaft am REDAXO arbeiten wollen, das sich in diesem Paket befindet, müssen wir die Datenbank außerhalb des Containers hinterlegen.
+
     docker/
         mysql/
             Dockerfile
@@ -129,12 +162,25 @@ Virtualisierung! Docker lässt verschiedene Anwendungen in Containern laufen, z.
             docker-entrypoint.sh
             Dockerfile
             php.ini
+
+Im `docker/`-Ordner befindet sich die __Konfiguration für die Container__, die wir benutzen, nämlich `mysql/` und `php-apache/`. Diese enthalten jeweils ein `Dockerfile`, die die Bauanleitungen enthalten, mit der jeweils aus einem _Image_ ein lauffähiger _Container_ gebaut wird.
+
+Das Dockerfile für MySQL ist ganz schlicht, denn es enthält lediglich die Angabe, welches Image verwendet wird, ohne dass dieses dann weiter angepasst wird. Das PHP-Apache-Dockerfile ist aufwendiger: Hier bestimmen wir erst das Image, schicken aber einige Anpassungen hinterher. Zum Beispiel aktivieren wir Apache-Module und installieren PHP-Extensions, die REDAXO benötigt. Im Anschluss prüfen wir, ob unser Webroot — dazu gleich mehr! — noch leer ist, und falls es das ist, holen wir uns ein frisches REDAXO von GitHub und entpacken es in den Webroot.
+
+Die anderen Dateien enthalten Konfigurationen für PHP, Apache und die Datenbank.
+
     html/
-        …
+
+Dieses Verzeichnis bildet den __Webroot__, der oben bereits genannt wurde. Es ist verknüpft mit dem Verzeichnis des Containers (ein Debian GNU/Linux übrigens), in dem der Apache-Webserver die Website hinterlegt. Wenn du also Anpassungen am REDAXO vornimmst, stehen diese unmittelbar dem Server zur Verfügung, und ebenso andersrum.  
+Das bedeutet: Ebenso wie die Datenbank liegt dein REDAXO dauerhaft auf deinem System und kann von dir bearbeitet werden, während Docker dir nur die notwendige Serverumgebung bereitstellt.
+
     .dockerignore
+
+In [dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore-file) wird definiert, welche Dateien und Ordner _nicht_ an den Docker-Daemon überreicht werden. Wenn dein Projektordner sehr voll ist, kannst du die für Docker unwichtigen Daten übergehen und sparst damit Ressourcen.
+
     docker-compose.yml
 
-TODO
+[Docker Compose](https://docs.docker.com/compose/overview/) ermöglicht dir, __mehrere Container gleichzeitig__ zu starten und zu verknüpfen. Es enthält z. B. Angaben darüber, wie die Container heißen, welche Ports sie benutzen und welche Verzeichnisse deines Systems sie einbinden (Volumes). Zudem kann es Informationen wie Username und Passwörter, in unserem Fall für die Datenbank, enthalten.
 
 ---
 
