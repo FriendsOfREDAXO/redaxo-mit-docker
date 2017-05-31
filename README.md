@@ -133,7 +133,7 @@ Deine lokale Entwicklungsumgebung, die du vorher auf deinem System eingerichtet 
 
 ### Was wird benötigt?
 
-Du musst nur [Docker (Community Edition) für dein System](https://www.docker.com/community-edition#/download) installieren, mehr wird nicht benötigt. Danach begibt du dich in deiner Konsole in den Ordner dieses Repos und startest die Container:
+Du musst nur [Docker (Community Edition) für dein System](https://www.docker.com/community-edition#/download) installieren, mehr wird nicht benötigt. Danach begibst du dich in deiner Konsole in den Ordner dieses Repos und startest die Container:
 
     $ docker-compose up -d
 
