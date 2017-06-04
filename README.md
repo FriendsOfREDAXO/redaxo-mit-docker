@@ -122,11 +122,11 @@ Danach ist phpMyAdmin erreichbar über:
 
 ### Worum geht es?
 
-Virtualisierung! Docker lässt verschiedene __Anwendungen in Containern__ laufen, z. B. eine Datenbank, einen Webserver und in unserem Fall ein REDAXO dazu. Diese Container werden auf deinem System ausgeführt und benutzen dessen Ressourcen, laufen aber trotzdem vollständig isoliert. Anders als virtuelle Maschinen, die komplette Betriebssysteme ausführen — wie z. B. Windows auf einem Mac, um Websites im Internet Explorer zu testen oder die Steuererklärung zu machen — sind Docker-Container sehr klein und performant! Man kann problemlos zahlreiche Container auf einem Sytem starten.
+Virtualisierung! Docker lässt verschiedene __Anwendungen in Containern__ laufen, z. B. eine Datenbank, einen Webserver und in unserem Fall ein REDAXO dazu. Diese Container werden auf deinem System ausgeführt und benutzen dessen Ressourcen, laufen aber trotzdem vollständig isoliert. Anders als virtuelle Maschinen (VM), die komplette Betriebssysteme ausführen — wie z. B. Windows auf einem Mac, um Websites im Internet Explorer zu testen oder die Steuererklärung zu machen — sind Docker-Container sehr klein und performant! Man kann problemlos zahlreiche Container auf einem Sytem starten.
 
 Wir benutzen Docker in diesem Projekt, um uns aus verschiedenen Containern eine __Entwicklungsumgebung__ _zusammenzustecken_, in der wir REDAXO betreiben können: Ein Container enthält die Datenbank, ein anderer den Apache-Webserver mit PHP. Deine lokale Entwicklungsumgebung, die du vorher auf deinem System eingerichtet hast — vielleicht auch mit Hilfe von Tools wie XAMPP (Windows) oder MAMP (Mac) — wird damit überflüssig, denn sie wird nun über Docker-Container abgebildet. Und das bringt viele Vorteile mit, von denen für uns erstmal nur diese relevant sind:
 
-1. Die Container sind transportabel. Du kannst sie innerhalb des Team verteilen, so dass damit ohne besonderen Aufwand alle in der gleichen Entwicklungsumgebung arbeiten.
+1. Die Container sind transportabel. Du kannst sie innerhalb des Teams verteilen, so dass damit ohne besonderen Aufwand alle in der gleichen Entwicklungsumgebung arbeiten.
 2. Du kannst deine lokale Umgebung so modellieren, dass sie der Live-Umgebung entspricht.
 
 :point_right: _Wenn man Docker weiter treibt, geht es in Richtung [Microservices](https://de.wikipedia.org/wiki/Microservices), Skalierung und Automatisierung. Das kann uns erstmal egal sein, denn wir wollen unser Docker-Setup ganz einfach halten und nur für die lokale REDAXO-Entwicklung benutzen._
