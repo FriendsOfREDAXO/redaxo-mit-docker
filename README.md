@@ -17,7 +17,7 @@
 * MariaDB 10.2
 * REDAXO 5.3
 
-Als Volume für den Webroot wird der Ordner `html/` verwendet. Ist dieser beim Build des Containers leer, wird ein aktuelles REDAXO runtergeladen ~~und automatisch installiert~~ (siehe [#1](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/issues/1)).  
+Als Volume für den Webroot wird der Ordner `html/` verwendet. Ist dieser beim Build des Containers leer, wird ein aktuelles REDAXO runtergeladen und automatisch installiert (Login ins Backend mittels `admin`/`admin`).  
 Die Datenbank wird in den Ordner `db/` persistiert.
 
 __Dieses Docker-Setup bedient demnach zwei Anwendungsfälle:__
@@ -140,6 +140,8 @@ Du musst nur [Docker (Community Edition) für dein System](https://www.docker.co
 Das wird beim ersten Mal ein kleines Weilchen dauern, weil zuerst die _Images_ runtergeladen werden müssen, aus denen Docker dann lauffähige Container baut. Danach steht dir ein frisches REDAXO im Browser zur Verfügung unter:
 
     http://localhost:20080
+
+Ins REDAXO-Backend kannst du dich einloggen mit `admin`/`admin`.
 
 :tada:
 
