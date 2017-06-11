@@ -19,12 +19,12 @@ RUN apt-get update -q && apt-get install -qy \
 
 # set ENVs
 ENV REDAXO_VERSION 5.3.0
-ENV REDAXO_SHA1 fd20820ab4c1faa905dabe7bb526c3aec8afe24b
+ENV REDAXO_SHA c1d3dcc2401b39cd9d32ea7de2ea358683ce81ceb8a5845f7a79937adcd5048e
 
 # fetch REDAXO and validate checksum
 RUN set -e; \
     curl -Ls -o /tmp/redaxo5.zip https://github.com/redaxo/redaxo/releases/download/5.3.0/redaxo_5.3.0.zip; \
-    echo "$REDAXO_SHA1 */tmp/redaxo5.zip" | sha1sum -c;
+    echo "$REDAXO_SHA */tmp/redaxo5.zip" | shasum -c -a 256;
 
 # copy REDAXO default config
 COPY default.config.yml /tmp/
