@@ -141,6 +141,8 @@ Das wird beim ersten Mal ein kleines Weilchen dauern, weil zuerst die _Images_ r
 
     http://localhost:20080
 
+Ins REDAXO-Backend kannst du dich einloggen mit `admin`/`admin`.
+
 :tada:
 
 ### Wie geht es weiter?
