@@ -167,9 +167,11 @@ In diesen Ordner wird die __Datenbank__ des Containers _persistiert_, also dauer
             my.cnf
         php-apache/
             apache.conf
+            default.config.yml
             docker-entrypoint.sh
             Dockerfile
             php.ini
+            redaxo.setup.php
 
 Im `docker/`-Ordner befindet sich die __Konfiguration für die Container__, die wir benutzen, nämlich `mysql/` und `php-apache/`. Diese enthalten jeweils ein `Dockerfile`, die die Bauanleitungen enthalten, mit der jeweils aus einem _Image_ ein lauffähiger _Container_ gebaut wird.
 
