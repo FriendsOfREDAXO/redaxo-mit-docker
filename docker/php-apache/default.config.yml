@@ -3,7 +3,7 @@ debug: false
 instname: null
 server: http://localhost:20080
 servername: REDAXO
-error_email: webmaster@localhost
+error_email: null
 fileperm: '0664'
 dirperm: '0775'
 session_duration: 7200
