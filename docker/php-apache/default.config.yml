@@ -1,0 +1,51 @@
+setup: true
+debug: false
+instname: null
+server: http://localhost:20080
+servername: REDAXO
+error_email: webmaster@localhost
+fileperm: '0664'
+dirperm: '0775'
+session_duration: 7200
+lang: de_de
+use_gzip: true
+use_etag: true
+use_last_modified: false
+start_page: structure
+timezone: Europe/Berlin
+socket_proxy: null
+setup_addons:
+    - backup
+    - be_style
+system_addons:
+    - backup
+    - mediapool
+    - structure
+    - metainfo
+    - be_style
+    - media_manager
+    - users
+    - install
+    - project
+table_prefix: rex_
+temp_prefix: tmp_
+db:
+    1:
+        host: db
+        login: redaxodocker
+        password: redaxodocker
+        name: redaxodocker
+        persistent: false
+    2:
+        host: ''
+        login: ''
+        password: ''
+        name: ''
+        persistent: false
+use_accesskeys: true
+accesskeys:
+    save: s
+    apply: x
+    delete: d
+    add: a
+    add_2: y

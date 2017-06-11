@@ -26,7 +26,11 @@ RUN set -e; \
     curl -Ls -o /tmp/redaxo5.zip https://github.com/redaxo/redaxo/releases/download/5.3.0/redaxo_5.3.0.zip; \
     echo "$REDAXO_SHA1 */tmp/redaxo5.zip" | sha1sum -c;
 
-# prepare and run REDAXO setup
+# copy REDAXO default config
+COPY default.config.yml /tmp/
+COPY redaxo.setup.php /tmp/
+
+# copy REDAXO setup script and run setup
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
 
