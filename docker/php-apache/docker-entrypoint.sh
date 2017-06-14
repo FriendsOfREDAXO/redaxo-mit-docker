@@ -23,12 +23,12 @@ if isempty "$PWD"; then
     # copy default config
     cp -f /tmp/default.config.yml ./redaxo/src/core/
     rm -f /tmp/default.config.yml
-    echo >&2 "default.config.yml copied to ${PWD}redaxo/src/core/"
+    echo >&2 "default.config.yml copied to ${PWD}/redaxo/src/core/"
 
     # copy setup script
     cp -f /tmp/redaxo.setup.php ./redaxo/
     rm -f /tmp/redaxo.setup.php
-    echo >&2 "redaxo.setup.php copied to ${PWD}redaxo/"
+    echo >&2 "redaxo.setup.php copied to ${PWD}/redaxo/"
 
     # run setup script
     cd redaxo && php redaxo.setup.php
