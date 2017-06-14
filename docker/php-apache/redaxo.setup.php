@@ -28,22 +28,48 @@ if (rex::isSetup()) {
 
     // init db
     $err .= rex_setup::checkDb($config, false);
-    // $err .= rex_setup_importer::prepareEmptyDb(); // not required!
+    $err .= rex_setup_importer::prepareEmptyDb();
     $err .= rex_setup_importer::verifyDbSchema();
 
+    // create admin user
+    $ga = rex_sql::factory();
+    $ga->setQuery('select * from ' . rex::getTablePrefix() . 'user where login = ? ', ['admin']);
+
+    if ($ga->getRows() > 0) {
+        $err .= 'Admin user already exists!';
+    } else {
+        $user = rex_sql::factory();
+        // $user->setDebug();
+        $user->setTable(rex::getTablePrefix() . 'user');
+        $user->setValue('name', 'Administrator');
+        $user->setValue('login', 'admin');
+        $user->setValue('password', rex_login::passwordHash('admin'));
+        $user->setValue('admin', 1);
+        $user->addGlobalCreateFields('setup');
+        $user->setValue('status', '1');
+        try {
+            $user->insert();
+            echo 'Admin user successfully created.', PHP_EOL;
+        } catch (rex_sql_exception $e) {
+            $err .= 'Could not create admin user!';
+        }
+    }
+
+    // provide errors
     if ($err != '') {
         echo $err;
         exit(10);
     }
 
+    // save config and finish setup
     $config['setup'] = false;
     if (rex_file::putConfig($configFile, $config)) {
-        echo 'instance setup successfull', PHP_EOL;
+        echo 'REDAXO setup successfull.', PHP_EOL;
         exit(0);
     }
-    echo 'instance setup failure', PHP_EOL;
+    echo 'REDAXO setup failure.', PHP_EOL;
     exit(1);
 }
 
-echo 'instance setup not necessary', PHP_EOL;
+echo 'REDAXO setup not necessary.', PHP_EOL;
 exit(0);
