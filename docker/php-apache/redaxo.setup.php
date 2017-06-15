@@ -26,8 +26,22 @@ if (rex::isSetup()) {
         rex_file::getConfig($configFile)
     );
 
+    // connect to db (repeat if not ready yet)
+    $dbConnected = false;
+    for ($i = 1, $max = 10; $i <= $max; ++$i) {
+        $check = rex_setup::checkDb($config, false);
+        if ($check == '') {
+            $dbConnected = true;
+            echo 'Established database connection. (' . $i . ')', PHP_EOL;
+            break;
+        }
+        sleep(3);
+    }
+    if (!$dbConnected) {
+        $err .= 'Failed to connect database!';
+    }
+
     // init db
-    $err .= rex_setup::checkDb($config, false);
     $err .= rex_setup_importer::prepareEmptyDb();
     $err .= rex_setup_importer::verifyDbSchema();
 
