@@ -13,6 +13,9 @@ services:
       - db
     links:
       - db
+    environment:
+      REDAXO_USER: admin
+      REDAXO_PASSWORD: admin
 
   db:
     container_name: redaxodocker_db

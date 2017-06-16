@@ -2,8 +2,14 @@
 <?php
 // adapted from https://github.com/redaxo/redaxo/blob/master/redaxo/src/addons/tests/bin/setup.php
 
-// ---- bootstrap REX
+// get arguments from command line
+$options = getopt('', array('user:', 'password:'));
+if (!$options['user'] || !$options['password']) {
+    echo 'User credentials missing!', PHP_EOL;
+    exit(10);
+}
 
+// bootstrap REX
 $REX = [];
 $REX['REDAXO'] = true;
 $REX['HTDOCS_PATH'] = '../';
@@ -56,8 +62,8 @@ if (rex::isSetup()) {
         // $user->setDebug();
         $user->setTable(rex::getTablePrefix() . 'user');
         $user->setValue('name', 'Administrator');
-        $user->setValue('login', 'admin');
-        $user->setValue('password', rex_login::passwordHash('admin'));
+        $user->setValue('login', $options['user']);
+        $user->setValue('password', rex_login::passwordHash($options['password']));
         $user->setValue('admin', 1);
         $user->addGlobalCreateFields('setup');
         $user->setValue('status', '1');

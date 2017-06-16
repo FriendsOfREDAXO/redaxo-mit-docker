@@ -31,7 +31,7 @@ if isempty "$PWD"; then
     echo >&2 "redaxo.setup.php copied to ${PWD}/redaxo/"
 
     # run setup script
-    cd redaxo && php redaxo.setup.php
+    cd redaxo && php redaxo.setup.php --user="$REDAXO_USER" --password="$REDAXO_PASSWORD"
 else
     echo >&2 "WARNING: ${PWD} is not empty! Skip REDAXO setup."
 fi
