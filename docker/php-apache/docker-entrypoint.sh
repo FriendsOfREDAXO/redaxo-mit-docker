@@ -32,6 +32,7 @@ if isempty "$PWD"; then
 
     # run setup script
     cd redaxo && php redaxo.setup.php --user="$REDAXO_USER" --password="$REDAXO_PASSWORD"
+    rm -f redaxo.setup.php
 else
     echo >&2 "WARNING: ${PWD} is not empty! Skip REDAXO setup."
 fi
