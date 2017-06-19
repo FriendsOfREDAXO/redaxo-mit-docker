@@ -17,17 +17,14 @@ if isempty "$PWD"; then
 
     # extract redaxo package
     unzip -oq /tmp/redaxo5.zip
-    rm -f /tmp/redaxo5.zip
     echo >&2 "REDAXO has been successfully copied to $PWD"
 
     # copy default config
     cp -f /tmp/default.config.yml ./redaxo/src/core/
-    rm -f /tmp/default.config.yml
     echo >&2 "default.config.yml copied to $PWD/redaxo/src/core/"
 
     # copy setup script
     cp -f /tmp/redaxo.setup.php ./redaxo/
-    rm -f /tmp/redaxo.setup.php
     echo >&2 "redaxo.setup.php copied to $PWD/redaxo/"
 
     # run setup script
@@ -36,5 +33,11 @@ if isempty "$PWD"; then
 else
     echo >&2 "WARNING: $PWD is not empty! Skip REDAXO setup."
 fi
+
+# clean up
+rm -f /tmp/redaxo5.zip
+rm -f /tmp/default.config.yml
+rm -f /tmp/redaxo.setup.php
+echo >&2 "Cleaned up helper files."
 
 exec "$@"
