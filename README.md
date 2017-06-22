@@ -16,13 +16,14 @@
 * PHP 7.1
 * MariaDB 10.2
 * REDAXO 5.3
+* [REDAXO-Demo](https://github.com/FriendsOfREDAXO/demo_base) (optional)
 
 Als Volume für den Webroot wird der Ordner `html/` verwendet. Ist dieser beim Build des Containers leer, wird ein aktuelles REDAXO runtergeladen und automatisch installiert (Login ins Backend mittels `admin`/`admin`).  
 Die Datenbank wird in den Ordner `db/` persistiert.
 
 __Dieses Docker-Setup bedient demnach zwei Anwendungsfälle:__
 
-1. Bereitstellung einer frischen REDAXO-Installation
+1. Bereitstellung einer frischen REDAXO-Installation, wahlweise mit verschiedenen Website-Demos
 2. Betrieb und Pflege einer bestehenden REDAXO-Installation, vor allem zur lokalen Entwicklung
 
 ## Verwendung
@@ -35,11 +36,9 @@ __Docker-Container stoppen und entfernen:__
 
     $ docker-compose down
 
-__Docker-Container stoppen und neu bauen, falls Änderungen am Setup gemacht wurden:__
+__Docker-Container neu bauen, falls Änderungen am Setup gemacht wurden:__
 
-    $ docker-compose down
-    $ docker-compose build
-    $ docker-compose up -d
+    $ docker-compose up -d --build --force-recreate
 
 __REDAXO im Browser aufrufen:__
 
@@ -137,7 +136,7 @@ Du musst nur [Docker (Community Edition) für dein System](https://www.docker.co
 
     $ docker-compose up -d
 
-Das wird beim ersten Mal ein kleines Weilchen dauern, weil zuerst die _Images_ runtergeladen werden müssen, aus denen Docker dann lauffähige Container baut. Danach steht dir ein frisches REDAXO im Browser zur Verfügung unter:
+Das wird beim ersten Mal ein kleines Weilchen dauern, weil zuerst die _Images_ runtergeladen werden müssen, aus denen Docker dann lauffähige Container baut. Danach steht dir ein frisches REDAXO inkl. [Demo-Website](https://github.com/FriendsOfREDAXO/demo_base) im Browser zur Verfügung unter:
 
     http://localhost:20080
 
@@ -168,16 +167,17 @@ In diesen Ordner wird die __Datenbank__ des Containers _persistiert_, also dauer
         php-apache/
             apache.conf
             default.config.yml
+            demos.yml
             docker-entrypoint.sh
+            docker-redaxo.php
             Dockerfile
             php.ini
-            redaxo.setup.php
 
 Im `docker/`-Ordner befindet sich die __Konfiguration für die Container__, die wir benutzen, nämlich `mysql/` und `php-apache/`. Diese enthalten jeweils ein `Dockerfile`, die die Bauanleitungen enthalten, mit der jeweils aus einem _Image_ ein lauffähiger _Container_ gebaut wird.
 
 Das Dockerfile für MySQL ist ganz schlicht, denn es enthält lediglich die Angabe, welches Image verwendet wird, ohne dass dieses dann weiter angepasst wird. Das PHP-Apache-Dockerfile ist aufwendiger: Hier bestimmen wir erst das Image, schicken aber einige Anpassungen hinterher. Zum Beispiel aktivieren wir Apache-Module und installieren PHP-Extensions, die REDAXO benötigt. Im Anschluss prüfen wir, ob unser Webroot — dazu gleich mehr! — noch leer ist, und falls es das ist, holen wir uns ein frisches REDAXO von GitHub und entpacken es in den Webroot.
 
-Die anderen Dateien enthalten Konfigurationen für PHP, Apache und die Datenbank.
+Die anderen Dateien enthalten Setup-Skripte, Konfigurationen für PHP, Apache und die Datenbank.
 
 #### Webroot
 
