@@ -12,32 +12,51 @@ isempty() {
     return 0
 }
 
-# extract REDAXO + default config to target folder, but only if it’s empty
-if isempty "$PWD"; then
+if isempty "${PWD}"; then
 
-    # extract redaxo package
-    unzip -oq /tmp/redaxo5.zip
-    echo >&2 "REDAXO has been successfully copied to $PWD"
+    echo >&2 "👉 Prepare REDAXO setup..."
+
+    # copy REDAXO to webroot
+    cp -R /tmp/redaxo/src/. ./
+    echo >&2 "✅ REDAXO has been successfully copied to ${PWD}"
 
     # copy default config
-    cp -f /tmp/default.config.yml ./redaxo/src/core/
-    echo >&2 "default.config.yml copied to $PWD/redaxo/src/core/"
+    cp -f /tmp/redaxo/default.config.yml ./redaxo/src/core/
+    echo >&2 "✅ default.config.yml copied to ${PWD}/redaxo/src/core/"
+
+    # copy demos config
+    cp -f /tmp/redaxo/demos.yml ./redaxo/
+    echo >&2 "✅ demos.yml copied to ${PWD}/redaxo/"
 
     # copy setup script
-    cp -f /tmp/redaxo.setup.php ./redaxo/
-    echo >&2 "redaxo.setup.php copied to $PWD/redaxo/"
+    cp -f /tmp/redaxo/docker-redaxo.php ./redaxo/
+    echo >&2 "✅ docker-redaxo.php copied to ${PWD}/redaxo/"
+    echo >&2 " "
 
-    # run setup script
-    cd redaxo && php redaxo.setup.php --user="$REDAXO_USER" --password="$REDAXO_PASSWORD"
-    rm -f redaxo.setup.php
+    cd redaxo
+
+    # install REDAXO
+    echo >&2 "👉 Install REDAXO..."
+    php docker-redaxo.php --user="$REDAXO_USER" --password="$REDAXO_PASSWORD"
+    echo >&2 " "
+
+    # install demo
+    if [[ $REDAXO_DEMO ]]; then
+        echo >&2 "👉 Install ${REDAXO_DEMO}..."
+        php docker-redaxo.php --demo="$REDAXO_DEMO"
+        echo >&2 " "
+    fi
+
+    # clean up
+    rm -f docker-redaxo.php
+    rm -f demos.yml
 else
-    echo >&2 "WARNING: $PWD is not empty! Skip REDAXO setup."
+    echo >&2 "✋ WARNING: ${PWD} is not empty! Skip REDAXO setup."
+    echo >&2 " "
 fi
 
-# clean up
-rm -f /tmp/redaxo5.zip
-rm -f /tmp/default.config.yml
-rm -f /tmp/redaxo.setup.php
-echo >&2 "Cleaned up helper files."
+# clean up tmp folder
+rm -rf /tmp/redaxo
 
+# execute CMD
 exec "$@"

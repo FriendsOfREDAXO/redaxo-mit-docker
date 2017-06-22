@@ -1,0 +1,36 @@
+demo_base:
+  addons:
+    - {addonkey: demo_base,      file: 1882}  # 2.3.0
+    - {addonkey: markitup,       file: 1895}  # 3.0.1
+    - {addonkey: redactor2,      file: 2000}  # 3.2.3
+    - {addonkey: yform,          file: 1986}  # 2.2
+    - {addonkey: sprog,          file: 1446}  # 1.0.0
+  activate:
+    - phpmailer
+    - markitup
+    - redactor2
+    - sprog
+    - yform
+    - demo_base
+  dbimport:
+    - demo_base.sql
+  fileimport:
+    - demo_base.tar.gz
+
+demo_community:
+  addons:
+    - {addonkey: demo_community, file: 1778}  # 2.0.0-dev
+    - {addonkey: markitup,       file: 1895}  # 3.0.1
+    - {addonkey: yform,          file: 1986}  # 2.2
+    - {addonkey: ycom,           file: 1987}  # 2.0
+  activate:
+    - phpmailer
+    - markitup
+    - yform
+    - yform/geo
+    - ycom
+    - demo_community
+  dbimport:
+    - demo_community.sql
+  fileimport:
+    - demo_community.tar.gz

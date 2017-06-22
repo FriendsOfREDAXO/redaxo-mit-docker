@@ -16,6 +16,7 @@ services:
     environment:
       REDAXO_USER: admin
       REDAXO_PASSWORD: admin
+      REDAXO_DEMO: demo_base
 
   db:
     container_name: redaxodocker_db

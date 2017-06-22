@@ -18,17 +18,18 @@ RUN apt-get update -q && apt-get install -qy \
     && docker-php-ext-install -j$(nproc) gd pdo_mysql
 
 # set ENVs
-ENV REDAXO_VERSION 5.3.0
-ENV REDAXO_SHA c1d3dcc2401b39cd9d32ea7de2ea358683ce81ceb8a5845f7a79937adcd5048e
+ENV REDAXO_VERSION=5.3.0 REDAXO_SHA=c1d3dcc2401b39cd9d32ea7de2ea358683ce81ceb8a5845f7a79937adcd5048e
 
-# fetch REDAXO and validate checksum
+# fetch REDAXO, validate checksum and extract to tmp folder
 RUN set -e; \
-    curl -Ls -o /tmp/redaxo5.zip https://github.com/redaxo/redaxo/releases/download/5.3.0/redaxo_5.3.0.zip; \
-    echo "$REDAXO_SHA */tmp/redaxo5.zip" | shasum -c -a 256;
+    mkdir /tmp/redaxo; \
+    curl -Ls -o /tmp/redaxo/redaxo_${REDAXO_VERSION}.zip https://github.com/redaxo/redaxo/releases/download/${REDAXO_VERSION}/redaxo_${REDAXO_VERSION}.zip; \
+    echo "${REDAXO_SHA} */tmp/redaxo/redaxo_${REDAXO_VERSION}.zip" | shasum -c -a 256; \
+    unzip -oq /tmp/redaxo/redaxo_${REDAXO_VERSION}.zip -d /tmp/redaxo/src; \
+    rm -f /tmp/redaxo/redaxo_${REDAXO_VERSION}.zip;
 
-# copy REDAXO default config
-COPY default.config.yml /tmp/
-COPY redaxo.setup.php /tmp/
+# copy REDAXO configs and helpers
+COPY default.config.yml demos.yml docker-redaxo.php /tmp/redaxo/
 
 # copy REDAXO setup script and run setup
 COPY docker-entrypoint.sh /usr/local/bin/
