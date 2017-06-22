@@ -26,6 +26,12 @@ __Dieses Docker-Setup bedient demnach zwei Anwendungsfälle:__
 1. Bereitstellung einer frischen REDAXO-Installation, wahlweise mit verschiedenen Website-Demos
 2. Betrieb und Pflege einer bestehenden REDAXO-Installation, vor allem zur lokalen Entwicklung
 
+## Demo-Websites
+
+Das Paket enthält die [REDAXO-Basisdemo](https://github.com/FriendsOfREDAXO/demo_base) und kann weitere Demos automatisch installieren, etwa die [Community-Demo](https://github.com/FriendsOfREDAXO/demo_community).
+
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/demo_base/assets/demo_base_01.jpg)
+
 ## Verwendung
 
 __Docker-Container starten:__
