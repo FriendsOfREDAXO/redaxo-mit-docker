@@ -179,8 +179,7 @@ if ($options['demo']) {
                         echo '✋ Could not activate addon ' . $addon . '!', PHP_EOL;
                         continue;
                     }
-                }
-                else {
+                } else {
                     echo '✋ Addon ' . $addon . ' is already installed!', PHP_EOL;
                     continue;
                 }
