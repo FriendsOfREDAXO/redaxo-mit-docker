@@ -2,7 +2,7 @@ demo_base:
   addons:
     - {addonkey: demo_base,      file: 1882}  # 2.3.0
     - {addonkey: markitup,       file: 1895}  # 3.0.1
-    - {addonkey: redactor2,      file: 2000}  # 3.2.3
+    - {addonkey: redactor2,      file: 1945}  # 3.2.2
     - {addonkey: yform,          file: 1986}  # 2.2
     - {addonkey: sprog,          file: 1446}  # 1.0.0
   activate:
