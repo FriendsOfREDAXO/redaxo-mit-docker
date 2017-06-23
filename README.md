@@ -142,7 +142,11 @@ Du musst nur [Docker (Community Edition) für dein System](https://www.docker.co
 
     $ docker-compose up -d
 
-Das wird beim ersten Mal ein kleines Weilchen dauern, weil zuerst die _Images_ runtergeladen werden müssen, aus denen Docker dann lauffähige Container baut. Danach steht dir ein frisches REDAXO inkl. [Demo-Website](https://github.com/FriendsOfREDAXO/demo_base) im Browser zur Verfügung unter:
+Das wird beim ersten Mal ein kleines Weilchen dauern, weil zuerst die _Images_ runtergeladen werden müssen, aus denen Docker dann lauffähige Container baut. In deiner Konsole wird eine Menge Text vorbeilaufen.
+
+:warning: Wenn die Konsole wieder bereit ist und die Befehlszeile erscheint, musst du __noch weitere 1-2 Minuten warten__, bis REDAXO vollständig installiert ist. Darüber erhälst du leider keine Rückmeldung in der Konsole, sondern müsstest z. B. das kostenlose Docker-Tool [Kitematic](https://kitematic.com) verwenden, um den Fortschritt zu sehen.
+
+Danach steht dir ein frisches REDAXO inkl. [Demo-Website](https://github.com/FriendsOfREDAXO/demo_base) im Browser zur Verfügung unter:
 
     http://localhost:20080
 
