@@ -138,7 +138,7 @@ Wir benutzen Docker in diesem Projekt, um uns aus verschiedenen Containern eine 
 
 ### Was wird benötigt?
 
-Du musst nur [Docker (Community Edition) für dein System](https://www.docker.com/community-edition#/download) installieren, mehr wird nicht benötigt. Danach begibst du dich in deiner Konsole in den Ordner dieses Repos und startest die Container:
+Du musst nur [Docker (Community Edition) für dein System](https://www.docker.com/community-edition#/download) installieren, mehr wird nicht benötigt. In der Konfiguration musst du die Ordner freigeben, in denen Docker-Projekte laufen dürfen. Hier gibst du nun erstmal nur den Ordner an, in dem dieses Git-Repo liegt. Danach begibst du dich in deiner Konsole in diesen Ordner und startest die Container:
 
     $ docker-compose up -d
 
