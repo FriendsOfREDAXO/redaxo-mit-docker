@@ -88,7 +88,7 @@ if ($options['user'] && $options['password']) {
         // save config and finish setup
         $config['setup'] = false;
         if (rex_file::putConfig($configFile, $config)) {
-            echo '🚀 REDAXO setup successfull.', PHP_EOL;
+            echo '🚀 REDAXO setup successful.', PHP_EOL;
             exit(0);
         }
 
