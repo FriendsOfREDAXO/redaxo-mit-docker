@@ -14,7 +14,7 @@
 
 * Apache 2.4
 * PHP 7.1
-* MariaDB 10.2
+* MySQL 5.7
 * REDAXO 5.3
 * [REDAXO-Demo](https://github.com/FriendsOfREDAXO/demo_base) (optional)
 
@@ -86,10 +86,10 @@ Manche Extensions müssen konfiguriert werden, wie du bei GD siehst, die meisten
 
 Einfach `docker/mysql/my.cnf` anpassen und neu bauen.
 
-Falls du eine andere Version oder MySQL statt MariaDB verwenden möchtest, musst du nur das Dockerfile anpassen und neu bauen.
+Falls du eine andere Version verwenden möchtest, musst du nur das Dockerfile anpassen und neu bauen.
 
 ```dockerfile
-FROM mysql:5.5
+FROM mysql:5.7
 ```
 
 ### phpMyAdmin einbinden
