@@ -4,28 +4,28 @@ services:
   web:
     container_name: redaxodocker
     hostname: redaxodocker
-    build: ./docker/php-apache
+    build: ./docker/php-apache              # location for web server dockerfile and config
     ports:
-      - 20080:80
+      - 20080:80                            # web server will use port 20080
     volumes:
-      - ./html:/var/www/html
+      - ./html:/var/www/html                # webroot will be synced with your local folder ./html
     depends_on:
       - db
     links:
       - db
     environment:
-      REDAXO_USER: admin
-      REDAXO_PASSWORD: admin
-      REDAXO_DEMO: demo_base
+      REDAXO_USER: admin                    # REDAXO username
+      REDAXO_PASSWORD: admin                # REDAXO password
+      REDAXO_DEMO: demo_base                # website demo to be installed. leave empty for a raw REDAXO!
 
   db:
     container_name: redaxodocker_db
     hostname: redaxodocker_db
-    build: ./docker/mysql
+    build: ./docker/mysql                   # location for database dockerfile and config
     ports:
-      - 23306:3306
+      - 23306:3306                          # database will use port 23306
     volumes:
-      - ./db:/var/lib/mysql
+      - ./db:/var/lib/mysql                 # database will persist to your local folder ./db
     environment:
       MYSQL_DATABASE: redaxodocker
       MYSQL_USER: redaxodocker
