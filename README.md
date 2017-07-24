@@ -1,6 +1,6 @@
 # REDAXO mit Docker :whale:
 
-:rocket: _Noch keine Erfahrung mit Docker? Gar kein Problem, weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-rocket)!_
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_01.jpg)
 
 * [Einleitung](#einleitung)
 * [Paketinhalt](#paketinhalt)
@@ -9,10 +9,11 @@
 * [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen-rocket)
 * [Fragen oder Anmerkungen?](#fragen-oder-anmerkungen)
 
-![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_01.jpg)
-
+---
 
 ## Einleitung
+
+:rocket: _Noch keine Erfahrung mit Docker? Gar kein Problem, weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-rocket)!_
 
 __Ganz kurz, welchen Zweck erfüllt dieses Docker-Setup?__
 
