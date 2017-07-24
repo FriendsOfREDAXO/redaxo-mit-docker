@@ -57,7 +57,11 @@ __Docker-Container stoppen und entfernen:__
 
     $ docker-compose down
 
-__Docker-Container neu bauen, falls Änderungen am Setup gemacht wurden:__
+__Docker-Images neu bauen, falls Änderungen am Setup gemacht wurden:__
+
+    $ docker-compose build
+
+Oder praktischerweise zusammengefasst (Alle Images bauen und alle Container neustarten, siehe [Docs](https://docs.docker.com/compose/reference/up/)):
 
     $ docker-compose up -d --build --force-recreate
 
@@ -71,15 +75,14 @@ __REDAXO im Browser aufrufen:__
 
 ## Konfiguration und Tipps
 
-:warning: Beachte: Immer dann, wenn du Änderungen am Container machst, musst du danach neu bauen:
+:warning: Beachte: Immer dann, wenn du Änderungen am Container machst, musst du danach neu bauen!
 
     $ docker-compose build
 
 ### PHP konfigurieren
 
-Einfach `docker/php-apache/php.ini` anpassen und neu bauen.
-
-Falls du eine andere PHP-Version verwenden möchtest, etwa 5.6 für ältere REDAXOs, musst du nur das Dockerfile anpassen und neu bauen.
+Einfach `docker/php-apache/php.ini` anpassen und neu bauen.  
+Falls du eine andere PHP-Version verwenden möchtest, etwa 5.6 für ältere REDAXOs, musst du nur das Dockerfile anpassen und neu bauen:
 
 ```dockerfile
 FROM php:5.6-apache
@@ -99,9 +102,8 @@ Manche Extensions müssen konfiguriert werden, wie du bei GD siehst, die meisten
 
 ### Datenbank konfigurieren
 
-Einfach `docker/mysql/my.cnf` anpassen und neu bauen.
-
-Falls du eine andere Version verwenden möchtest, musst du nur das Dockerfile anpassen und neu bauen.
+Einfach `docker/mysql/my.cnf` anpassen und neu bauen.  
+Falls du eine andere Version verwenden möchtest, musst du nur das Dockerfile anpassen und neu bauen:
 
 ```dockerfile
 FROM mysql:5.7
