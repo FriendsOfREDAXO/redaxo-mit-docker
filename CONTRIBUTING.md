@@ -25,7 +25,7 @@ Infos darüber, wie dieses Paket gepflegt und erweitert werden kann.
 
 Die Konfiguration der Demos befindet sich in `/docker/php-apache/demos.yml`.
 
-1. Download von AddOns
+1. __Download von AddOns__
 
     Eine Info darüber, welche AddOns eine Demo benötigt, findest du in der `package.yml` der jeweiligen Demo. Beachte, dass REDAXO manche AddOns schon mitbringt. Du musst nur die AddOns nachträglich installieren, die nicht schon vorhanden sind.
     
@@ -33,16 +33,16 @@ Die Konfiguration der Demos befindet sich in `/docker/php-apache/demos.yml`.
     
     :point_right: _Die Nummer für `file` findest du am besten heraus, indem du im Installer nach dem AddOn suchst. Sie befindet sich dann in der URL._
 
-2. Aktivierung von Addons und Plugins
+2. __Aktivierung von Addons und Plugins__
 
     Die Reihenfolge der Aktivierung ist sehr relevant, weil AddOns Abhängigkeiten untereinander haben können! Beispielsweise wird der `phpmailer` von einigen AddOns verwendet, so dass er weit oben in der Liste stehen sollte. Gleiches gilt für `yform`.
     
     Aktiviere das Demo-Addon zum Schluss!
 
-3. Datenbank-Import
+3. __Datenbank-Import__
 
     Prüfe, welche SQL-Dumps vom Demo-AddOn importiert werden müssen.
 
-4. Datei-Import
+4. __Datei-Import__
 
     Prüfe, welche Dateien vom Demo-AddOn importiert werden müssen.
