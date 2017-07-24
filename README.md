@@ -2,11 +2,35 @@
 
 :rocket: _Noch keine Erfahrung mit Docker? Gar kein Problem, weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-rocket)!_
 
+* [Einleitung](#einleitung)
 * [Paketinhalt](#paketinhalt)
 * [Verwendung](#verwendung)
 * [Konfiguration und Tipps](#konfiguration-und-tipps)
 * [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen-rocket)
 * [Fragen oder Anmerkungen?](#fragen-oder-anmerkungen)
+
+---
+
+## Einleitung
+
+__Ganz kurz, welchen Zweck erfüllt dieses Docker-Setup?__
+
+1. Docker stellt dir und deinem Team für jedes eurer REDAXO-Projekte eine __Serverumgebung (Apache, PHP, MySQL)__ bereit. Das funktioniert so ähnlich wie eine Virtuelle Maschine, benötigt aber viel weniger Ressourcen. Die Serverumgebung kannst du beliebig anpassen und jederzeit verwerfen, ohne dass Daten verloren gehen.
+2. Falls gewollt, kann Docker in der Serverumgebung eigenständig ein __frisches REDAXO installieren__.
+3. Noch besser: Docker kann sogar komplette __Demo-Websites installieren__, z. B. die beliebte [Basisdemo](https://github.com/FriendsOfREDAXO/demo_base) oder die [Community-Demo](https://github.com/FriendsOfREDAXO/demo_community). Damit kannst du jederzeit ohne besonderen Aufwand REDAXO-Features ausprobieren.
+
+__Für wen ist sowas sinnvoll?__
+
+* Für Teams, denn sie erhalten dadurch eine __einheitliche Serverumgebung__ und sparen die Zeit, ihre Systeme jeweils manuell einrichten und pflegen zu müssen.
+* Für alle, die intensiv mit REDAXO arbeiten und __mehrere Projekte__ betreuen. Mit Docker kannst du jedem Projekt die passende Serverumgebung mitgeben, und die Auto-Installation ermöglicht dir, ohne besonderen Aufwand frische REDAXOs samt Demo-Websites zu generieren, an denen du Funktionen testen und entwickeln kannst.
+* Für alle, die __komplexe Anwendungen__ entwickeln: Falls dein REDAXO eine Elasticsearch einsetzen möchte, einen externen Mailserver benötigt, Daten bei S3 auslagert oder sonstige Dienste benutzt, kannst du die Umgebung mit verschiedenen Docker-Containern abbilden.
+
+__Okay cool, wie geht’s los?__
+
+* Falls du schon Docker-Erfahrung hast: `docker-compose up -d`, siehe [Verwendung](#verwendung).
+* Falls Docker für dich noch ziemlich neu ist: Gar kein Problem, es gibt eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-rocket). :rocket: Falls du Fragen hast oder Hilfe benötigst, kontakte uns jederzeit gerne im Slack-Chat! Eine Einladung bekommst du hier: https://redaxo.org/slack/
+
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/demo_base/assets/demo_base_01.jpg)
 
 ---
 
@@ -21,16 +45,7 @@
 Als Volume für den Webroot wird der Ordner `html/` verwendet. Ist dieser beim Build des Containers leer, wird ein aktuelles REDAXO runtergeladen und automatisch installiert (Login ins Backend mittels `admin`/`admin`).  
 Die Datenbank wird in den Ordner `db/` persistiert.
 
-__Dieses Docker-Setup bedient demnach zwei Anwendungsfälle:__
-
-1. Bereitstellung einer frischen REDAXO-Installation, wahlweise mit verschiedenen Website-Demos
-2. Betrieb und Pflege einer bestehenden REDAXO-Installation, vor allem zur lokalen Entwicklung
-
-## Demo-Websites
-
-Das Paket enthält die [REDAXO-Basisdemo](https://github.com/FriendsOfREDAXO/demo_base) und kann weitere Demos automatisch installieren, etwa die [Community-Demo](https://github.com/FriendsOfREDAXO/demo_community).
-
-![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/demo_base/assets/demo_base_01.jpg)
+---
 
 ## Verwendung
 
