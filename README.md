@@ -9,9 +9,8 @@
 * [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen-rocket)
 * [Fragen oder Anmerkungen?](#fragen-oder-anmerkungen)
 
-![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_01.png)
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_01.jpg)
 
----
 
 ## Einleitung
 
