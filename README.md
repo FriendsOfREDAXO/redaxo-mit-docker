@@ -21,8 +21,8 @@ __Ganz kurz, welchen Zweck erfüllt dieses Docker-Setup?__
 
 __Für wen ist sowas sinnvoll?__
 
-* Für Teams, denn sie erhalten dadurch eine __einheitliche Serverumgebung__ und sparen die Zeit, ihre Systeme jeweils manuell einrichten und pflegen zu müssen.
 * Für alle, die intensiv mit REDAXO arbeiten und __mehrere Projekte__ betreuen. Mit Docker kannst du jedem Projekt die passende Serverumgebung mitgeben, und die Auto-Installation ermöglicht dir, ohne besonderen Aufwand frische REDAXOs samt Demo-Websites zu generieren, an denen du Funktionen testen und entwickeln kannst.
+* Für Teams, denn sie erhalten dadurch eine __einheitliche Serverumgebung__ und sparen die Zeit, ihre Systeme jeweils manuell einrichten und pflegen zu müssen.
 * Für alle, die __komplexe Anwendungen__ entwickeln: Falls dein REDAXO eine Elasticsearch einsetzen möchte, einen externen Mailserver benötigt, Daten bei S3 auslagert oder sonstige Dienste benutzt, kannst du die Umgebung mit verschiedenen Docker-Containern abbilden.
 
 __Okay cool, wie geht’s los?__
