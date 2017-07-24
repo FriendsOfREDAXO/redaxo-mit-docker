@@ -31,7 +31,7 @@ Die Konfiguration der Demos befindet sich in `/docker/php-apache/demos.yml`.
     
     Denke auch dran, die jeweilige Demo selbst als AddOn zum Download aufzulisten. Am besten gleich am Anfang der Liste.
     
-    Die Nummer für `file` findest du am besten heraus, indem du im Installer nach dem AddOn suchst. Sie befindet sich dann in der URL.
+    :point_right: _Die Nummer für `file` findest du am besten heraus, indem du im Installer nach dem AddOn suchst. Sie befindet sich dann in der URL._
 
 2. Aktivierung von Addons und Plugins
 
