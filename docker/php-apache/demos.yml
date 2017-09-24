@@ -1,10 +1,10 @@
 demo_base:
   addons:
-    - {addonkey: demo_base,      file: 2058}  # 2.4.0
-    - {addonkey: markitup,       file: 1895}  # 3.0.1
-    - {addonkey: redactor2,      file: 2036}  # 3.4.1
-    - {addonkey: yform,          file: 1986}  # 2.2
+    - {addonkey: demo_base,      file: 2100}  # 2.6.1
+    - {addonkey: markitup,       file: 2078}  # 3.0.2
+    - {addonkey: redactor2,      file: 2074}  # 3.4.2
     - {addonkey: sprog,          file: 1446}  # 1.0.0
+    - {addonkey: yform,          file: 1986}  # 2.2
   activate:
     - phpmailer
     - markitup
@@ -19,10 +19,10 @@ demo_base:
 
 demo_community:
   addons:
-    - {addonkey: demo_community, file: 1778}  # 2.0.0-dev
-    - {addonkey: markitup,       file: 1895}  # 3.0.1
-    - {addonkey: yform,          file: 1986}  # 2.2
+    - {addonkey: demo_community, file: 2085}  # 2.1.0
+    - {addonkey: markitup,       file: 2078}  # 3.0.2
     - {addonkey: ycom,           file: 1987}  # 2.0
+    - {addonkey: yform,          file: 1986}  # 2.2
   activate:
     - phpmailer
     - markitup
