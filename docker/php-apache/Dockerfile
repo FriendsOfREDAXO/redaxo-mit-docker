@@ -18,7 +18,11 @@ RUN apt-get update -q && apt-get install -qy \
     && docker-php-ext-install -j$(nproc) gd pdo_mysql
 
 # set ENVs
-ENV REDAXO_VERSION=5.3.0 REDAXO_SHA=c1d3dcc2401b39cd9d32ea7de2ea358683ce81ceb8a5845f7a79937adcd5048e
+#ENV REDAXO_VERSION=5.0.0 REDAXO_SHA=d205cbd6783332a212c5ae92d73c77178c2d2f28
+#ENV REDAXO_VERSION=5.1.0 REDAXO_SHA=d9cd7583eb61fd00e3bc91148648a4126245d040
+#ENV REDAXO_VERSION=5.2.0 REDAXO_SHA=fa141b1b7116c5a1349c63193c230d517c112b8e
+#ENV REDAXO_VERSION=5.3.0 REDAXO_SHA=fd20820ab4c1faa905dabe7bb526c3aec8afe24b
+ENV REDAXO_VERSION=5.4.0 REDAXO_SHA=bdf19a343d91bb23ff5f8a7644af54c643bebd2b
 
 # fetch REDAXO, validate checksum and extract to tmp folder
 RUN set -e; \
