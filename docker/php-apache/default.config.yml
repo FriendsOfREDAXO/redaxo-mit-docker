@@ -7,6 +7,7 @@ error_email: null
 fileperm: '0664'
 dirperm: '0775'
 session_duration: 7200
+session_keep_alive: 21600
 session:
     backend:
         cookie:
@@ -24,6 +25,11 @@ session:
             secure: null
             httponly: true
             samesite: 'Strict'
+password_policy:
+    length: {min: 8}
+    lowercase: {min: 0}
+    uppercase: {min: 0}
+    digit: {min: 0}
 lang: de_de
 use_gzip: true
 use_etag: true
