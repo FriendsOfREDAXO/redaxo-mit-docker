@@ -82,7 +82,13 @@ __REDAXO im Browser aufrufen:__
 
     $ docker-compose build
 
-### PHP konfigurieren
+### REDAXO-Version festlegen
+
+In `docker/php-apache/Dockerfile` wird die Version als `ENV`, also Umgebungsvariable, hinterlegt. Sie besteht aus zwei Teilen, der Version und einem Hash, der verwendet wird, um nach dem Download auf Richtigkeit zu prüfen. Wie du den Hash einer neuen Version herausfindest, steht in der [CONTRIBUTING.md](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/CONTRIBUTING.md).  
+
+Die REDAXO-Version ist übrigens nur relevant, falls Docker das System für dich automatisch installiert. Falls du manuell installierst oder ein bestehendes REDAXO updatest, musst du hier nichts ändern.
+
+### PHP-Version festlegen und konfigurieren
 
 Einfach `docker/php-apache/php.ini` anpassen und neu bauen.  
 Falls du eine andere PHP-Version verwenden möchtest, etwa 5.6 für ältere REDAXOs, musst du nur das Dockerfile anpassen und neu bauen:
