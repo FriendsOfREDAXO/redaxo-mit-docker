@@ -55,9 +55,9 @@ temp_prefix: tmp_
 db:
     1:
         host: db
-        login: redaxodocker
-        password: redaxodocker
-        name: redaxodocker
+        login: redaxo
+        password: redaxo
+        name: redaxo
         persistent: false
     2:
         host: ''

@@ -127,8 +127,8 @@ phpmyadmin:
     - db
   environment:
     PMA_HOST: db
-    PMA_USER: redaxodocker
-    PMA_PASSWORD: redaxodocker
+    PMA_USER: redaxo
+    PMA_PASSWORD: redaxo
 ```
 
 :point_right: _Beachte: Hier verwenden wir ein fertiges Image für den Container, das wir nicht mehr nachträglich anpassen. Deshalb können wir es direkt mittels `image: phpmyadmin/phpmyadmin` einbinden und benötigen kein separates Dockerfile im `docker/`-Ordner, so wie bei unseren anderen Containern._
