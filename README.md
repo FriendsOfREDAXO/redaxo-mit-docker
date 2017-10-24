@@ -5,6 +5,7 @@
 * [Einleitung](#einleitung)
 * [Paketinhalt](#paketinhalt)
 * [Verwendung](#verwendung)
+* [Anpassungen für deine Projekte](#anpassungen-für-deine-projekte)
 * [Konfiguration und Tipps](#konfiguration-und-tipps)
 * [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen-rocket)
 * [Fragen oder Anmerkungen?](#fragen-oder-anmerkungen)
@@ -72,7 +73,29 @@ __REDAXO im Browser aufrufen:__
 
     http://localhost:20080
 
-:point_right: _Wir benutzen Port `20080` für HTTP und `23306` für die Datenbank, um nicht in Konflikt mit den Standardports `80`/`3306` zu kommen, sollten diese bereits verwendet werden. Das macht unser Setup robuster._
+:point_right: _Wir benutzen Port `20080` für HTTP und `23306` für die Datenbank, um nicht in Konflikt mit den Standardports `80`/`3306` zu kommen, sollten diese bereits verwendet werden. Das macht unser Setup robuster.  
+Wenn du mehrere Docker-Projekte verwendest, musst du noch beachten, dass alle diese Ports verwenden und deshalb immer nur eins laufen kann, nicht mehrere gleichzeitig._
+
+---
+
+## Anpassungen für deine Projekte
+
+An welchen Stellen musst du irgendwas anpassen, wenn du das Paket für deine Projekte verwenden möchtest?
+
+1. __Die Namen deiner Container__  
+`docker-compose.yml`  
+In diesem Paket beginnen die Container-Namen mit `redaxodocker`. Für deine Projekte solltest du den Namen anpassen, am besten jeweils so, dass du das Projekt am Namen erkennen kannst. Am Ende wirst du nämlich viele Container auf deinem System haben und brauchst eine gute Übersicht!
+2. __Die Datenbank-Konfiguration__  
+`docker-compose.yml` und `docker/php-apache/default.config.yml`  
+Für die lokale Entwicklung sind `MYSQL_USER` und `MYSQL_PASSWORD` nicht allzu relevant, denn deine Datenbank läuft gekapstelt in einem Docker-Container. Solltest du keinen Deployment-Workflow haben und Datenbank-Dumps manuell auf dem Live-Server importieren, brauchst du an dieser Stelle auch nicht unbedingt etwas zu ändern.  
+Aber natürlich solltest du die Credentials anpassen, falls sie deine Entwicklungsumgebung jemals verlassen und auf einem Produktivserver landen!
+3. __Den Login für deinen REDAXO-Admin__  
+`docker-compose.yml`  
+Falls Docker für dich REDAXO automatisch einrichtet, werden `REDAXO_USER` und `REDAXO_PASSWORD` verwendet, um einen Adminnutzer anzulegen. Sollte dein Projekt jemals so live gehen, verwendest du also besser andere Angaben als `admin` :)
+4. __Eine REDAXO-Demo__  
+`docker-compose.yml`  
+Falls Docker für dich eine Website-Demo automatisch einrichten soll, kannst du diese unter `REDAXO_DEMO` festlegen. Lasse den Wert leer, falls keine Demo eingerichtet werden soll.  
+Die Liste der vorhandenen Demos findest du in `docker/php-apache/demos.yml`.
 
 ---
 
