@@ -41,8 +41,8 @@ __Okay cool, wie geht’s los?__
 * Apache 2.4
 * PHP 7.1
 * MySQL 5.7
-* REDAXO 5.3
 * [Mailhog](https://github.com/mailhog/MailHog) (zum Testen des E-Mailversands)
+* REDAXO 5.4
 * [REDAXO-Demo](https://github.com/FriendsOfREDAXO/demo_base) (optional)
 
 Als Volume für den Webroot wird der Ordner `html/` verwendet. Ist dieser beim Build des Containers leer, wird ein aktuelles REDAXO runtergeladen und automatisch installiert (Login ins Backend mittels `admin`/`admin`).  
