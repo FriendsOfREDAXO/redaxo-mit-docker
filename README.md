@@ -97,6 +97,8 @@ Falls Docker für dich REDAXO automatisch einrichtet, werden `REDAXO_USER` und `
 Falls Docker für dich eine Website-Demo automatisch einrichten soll, kannst du diese unter `REDAXO_DEMO` festlegen. Lasse den Wert leer, falls keine Demo eingerichtet werden soll.  
 Die Liste der vorhandenen Demos findest du in `docker/php-apache/demos.yml`.
 
+:point_up: Um es kurz zu machen: Wenn du dieses Setup für deine REDAXO-Projekte zur lokalen Entwicklung verwendest, brauchst du vermutlich nur Punkt 1 beachten, also die Container-Namen für jedes Projekt anzupassen.
+
 ---
 
 ## Konfiguration und Tipps
