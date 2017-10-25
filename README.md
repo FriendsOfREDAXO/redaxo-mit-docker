@@ -145,6 +145,8 @@ FROM mysql:5.7
 
 ### Mailhog verwenden
 
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_02.jpg)
+
 Wir haben [Mailhog](https://github.com/mailhog/MailHog) integriert, um den E-Mailversand innerhalb von REDAXO testen zu können, ohne dass dabei ein echtes E-Mailkonto angebunden werden muss. Mailhog fängt stattdessen die Mails ab und bietet eine Weboberfläche, um sie anzuzeigen. Sie ist erreichbar über:
 
     http://localhost:28025
@@ -152,6 +154,8 @@ Wir haben [Mailhog](https://github.com/mailhog/MailHog) integriert, um den E-Mai
 :point_right: _Tip: Im REDAXO-Backend musst du im AddOn PHPMailer nichts weiter konfigurieren. Benutze den Standardversand über `mail()` und sende eine Testmail an dich. Diese sollte direkt im Mailhog auftauchen._
 
 ### phpMyAdmin einbinden
+
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_03.jpg)
 
 Falls du phpMyAdmin integrieren möchtest, musst du lediglich diesen Codeschnipsel in der `docker-compose.yml` am Ende ergänzen:
 
