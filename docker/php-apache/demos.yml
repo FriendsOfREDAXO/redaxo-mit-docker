@@ -34,3 +34,13 @@ demo_community:
     - demo_community.sql
   fileimport:
     - demo_community.tar.gz
+
+demo_fullpage:
+  addons:
+    - {addonkey: demo_fullpage,  file: 2167}  # 1.1.0beta
+  activate:
+    - demo_fullpage
+  dbimport:
+    - demo_fullpage.sql
+  fileimport:
+    - demo_fullpage.tar.gz
