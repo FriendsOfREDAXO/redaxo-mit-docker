@@ -19,7 +19,7 @@ RUN apt-get update -q && apt-get install -qy \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd pdo_mysql
 
-# set ENVs
+# decide which REDAXO version to use
 #ENV REDAXO_VERSION=5.0.0 REDAXO_SHA=d205cbd6783332a212c5ae92d73c77178c2d2f28
 #ENV REDAXO_VERSION=5.1.0 REDAXO_SHA=d9cd7583eb61fd00e3bc91148648a4126245d040
 #ENV REDAXO_VERSION=5.2.0 REDAXO_SHA=fa141b1b7116c5a1349c63193c230d517c112b8e
