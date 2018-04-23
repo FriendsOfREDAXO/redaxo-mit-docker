@@ -35,6 +35,23 @@ demo_community:
   fileimport:
     - demo_community.tar.gz
 
+demo_onepage:
+  addons:
+    - {addonkey: demo_onepage,   file: 2325}  # 1.0
+    - {addonkey: developer,      file: 2274}  # 3.7.0
+    - {addonkey: markitup,       file: 2170}  # 3.0.3
+    - {addonkey: mblock,         file: 2082}  # 2.1.0
+  activate:
+    - developer
+    - markitup
+    - mblock
+    - be_style/customizer
+    - demo_onepage
+  dbimport:
+    - demo_onepage.sql
+  fileimport:
+    - demo_onepage.tar.gz
+
 demo_fullpage:
   addons:
     - {addonkey: demo_fullpage,  file: 2167}  # 1.1.0beta
