@@ -6,7 +6,8 @@ services:
     hostname: redaxodocker
     build: ./docker/php-apache              # location for web server dockerfile and config
     ports:
-      - 20080:80                            # web server will use port 20080
+      - 20080:80                            # web server will use port 20080 for http
+      - 20443:443                           # web server will use port 20443 for https
     volumes:
       - ./html:/var/www/html:cached         # webroot `/var/www/html` will be synced with your local folder `./html`
     depends_on:

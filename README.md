@@ -71,10 +71,13 @@ Oder praktischerweise zusammengefasst (Alle Images bauen und alle Container neus
 
 __REDAXO im Browser aufrufen:__
 
-    http://localhost:20080
+     http://localhost:20080
+    https://localhost:20443
 
-:point_right: _Wir benutzen Port `20080` für HTTP und `23306` für die Datenbank, um nicht in Konflikt mit den Standardports `80`/`3306` zu kommen, sollten diese bereits verwendet werden. Das macht unser Setup robuster.  
+:point_right: _Wir benutzen Port `20080` für HTTP, `20443` für HTTPS und `23306` für die Datenbank, um nicht in Konflikt mit den Standardports `80`/`443`/`3306` zu kommen, sollten diese bereits verwendet werden. Das macht unser Setup robuster.  
 Wenn du mehrere Docker-Projekte verwendest, musst du noch beachten, dass alle diese Ports verwenden und deshalb immer nur eins laufen kann, nicht mehrere gleichzeitig._
+
+:point_right: _Für den Zugriff mittels HTTPS wird ein SSL-Zertifikat generiert, das nur für Testzwecke funktioniert. Dein Browser wird dich darauf hinweisen, dass die Verbindung nicht sicher ist. Zum lokalen Testen allerdings reicht das völlig aus, und du kannst den Sicherheitshinweis übergehen._
 
 ---
 
@@ -124,7 +127,7 @@ FROM php:5.6-apache
 
 ### Weitere PHP-Extensions installieren
 
-Neben den Extensions, die das PHP-Apache-Image bereits mitbringt, installieren wir zusätzlich noch [GD](http://php.net/manual/de/book.image.php) und [PDO_MYSQL](http://php.net/manual/de/ref.pdo-mysql.php), siehe [/docker/php-apache/Dockerfile#L17-L18](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/docker/php-apache/Dockerfile#L17-L18). Falls du weitere Extensions benötigst, kannst du die Helfer-Funktionen benutzen, die das Image anbietet: `docker-php-ext-configure` und `docker-php-ext-install`.
+Neben den Extensions, die das PHP-Apache-Image bereits mitbringt, installieren wir zusätzlich noch [GD](http://php.net/manual/de/book.image.php) und [PDO_MYSQL](http://php.net/manual/de/ref.pdo-mysql.php), siehe [/docker/php-apache/Dockerfile#L23-L24](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/docker/php-apache/Dockerfile#L23-L24). Falls du weitere Extensions benötigst, kannst du die Helfer-Funktionen benutzen, die das Image anbietet: `docker-php-ext-configure` und `docker-php-ext-install`.
 
 Manche Extensions müssen konfiguriert werden, wie du bei GD siehst, die meisten jedoch lassen sich einfach so installieren. In dem Fall brauchst du sie nur hinter `pdo_mysql` ergänzen, etwa so:
 
