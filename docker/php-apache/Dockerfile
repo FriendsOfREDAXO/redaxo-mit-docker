@@ -6,11 +6,11 @@ COPY apache.conf /etc/apache2/sites-available/000-default.conf
 COPY ssmtp.conf /etc/ssmtp/
 
 # generate SSL cert for testing purposes
-RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -subj "/CN=localhost"
+RUN mkdir /etc/apache2/ssl \
+    && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/localhost.key -out /etc/apache2/ssl/localhost.crt -subj "/CN=localhost"
 
 # enable apache modules
 RUN a2enmod expires headers rewrite ssl
-RUN a2ensite default-ssl
 
 # install extensions
 RUN apt-get update -q && apt-get install -qy \
