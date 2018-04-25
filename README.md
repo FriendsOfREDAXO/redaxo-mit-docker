@@ -71,13 +71,12 @@ Oder praktischerweise zusammengefasst (Alle Images bauen und alle Container neus
 
 __REDAXO im Browser aufrufen:__
 
-     http://localhost:20080
-    https://localhost:20443
-
-:point_right: _Wir benutzen Port `20080` für HTTP, `20443` für HTTPS und `23306` für die Datenbank, um nicht in Konflikt mit den Standardports `80`/`443`/`3306` zu kommen, sollten diese bereits verwendet werden. Das macht unser Setup robuster.  
-Wenn du mehrere Docker-Projekte verwendest, musst du noch beachten, dass alle diese Ports verwenden und deshalb immer nur eins laufen kann, nicht mehrere gleichzeitig._
+     http://localhost
+    https://localhost
 
 :point_right: _Für den Zugriff mittels HTTPS wird ein SSL-Zertifikat generiert, das nur für Testzwecke funktioniert. Dein Browser wird dich darauf hinweisen, dass die Verbindung nicht sicher ist. Zum lokalen Testen allerdings reicht das völlig aus, und du kannst den Sicherheitshinweis übergehen._
+
+:point_right: _Wenn du mehrere Docker-Projekte verwendest, musst du beachten, dass alle die gleichen Ports verwenden und deshalb immer nur eins laufen kann, nicht mehrere gleichzeitig._
 
 ---
 
@@ -152,7 +151,7 @@ FROM mysql:5.7
 
 Wir haben [Mailhog](https://github.com/mailhog/MailHog) integriert, um den E-Mailversand innerhalb von REDAXO testen zu können, ohne dass dabei ein echtes E-Mailkonto angebunden werden muss. Mailhog fängt stattdessen die Mails ab und bietet eine Weboberfläche, um sie anzuzeigen. Sie ist erreichbar über:
 
-    http://localhost:28025
+    http://localhost:8025
 
 :point_right: _Tip: Im REDAXO-Backend musst du im AddOn PHPMailer nichts weiter konfigurieren. Benutze den Standardversand über `mail()` und sende eine Testmail an dich. Diese sollte direkt im Mailhog auftauchen._
 
@@ -168,7 +167,7 @@ phpmyadmin:
   hostname: redaxodocker_phpmyadmin
   image: phpmyadmin/phpmyadmin
   ports:
-    - 28080:80
+    - 81:80
   depends_on:
     - db
   environment:
@@ -185,7 +184,7 @@ Docker-Container neustarten:
 
 Danach ist phpMyAdmin erreichbar über:
 
-    http://localhost:28080
+    http://localhost:81
 
 ---
 
@@ -214,7 +213,7 @@ Das wird beim ersten Mal ein kleines Weilchen dauern, weil zuerst die _Images_ r
 
 Danach steht dir ein frisches REDAXO inkl. [Demo-Website](https://github.com/FriendsOfREDAXO/demo_base) im Browser zur Verfügung unter:
 
-    http://localhost:20080
+    http://localhost
 
 Ins REDAXO-Backend kannst du dich einloggen mit `admin`/`admin`.
 

@@ -6,8 +6,8 @@ services:
     hostname: redaxodocker
     build: ./docker/php-apache              # location for web server dockerfile and config
     ports:
-      - 20080:80                            # web server will use port 20080 for http
-      - 20443:443                           # web server will use port 20443 for https
+      - 80:80                               # web server will use port 80 for http
+      - 443:443                             # web server will use port 443 for https
     volumes:
       - ./html:/var/www/html:cached         # webroot `/var/www/html` will be synced with your local folder `./html`
     depends_on:
@@ -19,14 +19,14 @@ services:
     environment:
       REDAXO_USER: admin                    # username of your new REDAXO admin
       REDAXO_PASSWORD: admin                # password of your new REDAXO admin
-      REDAXO_DEMO: demo_base                # website demo to be installed. leave empty for a raw REDAXO!
+      REDAXO_DEMO: demo_onepage             # website demo to be installed. leave empty for a raw REDAXO!
 
   db:
     container_name: redaxodocker_db
     hostname: redaxodocker_db
     build: ./docker/mysql                   # location for database dockerfile and config
     ports:
-      - 23306:3306                          # database will use port 23306
+      - 3306:3306                           # database will use port 3306
     volumes:
       - ./db:/var/lib/mysql:cached          # database in `/var/lib/mysql` will be synced with your local folder `./db`
     environment:
@@ -40,4 +40,4 @@ services:
     hostname: redaxodocker_mail
     build: ./docker/mailhog                 # location for mailhog dockerfile and config
     ports:
-      - 28025:8025                          # mailhog will use port 28025 (for its web interface)
+      - 8025:8025                           # mailhog will use port 8025 (for its web interface)

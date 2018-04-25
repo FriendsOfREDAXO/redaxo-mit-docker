@@ -1,7 +1,7 @@
 setup: true
 debug: false
 instname: null
-server: http://localhost:20080
+server: http://localhost
 servername: REDAXO
 error_email: null
 fileperm: '0664'
