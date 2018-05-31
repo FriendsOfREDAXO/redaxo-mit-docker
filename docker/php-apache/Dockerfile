@@ -17,7 +17,7 @@ RUN apt-get update -q && apt-get install -qy \
        libfreetype6-dev \
        libjpeg62-turbo-dev \
        libmcrypt-dev \
-       libpng12-dev \
+       libpng-dev \
        ssmtp \
        unzip \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
