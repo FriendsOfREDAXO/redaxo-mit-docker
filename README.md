@@ -40,7 +40,7 @@ __Okay cool, wie geht’s los?__
 ## Paketinhalt
 
 * Apache 2.4
-* PHP 7.1
+* PHP 7.2
 * MySQL 5.7
 * [Mailhog](https://github.com/mailhog/MailHog) (zum Testen des E-Mailversands)
 * REDAXO 5.x
