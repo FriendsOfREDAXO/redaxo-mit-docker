@@ -21,7 +21,7 @@ RUN apt-get update -q && apt-get install -qy \
        ssmtp \
        unzip \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd pdo_mysql
+    && docker-php-ext-install -j$(nproc) gd pdo_mysql zip
 
 # decide which REDAXO version to use
 #ENV REDAXO_VERSION=5.0.0 REDAXO_SHA=d205cbd6783332a212c5ae92d73c77178c2d2f28
