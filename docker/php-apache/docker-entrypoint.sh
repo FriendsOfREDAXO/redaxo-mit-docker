@@ -58,5 +58,8 @@ fi
 # clean up tmp folder
 rm -rf /tmp/redaxo
 
+# set chmod for sim linked addon paths and assets
+chown -R www-data:www-data /redaxo/src/addons && chown -R www-data:www-data /redaxo/assets
+
 # execute CMD
 exec "$@"
