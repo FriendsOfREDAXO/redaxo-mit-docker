@@ -1,92 +1,93 @@
-<p align="right">🌎 <a href="https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/README.de.md">English</a></p>
+<p align="right">🌎 <a href="https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/README.md">Deutsch</a></p>
 
-# REDAXO with Docker :whale:
+# REDAXO mit Docker :whale:
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_01.jpg)
 
-* [Introduction](#einleitung)
-* [Package Content](#paketinhalt)
-* [Usage](#usage)
-* [Configuration and tips](#konfiguration-und-tipps)
-* [Guide for beginners](#guide-for-beginners-rocket)
-* [Questions or feedback?](#fragen-oder-anmerkungen)
+* [Einleitung](#einleitung)
+* [Paketinhalt](#paketinhalt)
+* [Verwendung](#verwendung)
+* [Anpassungen für deine Projekte](#anpassungen-für-deine-projekte)
+* [Konfiguration und Tipps](#konfiguration-und-tipps)
+* [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen-rocket)
+* [Fragen oder Anmerkungen?](#fragen-oder-anmerkungen)
 
 ---
 
-## Introduction
+## Einleitung
 
-:rocket: _Still no experience with Docker? No problem, below you will find  [instructions for beginners](#anleitung-für-einsteiger_innen-rocket)!_
+:rocket: _Noch keine Erfahrung mit Docker? Gar kein Problem, weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-rocket)!_
 
-__What does the Docker Setup Exactly?__
+__Ganz kurz, welchen Zweck erfüllt dieses Docker-Setup?__
 
-1. Docker provides you and your team with a __Server environment (Apache, PHP, MySQL)__ for each of your REDAXO projects. It works much like a virtual machine, but uses much less resources. You can customize the server environment and discard it at any time without losing data.
-2. If desired, Docker can independently install a __fresh REDAXO in the server environment.__
-3. Much better: Docker can install the __Demo-Websites__, for example the [Basisdemo](https://github.com/FriendsOfREDAXO/demo_base) or the [Community-Demo](https://github.com/FriendsOfREDAXO/demo_community). You can try the REDAXO features anytime without special requirements.
+1. Docker stellt dir und deinem Team für jedes eurer REDAXO-Projekte eine __Serverumgebung (Apache, PHP, MySQL)__ bereit. Das funktioniert so ähnlich wie eine Virtuelle Maschine, benötigt aber viel weniger Ressourcen. Die Serverumgebung kannst du beliebig anpassen und jederzeit verwerfen, ohne dass Daten verloren gehen.
+2. Falls gewollt, kann Docker in der Serverumgebung eigenständig ein __frisches REDAXO installieren__.
+3. Noch besser: Docker kann sogar komplette __Demo-Websites installieren__, z. B. die beliebte [Basisdemo](https://github.com/FriendsOfREDAXO/demo_base) oder die [Community-Demo](https://github.com/FriendsOfREDAXO/demo_community). Damit kannst du jederzeit ohne besonderen Aufwand REDAXO-Features ausprobieren.
 
-__Is it usefull for you?__
+__Für wen ist sowas sinnvoll?__
 
-* For all those who work intensively with REDAXO and supervise __several projects__. With Docker, you can give any project the right server environment, and auto-installation allows you to easily generate fresh REDAXOs and demo sites to test and develop features.
-* For teams, because they get a __unified server environment__ and save the time to manually set up and maintain their systems.
-* For all those who want to develop __complex applications__: If your REDAXO wants to use an Elasticsearch, needs an external mail server, outsourced data to S3 or uses other services, you can map the environment with different Docker containers.
+* Für alle, die intensiv mit REDAXO arbeiten und __mehrere Projekte__ betreuen. Mit Docker kannst du jedem Projekt die passende Serverumgebung mitgeben, und die Auto-Installation ermöglicht dir, ohne besonderen Aufwand frische REDAXOs samt Demo-Websites zu generieren, an denen du Funktionen testen und entwickeln kannst.
+* Für Teams, denn sie erhalten dadurch eine __einheitliche Serverumgebung__ und sparen die Zeit, ihre Systeme jeweils manuell einrichten und pflegen zu müssen.
+* Für alle, die __komplexe Anwendungen__ entwickeln: Falls dein REDAXO eine Elasticsearch einsetzen möchte, einen externen Mailserver benötigt, Daten bei S3 auslagert oder sonstige Dienste benutzt, kannst du die Umgebung mit verschiedenen Docker-Containern abbilden.
 
-__Okay cool, how to start?__
+__Okay cool, wie geht’s los?__
 
-* If you have already experience with Docker: `docker-compose up -d`, look at [Usage](#usage).
-* If Docker is still pretty new to you: No Problem!, here is a [Guide for beginners](#guide-for-beginners-rocket). :rocket: If you have questions or need help, feel free to contact us in Slack Chat! You will receive an invitation here: https://redaxo.org/slack/
+* Falls du schon Docker-Erfahrung hast: `docker-compose up -d`, siehe [Verwendung](#verwendung).
+* Falls Docker für dich noch ziemlich neu ist: Gar kein Problem, es gibt eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-rocket). :rocket: Falls du Fragen hast oder Hilfe benötigst, kontakte uns jederzeit gerne im Slack-Chat! Eine Einladung bekommst du hier: https://redaxo.org/slack/
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/demo_base/assets/demo_base_01.jpg)
 
 ---
 
-## Package Content
+## Paketinhalt
 
 * Apache 2.4
 * PHP 7.2
 * MySQL 5.7
-* [Mailhog](https://github.com/mailhog/MailHog) (For Testing to send Emails)
+* [Mailhog](https://github.com/mailhog/MailHog) (zum Testen des E-Mailversands)
 * REDAXO 5.x
 * [REDAXO-Demo](https://github.com/FriendsOfREDAXO/demo_base) (optional)
 
-The volume for the Webroot is the folder `html/`. If this is empty during the build of the container, a current REDAXO will be downloaded and automatically installed (login into the backend via `admin`/`admin`).
-The database is persisted to the `db/` folder.
+Als Volume für den Webroot wird der Ordner `html/` verwendet. Ist dieser beim Build des Containers leer, wird ein aktuelles REDAXO runtergeladen und automatisch installiert (Login ins Backend mittels `admin`/`admin`).  
+Die Datenbank wird in den Ordner `db/` persistiert.
 
 ---
 
-## Usage
+## Verwendung
 
-__Start a Docker-Container:__
+__Docker-Container starten:__
 
     $ docker-compose up -d
 
-__Stop and remove the Docker Container:__
+__Docker-Container stoppen und entfernen:__
 
     $ docker-compose down
 
-__Rebuild docker images if changes were made to the setup:__
+__Docker-Images neu bauen, falls Änderungen am Setup gemacht wurden:__
 
     $ docker-compose build
 
-Or conveniently summarized (build all images and restart all containers, see [Docs](https://docs.docker.com/compose/reference/up/)):
+Oder praktischerweise zusammengefasst (Alle Images bauen und alle Container neustarten, siehe [Docs](https://docs.docker.com/compose/reference/up/)):
 
     $ docker-compose up -d --build --force-recreate
 
-__REDAXO in the Browser:__
+__REDAXO im Browser aufrufen:__
 
      http://localhost:20080
-     https://localhost:20443
+    https://localhost:20443
 
-:point_right:_We use Port `20080` for HTTP, `20443` for HTTPS and `23306` for the database, so as not to interfere with the standard `80`/`443`/`3306` if they are already in use. That makes our setup more robust.
-If you use several Docker projects, you have to keep in mind that all these ports use and therefore only one can run at a time, not several at the same time._
+:point_right: _Wir benutzen Port `20080` für HTTP, `20443` für HTTPS und `23306` für die Datenbank, um nicht in Konflikt mit den Standardports `80`/`443`/`3306` zu kommen, sollten diese bereits verwendet werden. Das macht unser Setup robuster.  
+Wenn du mehrere Docker-Projekte verwendest, musst du noch beachten, dass alle diese Ports verwenden und deshalb immer nur eins laufen kann, nicht mehrere gleichzeitig._
 
-:point_right: _To access via HTTPS, an SSL certificate will be generated that works only for testing purposes. Your browser will alert you that the connection is not secure. For local testing, however, that's enough, and you can skip the safety note._
+:point_right: _Für den Zugriff mittels HTTPS wird ein SSL-Zertifikat generiert, das nur für Testzwecke funktioniert. Dein Browser wird dich darauf hinweisen, dass die Verbindung nicht sicher ist. Zum lokalen Testen allerdings reicht das völlig aus, und du kannst den Sicherheitshinweis übergehen._
 
 ---
 
-## Adjustments for your projects
+## Anpassungen für deine Projekte
 
-Where do you have to adjust something if you want to use the package for your projects?
+An welchen Stellen musst du irgendwas anpassen, wenn du das Paket für deine Projekte verwenden möchtest?
 
-1. __The names of your containers__  
+1. __Die Namen deiner Container__  
 `docker-compose.yml`  
 In diesem Paket beginnen die Container-Namen mit `redaxodocker`. Für deine Projekte solltest du den Namen anpassen, am besten jeweils so, dass du das Projekt am Namen erkennen kannst. Am Ende wirst du nämlich viele Container auf deinem System haben und brauchst eine gute Übersicht!
 2. __Die Datenbank-Konfiguration__  
