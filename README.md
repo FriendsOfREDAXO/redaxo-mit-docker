@@ -9,7 +9,7 @@
 * [Configuration and tips](#configuration-and-tips)
 * [Usage](#usage)
 * [Guide for beginners](#guide-for-beginners-rocket)
-* [Questions or feedback?](#questions-or-suggestions)
+* [Questions or suggestions?](#questions-or-suggestions)
 
 ---
 
@@ -285,7 +285,7 @@ In [dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore
 
 ---
 
-## Questions or Feedback?
+## Questions or Suggestions?
 
 Sure. The best ask in Slack! ✌️  
 An invitation to Slack you get here: https://redaxo.org/slack/
