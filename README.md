@@ -190,7 +190,7 @@ Danach ist phpMyAdmin erreichbar über:
 
 ---
 
-## Anleitung für Einsteiger\_innen :rocket:
+## Guide for beginners :rocket:
 
 ### Worum geht es?
 
