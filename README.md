@@ -88,80 +88,80 @@ Where do you have to adjust something if you want to use the package for your pr
 
 1. __The names of your containers__  
 `docker-compose.yml`  
-In diesem Paket beginnen die Container-Namen mit `redaxodocker`. Für deine Projekte solltest du den Namen anpassen, am besten jeweils so, dass du das Projekt am Namen erkennen kannst. Am Ende wirst du nämlich viele Container auf deinem System haben und brauchst eine gute Übersicht!
+In this package the container names start with `redaxodocker`. For your projects you should adapt the name, preferably in each case so that you can recognize the project by the name. In the end you will have many containers on your system and you need a good overview!
 2. __The Database-Configuration__  
-`docker-compose.yml` and `docker/php-apache/default.config.yml`  
-For local development, `MYSQL_USER` and `MYSQL_PASSWORD` are not all that relevant because your database runs in a docker container. If you do not have a deployment workflow and manually import database dumps to the live server, you do not need to change anything at this point.
-But of course you should adjust the credentials if you ever leave your development environment and end up on a productive server!.
-3. __Den Login für deinen REDAXO-Admin__  
+`docker-compose.yml` and `docker/php-apache/default.config.yml`
+For local development, `MYSQL_USER` and `MYSQL_PASSWORD` are not all that relevant because your database runs in a docker container. If you do not have any work experience, you are not in need of change at this point.
+But of course you should adjust the credentials if you ever leave your development environment and end up on a productive server !.
+3. __The login for your REDAXO-Admin__  
 `docker-compose.yml`  
 If Docker automatically sets up REDAXO for you, `REDAXO_USER` and `REDAXO_PASSWORD` are used to create an Adminsuser. If your project ever goes live like this, then you better use other information than `admin` :)
 4. __REDAXO-Demo__  
 `docker-compose.yml`  
-Falls Docker für dich eine Website-Demo automatisch einrichten soll, kannst du diese unter `REDAXO_DEMO` festlegen. Lasse den Wert leer, falls keine Demo eingerichtet werden soll.  
-Die Liste der vorhandenen Demos findest du in `docker/php-apache/demos.yml`.
+If Docker is going to automatically set up a website demo for you, you can set it up under `REDAXO_DEMO`. Leave the value empty if you do not want to set up a demo.
+The list of existing demos can be found in `docker/php-apache/demos.yml`.
 
-:point_up: Um es kurz zu machen: Wenn du dieses Setup für deine REDAXO-Projekte zur lokalen Entwicklung verwendest, brauchst du vermutlich nur Punkt 1 beachten, also die Container-Namen für jedes Projekt anzupassen.
+:point_up: For Short: if you're using this setup for your REDAXO local development projects, you probably only need to consider point 1, which means customizing the container names for each project.
 
 ---
 
 ## Configuration of the Container
 
-:warning: Beachte: Immer dann, wenn du Änderungen am Container machst, musst du danach neu bauen!
+:warning: Keep in mind: Whenever you make changes to the container, you have to rebuild it afterwards!
 
     $ docker-compose build
 
-### REDAXO-Version festlegen
+### Set REDAXO-Version
 
-In `docker/php-apache/Dockerfile` wird die Version als `ENV`, also Umgebungsvariable, hinterlegt. Sie besteht aus zwei Teilen, der Version und einem Hash, der verwendet wird, um nach dem Download auf Richtigkeit zu prüfen. Wie du den Hash einer neuen Version herausfindest, steht in der [CONTRIBUTING.md](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/CONTRIBUTING.md).  
+In `docker/php-apache/Dockerfile`, the version is stored as `ENV`, ie environment variable. It consists of two parts, the version and a hash, which is used to check for correctness after the download. How to find out the hash of a new version is in the [CONTRIBUTING.md](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/CONTRIBUTING.md).  
 
-Die REDAXO-Version ist übrigens nur relevant, falls Docker das System für dich automatisch installiert. Falls du manuell installierst oder ein bestehendes REDAXO updatest, musst du hier nichts ändern.
+Incidentally, the REDAXO version is only relevant if Docker automatically installs the system for you. If you are installing manually or updating an existing REDAXO, you do not have to change anything here.
 
-### PHP-Version festlegen und konfigurieren
+### Set and configure PHP version
 
-Einfach `docker/php-apache/php.ini` anpassen und neu bauen.  
-Falls du eine andere PHP-Version verwenden möchtest, etwa 5.6 für ältere REDAXOs, musst du nur das Dockerfile anpassen und neu bauen:
+Just customize `docker/php-apache/php.ini` and build again.
+If you want to use a different version of PHP, such as 5.6 for older REDAXO versions, you just have to customize and rebuild the Dockerfile:
 
 ```dockerfile
 FROM php:5.6-apache
 ```
 
-### Weitere PHP-Extensions installieren
+### Install more PHP extensions
 
-Neben den Extensions, die das PHP-Apache-Image bereits mitbringt, installieren wir zusätzlich noch [GD](http://php.net/manual/de/book.image.php) und [PDO_MYSQL](http://php.net/manual/de/ref.pdo-mysql.php), siehe [/docker/php-apache/Dockerfile#L23-L24](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/docker/php-apache/Dockerfile#L23-L24). Falls du weitere Extensions benötigst, kannst du die Helfer-Funktionen benutzen, die das Image anbietet: `docker-php-ext-configure` und `docker-php-ext-install`.
+In addition to the extensions that the PHP Apache image already include, we also install [GD](http://php.net/manual/de/book.image.php) and [PDO_MYSQL](http://php.net/manual/de/ref.pdo-mysql.php), look [/docker/php-apache/Dockerfile#L23-L24](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/docker/php-apache/Dockerfile#L23-L24). If you need more extensions, you can use the helper functions that the image offers: `docker-php-ext-configure` and `docker-php-ext-install`.
 
-Manche Extensions müssen konfiguriert werden, wie du bei GD siehst, die meisten jedoch lassen sich einfach so installieren. In dem Fall brauchst du sie nur hinter `pdo_mysql` ergänzen, etwa so:
+Some extensions need to be configured, as you see in GD, but most of them are easy to install. In that case you just need to add it after `pdo_mysql`, like this:
 
 ```dockerfile
     && docker-php-ext-install -j$(nproc) gd pdo_mysql exif opcache
 ```
 
-:point_right: _Tip: Um herauszufinden, welche Extensions das PHP-Apache-Image bereits mitbringt, kannst du `<?php phpinfo(); ?>` benutzen._
+:point_right: _Tip:To find out which extensions the php apache image already has, you can use `<?php phpinfo (); ?>`._
 
-### Datenbank konfigurieren
+### Database configuration
 
-Einfach `docker/mysql/my.cnf` anpassen und neu bauen.  
-Falls du eine andere Version verwenden möchtest, musst du nur das Dockerfile anpassen und neu bauen:
+Just customize `docker/mysql/my.cnf` and build again.
+If you want to use a different version, all you have to do is adapt and rebuild the Dockerfile:
 
 ```dockerfile
 FROM mysql:5.7
 ```
 
-### Mailhog verwenden
+### Use Mailhog 
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_02.jpg)
 
-Wir haben [Mailhog](https://github.com/mailhog/MailHog) integriert, um den E-Mailversand innerhalb von REDAXO testen zu können, ohne dass dabei ein echtes E-Mailkonto angebunden werden muss. Mailhog fängt stattdessen die Mails ab und bietet eine Weboberfläche, um sie anzuzeigen. Sie ist erreichbar über:
+We have [Mailhog](https://github.com/mailhog/MailHog) integrated in order to be able to test the e-mail dispatch within REDAXO, without having to connect a real e-mail account. Instead Mailhog intercepts the mail and offers a web interface to display it. It is accessible via:
 
     http://localhost:28025
 
-:point_right: _Tip: Im REDAXO-Backend musst du im AddOn PHPMailer nichts weiter konfigurieren. Benutze den Standardversand über `mail()` und sende eine Testmail an dich. Diese sollte direkt im Mailhog auftauchen._
+:point_right: _Tip: In the REDAXO backend, you do not have to configure anything in the AddOn PHPMailer. Use the standard shipping via `mail()` and send a testmail to you. This should appear directly in the mailhog._
 
-### phpMyAdmin einbinden
+### Integrate phpMyAdmin
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_03.jpg)
 
-Falls du phpMyAdmin integrieren möchtest, musst du lediglich diesen Codeschnipsel in der `docker-compose.yml` am Ende ergänzen:
+If you want to integrate phpMyAdmin you just have to add this code snippet in the `docker-compose.yml` at the end:
 
 ```yaml
 phpmyadmin:
@@ -178,13 +178,13 @@ phpmyadmin:
     PMA_PASSWORD: redaxo
 ```
 
-:point_right: _Beachte: Hier verwenden wir ein fertiges Image für den Container, das wir nicht mehr nachträglich anpassen. Deshalb können wir es direkt mittels `image: phpmyadmin/phpmyadmin` einbinden und benötigen kein separates Dockerfile im `docker/`-Ordner, so wie bei unseren anderen Containern._
+:point_right: _Keep in mind: Here we use a finished image for the container, which we no longer adapt later. Therefore, we can directly integrate it with `image: phpmyadmin/phpmyadmin` and do not need a separate dockerfile in the `docker/` folder, just like our other containers._
 
-Docker-Container neustarten:
+Restart the Docker-Container:
 
     $ docker-compose up -d
 
-Danach ist phpMyAdmin erreichbar über:
+After that you can use phpMyAdmin in the Browser:
 
     http://localhost:28080
 
@@ -192,16 +192,16 @@ Danach ist phpMyAdmin erreichbar über:
 
 ## Guide for beginners :rocket:
 
-### Worum geht es?
+### Why is?
 
-Virtualisierung! Docker lässt verschiedene __Anwendungen in Containern__ laufen, z. B. eine Datenbank, einen Webserver und in unserem Fall ein REDAXO dazu. Diese Container werden auf deinem System ausgeführt und benutzen dessen Ressourcen, laufen aber trotzdem vollständig isoliert. Anders als virtuelle Maschinen (VM), die komplette Betriebssysteme ausführen — wie z. B. Windows auf einem Mac, um Websites im Internet Explorer zu testen oder die Steuererklärung zu machen — sind Docker-Container sehr klein und performant! Man kann problemlos zahlreiche Container auf einem Sytem starten.
+Virtualization! Docker runs various __applications in containers__, eg. For example, a database, a web server and, in our case, a REDAXO. These containers run on your system and use its resources, but still run completely isolated. Unlike virtual machines (VMs) that run entire operating systems - such as: For example, Windows on a Mac to test websites in Internet Explorer or make tax returns - Docker containers are very small and performant! You can easily start many containers on a system.
 
-Wir benutzen Docker in diesem Projekt, um uns aus verschiedenen Containern eine __Entwicklungsumgebung__ _zusammenzustecken_, in der wir REDAXO betreiben können: Ein Container enthält die Datenbank, ein anderer den Apache-Webserver mit PHP. Deine lokale Entwicklungsumgebung, die du vorher auf deinem System eingerichtet hast — vielleicht auch mit Hilfe von Tools wie XAMPP (Windows) oder MAMP (Mac) — wird damit überflüssig, denn sie wird nun über Docker-Container abgebildet. Und das bringt viele Vorteile mit, von denen für uns erstmal nur diese relevant sind:
+We use Docker in this project to assemble a different environment from different containers in which we can run REDAXO: one container contains the database, another the Apache web server with PHP. Your local development environment, which you have previously set up on your system - perhaps with the help of tools such as XAMPP (Windows) or MAMP (Mac) - is thus unnecessary, because it is now displayed on Docker container. And that brings with it many advantages, of which only these are relevant for us:
 
-1. Die Container sind transportabel. Du kannst sie innerhalb des Teams verteilen, so dass damit ohne besonderen Aufwand alle in der gleichen Entwicklungsumgebung arbeiten.
-2. Du kannst deine lokale Umgebung so modellieren, dass sie der Live-Umgebung entspricht.
+1. The containers are transportable. You can distribute them within the team, so that without any special effort all in the same development environment.
+2. You can customize your local environment to match the live environment.
 
-:point_right: _Wenn man Docker weiter treibt, geht es in Richtung [Microservices](https://de.wikipedia.org/wiki/Microservices), Skalierung und Automatisierung. Das kann uns erstmal egal sein, denn wir wollen unser Docker-Setup ganz einfach halten und nur für die lokale REDAXO-Entwicklung benutzen._
+:point_right: _If you continue docker, it goes in the direction [Microservices](https://de.wikipedia.org/wiki/Microservices), Scaling and automation. We do not care, because we want to keep our Docker setup simple and use it only for local REDAXO development._
 
 ### Was wird benötigt?
 
