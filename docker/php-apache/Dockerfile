@@ -20,6 +20,7 @@ RUN apt-get update -q && apt-get install -qy \
        libpng-dev \
        ssmtp \
        unzip \
+       dos2unix \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd pdo_mysql zip
 
@@ -48,7 +49,8 @@ COPY default.config.yml demos.yml docker-redaxo.php /tmp/redaxo/
 
 # copy REDAXO setup script and run setup
 COPY docker-entrypoint.sh /usr/local/bin/
-ENTRYPOINT ["docker-entrypoint.sh"]
+RUN dos2unix /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
 
 # start apache
 CMD ["apache2-foreground"]
