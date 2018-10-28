@@ -205,7 +205,7 @@ We use Docker in this project to assemble a development environment in which we 
 
 ### What is needed?
 
-You only have to [Docker (Community Edition) for your System](https://www.docker.com/community-edition#/download)  - nothing more is needed. In configuration, you have to set the folders where Docker projects are allowed to run in. For a start you put in here just the one folder, in which this Git repo lies. Then change into this folder inside your console and start the containers:
+You only have to install [Docker (Community Edition) for your System](https://www.docker.com/community-edition#/download)  - nothing more is needed. In configuration, you have to set the folders where Docker projects are allowed to run in. For a start you put in here just the one folder, in which this Git repo lies. Then change into this folder inside your console and start the containers:
 
     $ docker-compose up -d
 
