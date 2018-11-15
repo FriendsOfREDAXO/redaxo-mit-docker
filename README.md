@@ -22,7 +22,7 @@ __In short, what is the purpose of this Docker setup?__
 
 1. Docker provides you and your team with a __server environment (Apache, PHP, MySQL)__ for each of your REDAXO projects. It works much like a virtual machine but requires significantly fewer resources. You can customize the server environment and discard it at any time without losing data.
 2. If you like, Docker can __automatically install a fresh REDAXO__ within the server environment.
-3. Much better: Docker can install the __Demo-Websites__, for example the [Basisdemo](https://github.com/FriendsOfREDAXO/demo_base) or the [Community-Demo](https://github.com/FriendsOfREDAXO/demo_community). You can try the REDAXO features anytime without special requirements.
+3. Even better: Docker can install complete __demo websites__, for example the popular [Base Demo](https://github.com/FriendsOfREDAXO/demo_base) or the [Community Demo](https://github.com/FriendsOfREDAXO/demo_community). So you can try out REDAXO features at any time without special effort.
 
 __Is it usefull for you?__
 
