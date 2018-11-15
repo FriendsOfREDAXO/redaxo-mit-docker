@@ -6,7 +6,7 @@
 
 * [Introduction](#introduction)
 * [Package Content](#package-content)
-* [Configuration and tips](#configuration-and-tips)
+* [Usage](#usage)
 * [Usage](#usage)
 * [Guide for beginners](#guide-for-beginners-rocket)
 * [Questions or suggestions?](#questions-or-suggestions)
