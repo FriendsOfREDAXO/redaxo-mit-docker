@@ -83,7 +83,7 @@ If you use several Docker projects, you have to keep in mind that all these port
 
 ---
 
-## Usage
+## Customize for your project
 
 Where do you have to adjust something if you want to use the package for your projects?
 
