@@ -8,7 +8,7 @@
 * [Package Content](#package-content)
 * [Usage](#usage)
 * [Customize for your project](#customize-for-your-project)
-* [Guide for beginners](#guide-for-beginners-rocket)
+* [Configuration and Tips](#configuration-and-tips)
 * [Questions or suggestions?](#questions-or-suggestions)
 
 ---
