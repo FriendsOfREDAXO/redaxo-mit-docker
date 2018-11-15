@@ -286,7 +286,7 @@ The File [dockerignore](https://docs.docker.com/engine/reference/builder/#docker
 
 ---
 
-## Questions or Suggestions?
+## Questions or Comments?
 
 Sure. The best ask in Slack! ✌️  
 An invitation to Slack you get here: https://redaxo.org/slack/
