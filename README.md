@@ -28,7 +28,7 @@ __Is it usefull for you?__
 
 * All those who work with REDAXO on a regular basis and maintain __several projects__. With Docker, you can run your projects in a proper server environment, and the auto-install feature allows you to easily set up fresh REDAXOs and demo websites where you can test and develop features.
 * Teams, because they are provided with a __unified server environment__ and save the time to manually set up and maintain their systems.
-* For all those who want to develop __complex applications__: If your REDAXO wants to use an Elasticsearch, needs an external mail server, outsourced data to S3 or uses other services, you can map the environment with different Docker containers.
+* All those who develop __complex applications__: if your REDAXO requires an Elasticsearch or an external mail server, if it outsources data to S3 or uses various services, you can model such an environment with Docker containers.
 
 __Okay cool, how to start?__
 
