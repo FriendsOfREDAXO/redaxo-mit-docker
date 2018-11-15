@@ -9,7 +9,8 @@
 * [Usage](#usage)
 * [Customize for your project](#customize-for-your-project)
 * [Configuration and Tips](#configuration-and-tips)
-* [Questions or suggestions?](#questions-or-suggestions)
+* [Beginner’s Guide](#beginners-guide-rocket)
+* [Questions or comments?](#questions-or-comments)
 
 ---
 
