@@ -24,7 +24,7 @@ __In short, what is the purpose of this Docker setup?__
 2. If you like, Docker can __automatically install a fresh REDAXO__ within the server environment.
 3. Even better: Docker can install complete __demo websites__, for example the popular [Base Demo](https://github.com/FriendsOfREDAXO/demo_base) or the [Community Demo](https://github.com/FriendsOfREDAXO/demo_community). So you can try out REDAXO features at any time without special effort.
 
-__Is it usefull for you?__
+__Who benefits?__
 
 * All those who work with REDAXO on a regular basis and maintain __several projects__. With Docker, you can run your projects in a proper server environment, and the auto-install feature allows you to easily set up fresh REDAXOs and demo websites where you can test and develop features.
 * Teams, because they are provided with a __unified server environment__ and save the time to manually set up and maintain their systems.
