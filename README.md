@@ -32,7 +32,7 @@ __Is it usefull for you?__
 
 __Okay cool, how to start?__
 
-* If you have already experience with Docker: `docker-compose up -d`, look at [Usage](#usage).
+* If you already have experience with Docker: `docker-compose up -d`, look at [Usage](#usage).
 * If Docker is still pretty new to you: No Problem!, here is a [Guide for beginners](#guide-for-beginners-rocket). :rocket: If you have questions or need help, feel free to contact us in Slack Chat! You will receive an invitation here: https://redaxo.org/slack/
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/demo_base/assets/demo_base_01.jpg)
