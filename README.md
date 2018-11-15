@@ -52,7 +52,7 @@ The database is persisted to the `db/` folder.
 
 ---
 
-## Configuration and tips
+## Usage
 
 __Start a Docker-Container:__
 
