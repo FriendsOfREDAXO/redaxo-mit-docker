@@ -26,7 +26,7 @@ __In short, what is the purpose of this Docker setup?__
 
 __Is it usefull for you?__
 
-* For all those who work intensively with REDAXO and supervise __several projects__. With Docker, you can give any project the right server environment, and auto-installation allows you to easily generate fresh REDAXOs and demo sites to test and develop features.
+* All those who work with REDAXO on a regular basis and maintain __several projects__. With Docker, you can run your projects in a proper server environment, and the auto-install feature allows you to easily set up fresh REDAXOs and demo websites where you can test and develop features.
 * For teams, because they get a __unified server environment__ and save the time to manually set up and maintain their systems.
 * For all those who want to develop __complex applications__: If your REDAXO wants to use an Elasticsearch, needs an external mail server, outsourced data to S3 or uses other services, you can map the environment with different Docker containers.
 
