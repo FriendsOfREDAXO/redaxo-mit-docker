@@ -16,7 +16,7 @@
 
 ## Introduction
 
-:rocket: _Still no experience with Docker? No problem, below you will find  [instructions for beginners](#guide-for-beginners-rocket)!_
+:rocket: _No experience with Docker yet? No worries, find a [Beginner’s guide](#beginners-guide-rocket) below!_
 
 __What does the Docker Setup Exactly?__
 
