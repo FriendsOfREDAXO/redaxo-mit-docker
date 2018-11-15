@@ -191,7 +191,7 @@ After that you can use phpMyAdmin in the Browser:
 
 ---
 
-## Guide for beginners :rocket:
+## Beginner’s Guide :rocket:
 
 ### What is it all about?
 
