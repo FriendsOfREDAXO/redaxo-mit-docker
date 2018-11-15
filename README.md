@@ -18,7 +18,7 @@
 
 :rocket: _No experience with Docker yet? No worries, find a [Beginner’s guide](#beginners-guide-rocket) below!_
 
-__What does the Docker Setup Exactly?__
+__In short, what is the purpose of this Docker setup?__
 
 1. Docker provides you and your team with a __Server environment (Apache, PHP, MySQL)__ for each of your REDAXO projects. It works much like a virtual machine, but uses much less resources. You can customize the server environment and discard it at any time without losing data.
 2. If desired, Docker can independently install a __fresh REDAXO in the server environment.__
