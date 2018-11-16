@@ -289,4 +289,4 @@ The File [dockerignore](https://docs.docker.com/engine/reference/builder/#docker
 ## Questions or Comments?
 
 Sure. The best ask in Slack! ✌️  
-An invitation to Slack you get here: https://redaxo.org/slack/
+Get your Slack invitation here: https://redaxo.org/slack/
