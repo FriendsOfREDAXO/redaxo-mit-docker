@@ -44,7 +44,7 @@ __Okay cool, how to start?__
 * Apache 2.4
 * PHP 7.2
 * MySQL 5.7
-* [Mailhog](https://github.com/mailhog/MailHog) (For Testing to send Emails)
+* [Mailhog](https://github.com/mailhog/MailHog) (email testing)
 * REDAXO 5.x
 * [REDAXO-Demo](https://github.com/FriendsOfREDAXO/demo_base) (optional)
 
