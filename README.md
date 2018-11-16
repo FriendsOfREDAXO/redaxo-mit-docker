@@ -67,7 +67,7 @@ __Rebuild Docker images if changes were made to the setup:__
 
     $ docker-compose build
 
-Or conveniently summarized (build all images and restart all containers, see [Docs](https://docs.docker.com/compose/reference/up/)):
+Or combined (build all images and restart all containers, see [Docs](https://docs.docker.com/compose/reference/up/)):
 
     $ docker-compose up -d --build --force-recreate
 
