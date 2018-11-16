@@ -99,7 +99,7 @@ But of course you should adjust the credentials if they ever leave your developm
 If Docker automatically sets up REDAXO for you, `REDAXO_USER` and `REDAXO_PASSWORD` are used to create an admin user. If your project ever goes live like this, then you better use other credentials than `admin` :)
 4. __REDAXO demo__  
 `docker-compose.yml`  
-If Docker is going to automatically set up a website demo for you, you can set it up under `REDAXO_DEMO`. Leave the value empty if you do not want to set up a demo.
+If you want Docker to automatically install a website demo for you, you can set it up at `REDAXO_DEMO`. Leave the value empty if you do not want a demo to be installed.
 The list of existing demos can be found in `docker/php-apache/demos.yml`.
 
 :point_up: For Short: if you're using this setup for your REDAXO local development projects, you probably only need to consider point 1, which means customizing the container names for each project.
