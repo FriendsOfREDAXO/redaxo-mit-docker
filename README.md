@@ -59,7 +59,7 @@ __Start a Docker container:__
 
     $ docker-compose up -d
 
-__Stop and remove the Docker Container:__
+__Stop and remove the Docker container:__
 
     $ docker-compose down
 
