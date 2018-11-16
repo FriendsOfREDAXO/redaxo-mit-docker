@@ -152,7 +152,7 @@ FROM mysql:5.7
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_02.jpg)
 
-We integrated [Mailhog](https://github.com/mailhog/MailHog) in order to be able to test the e-mail dispatch within REDAXO, without having to fill in an existing e-mail account. Instead Mailhog intercepts the mail and offers a web interface to display it. It is accessible via:
+We’ve integrated [Mailhog](https://github.com/mailhog/MailHog) to be able to test the e-mail dispatch within REDAXO without having to fill in an existing e-mail account. Instead, Mailhog captures all mails and provides a web interface to display it. It is accessible via:
 
     http://localhost:28025
 
