@@ -137,7 +137,7 @@ Some extensions need to be configured, like GD, but most of them you just have t
     && docker-php-ext-install -j$(nproc) gd pdo_mysql exif opcache
 ```
 
-:point_right: _Tip:To find out which extensions the PHP Apache image already has, you can use `<?php phpinfo (); ?>`._
+:point_right: _Hint: to find out which extensions are included in the PHP/Apache image, you can use `<?php phpinfo (); ?>`._
 
 ### Database configuration
 
