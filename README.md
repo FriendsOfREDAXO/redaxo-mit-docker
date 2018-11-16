@@ -108,7 +108,7 @@ The list of existing demos can be found in `docker/php-apache/demos.yml`.
 
 ## Configuration and tips
 
-:warning: Keep in mind: Whenever you make changes to the container, you have to rebuild it afterwards!
+:warning: Keep in mind: whenever you make changes to the container, you have to rebuild it afterwards!
 
     $ docker-compose build
 
