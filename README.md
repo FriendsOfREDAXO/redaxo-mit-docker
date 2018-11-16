@@ -185,7 +185,7 @@ Restart the Docker container:
 
     $ docker-compose up -d
 
-After that you can use phpMyAdmin in the Browser:
+After that you can access phpMyAdmin in your browser:
 
     http://localhost:28080
 
