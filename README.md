@@ -181,7 +181,7 @@ phpmyadmin:
 
 :point_right: _Keep in mind: Here we use a finished image for the container, which we do not adapt later. Therefore, we can directly integrate it with `image: phpmyadmin/phpmyadmin`  and do not need a separate dockerfile in the `docker/` folder, just like with our other containers._
 
-Restart the Docker-Container:
+Restart the Docker container:
 
     $ docker-compose up -d
 
