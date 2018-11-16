@@ -102,7 +102,7 @@ If Docker automatically sets up REDAXO for you, `REDAXO_USER` and `REDAXO_PASSWO
 If you want Docker to automatically install a website demo for you, you can set it up at `REDAXO_DEMO`. Leave the value empty if you do not want a demo to be installed.
 The list of existing demos can be found in `docker/php-apache/demos.yml`.
 
-:point_up: For Short: if you're using this setup for your REDAXO local development projects, you probably only need to consider point 1, which means customizing the container names for each project.
+:point_up: Long story short: if you use this setup for your local REDAXO development, you probably only need to pay attention to point 1, which means customizing the container names for each project.
 
 ---
 
