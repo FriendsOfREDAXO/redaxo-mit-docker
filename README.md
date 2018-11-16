@@ -156,7 +156,7 @@ We integrated [Mailhog](https://github.com/mailhog/MailHog) in order to be able 
 
     http://localhost:28025
 
-:point_right: _Tip: In the REDAXO backend, you do not have to configure anything in the AddOn PHPMailer. Use the standard shipping via `mail()` and send a testmail to you. This should appear directly in the mailhog._
+:point_right: _Tip: in the REDAXO backend, you do not have to configure anything within the PHPMailer addOn. Use the standard dispatch via `mail()` and send a test mail to yourself. This should appear directly within Mailhog._
 
 ### Integrate phpMyAdmin
 
