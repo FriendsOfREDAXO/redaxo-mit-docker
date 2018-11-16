@@ -71,7 +71,7 @@ Or combined (build all images and restart all containers, see [Docs](https://doc
 
     $ docker-compose up -d --build --force-recreate
 
-__REDAXO in the Browser:__
+__Access REDAXO in your browser:__
 
      http://localhost:20080
      https://localhost:20443
