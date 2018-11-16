@@ -127,7 +127,7 @@ If you want to use a different version of PHP, such as 5.6 for older REDAXO vers
 FROM php:5.6-apache
 ```
 
-### Install more PHP extensions
+### Install further PHP extensions
 
 In addition to the extensions that the PHP Apache image already includes, we also install [GD](http://php.net/manual/de/book.image.php) and [PDO_MYSQL](http://php.net/manual/de/ref.pdo-mysql.php) ( please refer to [/docker/php-apache/Dockerfile#L23-L24](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/docker/php-apache/Dockerfile#L23-L24) ).  If you need more extensions, you can use the helper functions that the image offers: `docker-php-ext-configure` and `docker-php-ext-install`.
 
