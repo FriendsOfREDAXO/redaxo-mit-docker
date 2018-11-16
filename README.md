@@ -91,7 +91,7 @@ Where do you have to adjust something if you want to use the package for your pr
 `docker-compose.yml`  
 In this package the container names start with `redaxodocker`. For your projects you should adapt the name, preferably in each case so that you can recognize the project by the name. In the end you will have many containers on your system and you need a good overview!
 2. __The Database-Configuration__  
-`docker-compose.yml` and `docker/php-apache/default.config.yml`
+`docker-compose.yml` and `docker/php-apache/default.config.yml`  
 For local development, `MYSQL_USER` and `MYSQL_PASSWORD` are not all that relevant because your database runs in a docker container. If you do not have any work experience, you are not in need of change at this point.
 But of course you should adjust the credentials if you ever leave your development environment and end up on a productive server !.
 3. __The login for your REDAXO-Admin__  
