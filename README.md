@@ -96,7 +96,7 @@ For local development, `MYSQL_USER` and `MYSQL_PASSWORD` are not all that releva
 But of course you should adjust the credentials if they ever leave your development environment and end up on a productive server!
 3. __The login for your REDAXO admin__  
 `docker-compose.yml`  
-If Docker automatically sets up REDAXO for you, `REDAXO_USER` and `REDAXO_PASSWORD` are used to create an Adminsuser. If your project ever goes live like this, then you better use other information than `admin` :)
+If Docker automatically sets up REDAXO for you, `REDAXO_USER` and `REDAXO_PASSWORD` are used to create an admin user. If your project ever goes live like this, then you better use other credentials than `admin` :)
 4. __REDAXO-Demo__  
 `docker-compose.yml`  
 If Docker is going to automatically set up a website demo for you, you can set it up under `REDAXO_DEMO`. Leave the value empty if you do not want to set up a demo.
