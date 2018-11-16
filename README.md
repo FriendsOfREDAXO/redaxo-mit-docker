@@ -77,7 +77,7 @@ __Access REDAXO in your browser:__
     https://localhost:20443
 
 :point_right: _We use Port `20080` for HTTP, `20443` for HTTPS and `23306` for the database, so as not to interfere with the standard ports `80`/`443`/`3306` if they are already in use. That makes our setup more robust.
-If you use several Docker projects, you have to keep in mind that all these ports use and therefore only one can run at a time, not several at the same time._
+If you run multiple Docker projects, you have to keep in mind that all of them use the same ports and therefore can only run one at a time, not several at the same time._
 
 :point_right: _To access via HTTPS, an SSL certificate will be generated that works only for testing purposes. Your browser will alert you that the connection is not secure. For local testing, however, that's enough, and you can skip the safety note._
 
