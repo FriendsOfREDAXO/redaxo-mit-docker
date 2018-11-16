@@ -129,7 +129,7 @@ FROM php:5.6-apache
 
 ### Install further PHP extensions
 
-In addition to the extensions that the PHP Apache image already includes, we also install [GD](http://php.net/manual/de/book.image.php) and [PDO_MYSQL](http://php.net/manual/de/ref.pdo-mysql.php) ( please refer to [/docker/php-apache/Dockerfile#L23-L24](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/docker/php-apache/Dockerfile#L23-L24) ).  If you need more extensions, you can use the helper functions that the image offers: `docker-php-ext-configure` and `docker-php-ext-install`.
+In addition to the extensions already included in the PHP/Apache image, we also install [GD](http://php.net/manual/de/book.image.php) and [PDO_MYSQL](http://php.net/manual/de/ref.pdo-mysql.php), please refer to [/docker/php-apache/Dockerfile#L23-L24](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/docker/php-apache/Dockerfile#L23-L24). If you need more extensions, you can use the helper functions the image provides: `docker-php-ext-configure` and `docker-php-ext-install`.
 
 Some extensions need to be configured, like GD, but most of them you just have to install. You do that by just adding them right after `pdo_mysql`, like this:
 
