@@ -179,7 +179,7 @@ phpmyadmin:
     PMA_PASSWORD: redaxo
 ```
 
-:point_right: _Keep in mind: Here we use a finished image for the container, which we do not adapt later. Therefore, we can directly integrate it with `image: phpmyadmin/phpmyadmin`  and do not need a separate dockerfile in the `docker/` folder, just like with our other containers._
+:point_right: _Keep in mind: Here we use a ready-made image for the container, which we do not modify afterwards. Therefore, we can fetch it with `image: phpmyadmin/phpmyadmin` and don’t need a separate dockerfile in the `docker/` folder, just like with our other containers._
 
 Restart the Docker container:
 
