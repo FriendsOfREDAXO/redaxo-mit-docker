@@ -63,7 +63,7 @@ __Stop and remove the Docker container:__
 
     $ docker-compose down
 
-__Rebuild docker images if changes were made to the setup:__
+__Rebuild Docker images if changes were made to the setup:__
 
     $ docker-compose build
 
