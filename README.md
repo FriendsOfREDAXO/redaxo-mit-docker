@@ -94,7 +94,7 @@ In this package the container names start with `redaxodocker`. For your projects
 `docker-compose.yml` and `docker/php-apache/default.config.yml`  
 For local development, `MYSQL_USER` and `MYSQL_PASSWORD` are not all that relevant because your database runs encapsulated in a Docker container. If you don’t have a deployment workflow and import database dumps manually on the live server, you don’t need to change anything here.
 But of course you should adjust the credentials if they ever leave your development environment and end up on a productive server!
-3. __The login for your REDAXO-Admin__  
+3. __The login for your REDAXO admin__  
 `docker-compose.yml`  
 If Docker automatically sets up REDAXO for you, `REDAXO_USER` and `REDAXO_PASSWORD` are used to create an Adminsuser. If your project ever goes live like this, then you better use other information than `admin` :)
 4. __REDAXO-Demo__  
