@@ -55,7 +55,7 @@ The database is persisted to the `db/` folder.
 
 ## Usage
 
-__Start a Docker-Container:__
+__Start a Docker container:__
 
     $ docker-compose up -d
 
