@@ -74,7 +74,7 @@ Or combined (build all images and restart all containers, see [Docs](https://doc
 __Access REDAXO in your browser:__
 
      http://localhost:20080
-     https://localhost:20443
+    https://localhost:20443
 
 :point_right:_We use Port `20080` for HTTP, `20443` for HTTPS and `23306` for the database, so as not to interfere with the standard `80`/`443`/`3306` if they are already in use. That makes our setup more robust.
 If you use several Docker projects, you have to keep in mind that all these ports use and therefore only one can run at a time, not several at the same time._
