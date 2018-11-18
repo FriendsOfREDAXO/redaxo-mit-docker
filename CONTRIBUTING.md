@@ -13,7 +13,7 @@ Information about how this package can be maintained and extended.
     ENV REDAXO_VERSION=5.3.0 REDAXO_SHA=c1d3dcc2401b39cd9d32ea7de2ea358683ce81ceb8a5845f7a79937adcd5048e
     ```
 
-    :point_right: _The checksum of a REDAXO package you get in the console for example on this way:_
+    :point_right: _You can find out the checksum of a REDAXO package in the console e.g. like this:_
 
         $ curl -Ls https://github.com/redaxo/redaxo/releases/download/5.3.0/redaxo_5.3.0.zip | shasum
 
