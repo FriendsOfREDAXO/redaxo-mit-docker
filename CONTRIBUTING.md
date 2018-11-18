@@ -1,6 +1,6 @@
 # Get Involved
 
-Information about how this addon can be maintained and extended.
+Information about how this package can be maintained and extended.
 
 ## Edit the REDAXO Version
 
