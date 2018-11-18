@@ -37,7 +37,7 @@ The configuration of the demos is located in `/docker/php-apache/demos.yml`.
 
     The order of activation is important because addOns may depend on each other! For example, since `phpmailer` is required by some addOns, it should be placed high up in the list. The same applies to `yform`.
     
-    At least, activate the Demo-Addon
+    The demo addOn should be the last addOn you activate!
 
 3. __Database-Import__
 
