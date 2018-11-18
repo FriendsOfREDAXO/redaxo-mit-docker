@@ -35,7 +35,7 @@ The configuration of the demos is located in `/docker/php-apache/demos.yml`.
 
 2. __Activation of addOns and plugIns__
 
-    The order of activation is very relevant because AddOns can have dependencies on each other! For example, the `phpmailer` is used by some AddOns, so it should be high on the list. The same applies to `yform`.
+    The order of activation is important because addOns may depend on each other! For example, since `phpmailer` is required by some addOns, it should be placed high up in the list. The same applies to `yform`.
     
     At least, activate the Demo-Addon
 
