@@ -114,7 +114,7 @@ Die Liste der vorhandenen Demos findest du in `docker/php-apache/demos.yml`.
 
 ### REDAXO-Version festlegen
 
-In `docker/php-apache/Dockerfile` wird die Version als `ENV`, also Umgebungsvariable, hinterlegt. Sie besteht aus zwei Teilen, der Version und einem Hash, der verwendet wird, um nach dem Download auf Richtigkeit zu prüfen. Wie du den Hash einer neuen Version herausfindest, steht in der [CONTRIBUTING.md](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/CONTRIBUTING.md).  
+In `docker/php-apache/Dockerfile` wird die Version als `ENV`, also Umgebungsvariable, hinterlegt. Sie besteht aus zwei Teilen, der Version und einem Hash, der verwendet wird, um nach dem Download auf Richtigkeit zu prüfen. Wie du den Hash einer neuen Version herausfindest, steht in der [CONTRIBUTING.md](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/CONTRIBUTING.de.md).  
 
 Die REDAXO-Version ist übrigens nur relevant, falls Docker das System für dich automatisch installiert. Falls du manuell installierst oder ein bestehendes REDAXO updatest, musst du hier nichts ändern.
 
