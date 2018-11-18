@@ -17,7 +17,7 @@ Information about how this package can be maintained and extended.
 
         $ curl -Ls https://github.com/redaxo/redaxo/releases/download/5.3.0/redaxo_5.3.0.zip | shasum
 
-2. Check if `docker-redaxo.php` needs to be adjusted. Inside are the installation routines for REDAXO and Addons, some of which have been adapted from Core, Installer Add-on, and Backup Add-on.
+2. Check if `docker-redaxo.php` needs to be updated. It contains installation routines for REDAXO and addOns, which have been partially adapted from the core, the installer addOn and the backup addOn.
 
 3. Check if `default.config.yml` needs to be adjusted.
 
