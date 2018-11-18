@@ -43,6 +43,6 @@ The configuration of the demos is located in `/docker/php-apache/demos.yml`.
 
     Check which SQL dumps have to be imported from the demo add-on.
 
-4. __File-Import__
+4. __File import__
 
     Check which files need to be imported from the demo adOn.
