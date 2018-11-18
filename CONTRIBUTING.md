@@ -19,7 +19,7 @@ Information about how this package can be maintained and extended.
 
 2. Check if `docker-redaxo.php` needs to be updated. It contains installation routines for REDAXO and addOns, which have been partially adapted from the core, the installer addOn and the backup addOn.
 
-3. Check if `default.config.yml` needs to be adjusted.
+3. Check if `default.config.yml` needs to be updated.
 
 ## Adjust the demos
 
