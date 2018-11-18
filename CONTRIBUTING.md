@@ -4,7 +4,7 @@ Information about how this package can be maintained and extended.
 
 ## Edit the REDAXO Version
 
-1. Edit the __ENV-Variables__.
+1. Edit the __ENV variables__.
 
     In `/docker/php-apache/Dockerfile`:
 
