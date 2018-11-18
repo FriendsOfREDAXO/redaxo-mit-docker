@@ -25,7 +25,7 @@ Information about how this package can be maintained and extended.
 
 The configuration of the demos is located in `/docker/php-apache/demos.yml`.
 
-1. __Download of the AddOns__
+1. __Download of addOns__
 
      You can find information about which AddOns requires a demo in the `package.yml` of the respective demo. Note that REDAXO already brings some add-ons. You just have to install the add-ons that do not already exist.
     
