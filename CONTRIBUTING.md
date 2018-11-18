@@ -1,10 +1,10 @@
-# Mitmachen
+# Get Involved
 
-Infos darüber, wie dieses Paket gepflegt und erweitert werden kann.
+Information about how this addon can be maintained and extended.
 
-## Die REDAXO-Version anpassen
+## Edit the REDAXO Version
 
-1. Die __ENV-Variablen__ anpassen.
+1. Edit the __ENV-Variables__.
 
     In `/docker/php-apache/Dockerfile`:
 
@@ -13,36 +13,36 @@ Infos darüber, wie dieses Paket gepflegt und erweitert werden kann.
     ENV REDAXO_VERSION=5.3.0 REDAXO_SHA=c1d3dcc2401b39cd9d32ea7de2ea358683ce81ceb8a5845f7a79937adcd5048e
     ```
 
-    :point_right: _Die Prüfsumme eines REDAXO-Pakets erhälst du in der Konsole z. B. auf diesem Weg:_
+    :point_right: _The checksum of a REDAXO package you get in the console for example on this way:_
 
         $ curl -Ls https://github.com/redaxo/redaxo/releases/download/5.3.0/redaxo_5.3.0.zip | shasum
 
-2. Prüfe, ob `docker-redaxo.php` angepasst werden muss. Darin befindet sich die Installationsroutinen für REDAXO und Addons, die teilweise vom Core, vom Installer-AddOn und vom Backup-AddOn adaptiert wurden.
+2. Check if `docker-redaxo.php` needs to be adjusted. Inside are the installation routines for REDAXO and Addons, some of which have been adapted from Core, Installer Add-on, and Backup Add-on.
 
-3. Prüfe, ob `default.config.yml` angepasst werden muss.
+3. Check if `default.config.yml` needs to be adjusted.
 
-## Die Demos anpassen
+## Adjust the demos
 
-Die Konfiguration der Demos befindet sich in `/docker/php-apache/demos.yml`.
+The configuration of the demos is located in `/docker/php-apache/demos.yml`.
 
-1. __Download von AddOns__
+1. __Download of the AddOns__
 
-    Eine Info darüber, welche AddOns eine Demo benötigt, findest du in der `package.yml` der jeweiligen Demo. Beachte, dass REDAXO manche AddOns schon mitbringt. Du musst nur die AddOns nachträglich installieren, die nicht schon vorhanden sind.
+     You can find information about which AddOns requires a demo in the `package.yml` of the respective demo. Note that REDAXO already brings some add-ons. You just have to install the add-ons that do not already exist.
     
-    Denke auch dran, die jeweilige Demo selbst als AddOn zum Download aufzulisten. Am besten gleich am Anfang der Liste.
+    Also, remember to list the demo itself as an add-on for download. Best right at the beginning of the list.
     
-    :point_right: _Die Nummer für `file` findest du am besten heraus, indem du im Installer nach dem AddOn suchst. Sie befindet sich dann in der URL._
+    :point_right: _The number for `file` is best found out by looking in the installer for the add-on. It is then in the URL._
 
-2. __Aktivierung von Addons und Plugins__
+2. __Activation of addons and plugins__
 
-    Die Reihenfolge der Aktivierung ist sehr relevant, weil AddOns Abhängigkeiten untereinander haben können! Beispielsweise wird der `phpmailer` von einigen AddOns verwendet, so dass er weit oben in der Liste stehen sollte. Gleiches gilt für `yform`.
+    The order of activation is very relevant because AddOns can have dependencies on each other! For example, the `phpmailer` is used by some AddOns, so it should be high on the list. The same applies to `yform`.
     
-    Aktiviere das Demo-Addon zum Schluss!
+    At least, activate the Demo-Addon
 
-3. __Datenbank-Import__
+3. __Database-Import__
 
-    Prüfe, welche SQL-Dumps vom Demo-AddOn importiert werden müssen.
+    Check which SQL dumps have to be imported from the demo add-on.
 
-4. __Datei-Import__
+4. __File-Import__
 
-    Prüfe, welche Dateien vom Demo-AddOn importiert werden müssen.
+    Check which files need to be imported from the demo add-on.
