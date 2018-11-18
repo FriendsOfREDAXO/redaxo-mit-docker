@@ -33,7 +33,7 @@ The configuration of the demos is located in `/docker/php-apache/demos.yml`.
     
     :point_right: _The best way to find out the number for `file` is to search for the addOn in the installer. It will be located in the URL._
 
-2. __Activation of addons and plugins__
+2. __Activation of addOns and plugIns__
 
     The order of activation is very relevant because AddOns can have dependencies on each other! For example, the `phpmailer` is used by some AddOns, so it should be high on the list. The same applies to `yform`.
     
