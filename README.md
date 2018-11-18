@@ -199,7 +199,7 @@ Virtualization! Docker runs various __applications in containers__, e.g. a datab
 
 We use Docker in this project to build a dev environment from different containers in which we can run REDAXO: one container contains the database, another the Apache web server with PHP. Your local dev environment, which you have previously set up on your system—perhaps with the help of tools such as XAMPP (Windows) or MAMP (Mac)—is thus unnecessary, because it is now provided by Docker containers. And that brings a lot of advantages, of which only these are relevant for us:
 
-1. The containers are transportable. You can distribute them within a team, so that without any special effort all team members work in the same development environment.
+1. The containers are transportable. You can distribute them within your team, so that all team members work in the same dev environment without any special effort.
 2. You can customize your local environment to match the live environment.
 
 :point_right: _If you continue docker, it leads to topics like [Microservices](https://de.wikipedia.org/wiki/Microservices), Scaling and automation. We do not care, because we want to keep our Docker setup simple and use it only for local REDAXO development._
