@@ -202,7 +202,7 @@ We use Docker in this project to build a dev environment from different containe
 1. The containers are transportable. You can distribute them within your team, so that all team members work in the same dev environment without any special effort.
 2. You can customize your local environment to match the live environment.
 
-:point_right: _If you continue docker, it leads to topics like [Microservices](https://de.wikipedia.org/wiki/Microservices), Scaling and automation. We do not care, because we want to keep our Docker setup simple and use it only for local REDAXO development._
+:point_right: _As you move forward with Docker, you’re about to get into topics like [micro services](https://en.wikipedia.org/wiki/Microservices), scaling and automation. We don’t care about that for now, because we want to keep our Docker setup simple and only use it for local REDAXO development._
 
 ### What is needed?
 
