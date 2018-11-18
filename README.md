@@ -195,7 +195,7 @@ After that you can access phpMyAdmin in your browser:
 
 ### What is it all about?
 
-Virtualization! Docker runs various __applications in containers__, eg. For example, a database, a web server and, in our case, a REDAXO. These containers run on your system and use its resources, but still run completely isolated. Unlike virtual machines (VMs) that run entire operating systems - such as: For example, Windows on a Mac to test websites in Internet Explorer or make tax returns - Docker containers are very small and performant! You can easily start many containers on a system.
+Virtualization! Docker runs various __applications in containers__, e.g. a database, a web server and in our case REDAXO as well. These containers run on your system and use its resources, but still run completely isolated. Unlike virtual machines (VMs) that run complete operating systems—such as Windows on a Mac to test websites in Internet Explorer or do german tax returns—Docker containers are very small and performant! You can easily start multiple containers on one system.
 
 We use Docker in this project to assemble a development environment in which we can run REDAXO by using different containers: one container contains the database, another the Apache web server with PHP. Your local development environment, which you have previously set up on your system - perhaps with the help of tools such as XAMPP (Windows) or MAMP (Mac) - is thus unnecessary, because it is now provided by Docker container. And that brings many advantages with it, of which only these are relevant for us:
 
