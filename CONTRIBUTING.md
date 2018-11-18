@@ -45,4 +45,4 @@ The configuration of the demos is located in `/docker/php-apache/demos.yml`.
 
 4. __File-Import__
 
-    Check which files need to be imported from the demo add-on.
+    Check which files need to be imported from the demo adOn.
