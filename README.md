@@ -267,7 +267,7 @@ The other folders contain setup scripts, configurations for PHP, Apache, and the
     html/
 
 This directory acts as the __webroot__, which has already been mentioned above. It is linked to the directory of the container (a Debian GNU/Linux btw) in which the Apache web server expects the website to be located. So if you make adjustments to your REDAXO, they are immediately available to the server, and vice versa.
-This means: Like the database, your REDAXO remains permanently on your system and can be edited by you anytime. Docker only provides you with the necessary server environment.
+This means: like the database, your REDAXO is also permanently stored on your system and can be edited by you, while Docker only provides you with the necessary server environment.
 
 
 :point_right: _Keep in mind: If the folder is empty at the start of the container, Docker will install a fresh REDAXO for you, and depending on the configuration (in `docker-compose.yml`) even a website demo. But if the folder already contains content, Docker does not change it and just starts the container._
