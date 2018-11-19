@@ -282,7 +282,7 @@ The file [dockerignore](https://docs.docker.com/engine/reference/builder/#docker
 
     docker-compose.yml
 
-[Docker Compose](https://docs.docker.com/compose/overview/) allows you to start and link __several containers at the same time__. It contains information about what the containers are called, which ports they use, and which directories of your system they are using (volumes). It can also contain information such as username and passwords - in our case for the database.
+[Docker Compose](https://docs.docker.com/compose/overview/) allows you to start and link __several containers at the same time__. It contains information about what the containers are called, which ports they use, and which directories of your system they mount (volumes). It may also contain information such as username and passwords, in our case for the database.
 
 ---
 
