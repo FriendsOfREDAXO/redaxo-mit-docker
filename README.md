@@ -210,7 +210,7 @@ You only have to install [Docker (Community Edition) for your System](https://ww
 
     $ docker-compose up -d
 
-This will take a little while the first time, because all the Images must be downloaded, from which Docker will then build working containers. There will be a lot of text in your console.
+That’s gonna take a good while the first time, as it requires to download the images from which Docker then builds executable containers. A lot of text will pass through your console.
 
 :warning: When the console is ready again and the command line appears, you will have to wait __another 1-2 minutes__ until REDAXO is fully installed. You will not see the status of the REDAXO installation in your console, because the process is taking place inside of the container. You can look at the container logs using `docker-compose logs web` (The `web` at the end is our web server, db would be the database). Alternatively you can see the logs in the free Docker tool [Kitematic](https://kitematic.com), which is very useful when working with multiple Docker projects.
 
