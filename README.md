@@ -256,7 +256,7 @@ In this folder, the __database__ of the container is _persisted_, i.e. it is per
             php.ini
             ssmtp.conf
 
-In the `docker/` folder is the __configuration for the containers__ we use, namely `mailhog`, `mysql/ ` and `php-apache/ `. These each contain a `dockerfile`, which contains the construction manuals, with which an executable _Container_ is built from an _Image_.
+The `docker/` folder contains the __configuration for the containers__ we use, namely `mailhog/`, `mysql/ ` and `php-apache/ `. These each contain a `dockerfile`, which provides the instructions for building an executable _container_ from an _image_.
 
 The dockerfiles for Mailhog and MySQL are quite simple, because they only contain the information, which image is used, without any further modification. The PHP/Apache dockerfile is more complex: once an image has been selected, we make several adjustments. For example, we enable some Apache modules and install PHP extensions required for REDAXO. Afterwards, we check if our webroot—more on this topic later on—is still empty, and if it is, we pull a fresh REDAXO from GitHub and unpack it into the webroot.
 
