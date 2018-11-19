@@ -218,7 +218,7 @@ Finally, you got a fresh REDAXO setup bundled with the [demo website](https://gi
 
     http://localhost:20080
 
-You can log in to the REDAXO backend using `admin`/`admin`.
+Log in to the REDAXO backend using `admin`/`admin`.
 
 :tada:
 
