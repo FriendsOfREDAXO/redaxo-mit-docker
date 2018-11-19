@@ -270,7 +270,7 @@ This directory acts as the __webroot__, which has already been mentioned above. 
 This means: like the database, your REDAXO is also permanently stored on your system and can be edited by you, while Docker only provides you with the necessary server environment.
 
 
-:point_right: _Keep in mind: If the folder is empty at the start of the container, Docker will install a fresh REDAXO for you, and depending on the configuration (in `docker-compose.yml`) even a website demo. But if the folder already contains content, Docker does not change it and just starts the container._
+:point_right: _Keep in mind: if the folder is empty when you start the container, Docker will install a fresh REDAXO for you, and depending on your configuration (in `docker-compose.yml`) even a website demo. However, if the folder already contains content, Docker does not change it and just starts the container._
 
 #### Ignore
 
