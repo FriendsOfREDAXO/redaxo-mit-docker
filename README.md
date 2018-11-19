@@ -234,7 +234,7 @@ Let’s walk through from top to bottom:
 
     db/
     
-In this folder, the __Database__ of the container _persists_, ie is permanently stored on your system. If we did not do that, the database would be empty again each time you build the container. But because we want to work permanently on the REDAXO inside this package, we have to keep the database outside the container.
+In this folder, the __database__ of the container is _persisted_, i.e. it is permanently stored on your system. If we wouldn’t do this, the database would be empty every time you build the container. But because we want to work permanently on the REDAXO inside this package, we have to keep the database outside the container.
 
 :point_right: _Keep in mind: If the folder is empty when the container starts, Docker will set up the database for you. But if the folder already contains content, Docker does not change it and just starts the container._
 
