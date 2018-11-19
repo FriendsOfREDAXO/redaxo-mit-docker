@@ -46,7 +46,7 @@ __Okay cool, how to start?__
 * MySQL 5.7
 * [Mailhog](https://github.com/mailhog/MailHog) (email testing)
 * REDAXO 5.x
-* [REDAXO-Demo](https://github.com/FriendsOfREDAXO/demo_base) (optional)
+* [REDAXO demo website](https://github.com/FriendsOfREDAXO/demo_base) (optional)
 
 The volume for the Webroot is the folder `html/`. If this is empty during the build of the container, a current REDAXO will be downloaded and automatically installed (login into the backend via `admin`/`admin`).
 The database is persisted to the `db/` folder.
