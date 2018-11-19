@@ -226,7 +226,7 @@ Log in to the REDAXO backend using `admin`/`admin`.
 
 You should play around with Docker and dive into the [official documentation](https://docs.docker.com). Don’t let it put you off, because Docker can get terribly complicated when used on a bigger scale.  And even in our small context, not everything is easy to understand. With this setup you have a working development environment for REDAXO, which you will gradually understand in detail as you spend more time working with Docker!
 
-### What is the function of the files and folders of this package?
+### What are the functions of the files and folders in this package?
 
 Let's take a look - step by step:
 
