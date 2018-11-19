@@ -228,7 +228,7 @@ You should play around with Docker and dive into the [official documentation](ht
 
 ### What are the functions of the files and folders in this package?
 
-Let's take a look - step by step:
+Let’s walk through from top to bottom:
 
 #### Database
 
