@@ -214,7 +214,7 @@ That’s gonna take a good while the first time, as it requires to download the 
 
 :warning: When the console is ready again and the command line appears, you will have to wait __another 1-2 minutes__ until REDAXO is fully installed. You will not see the status of the REDAXO installation in your console, because the process is taking place inside of the container. You can look at the container logs using `docker-compose logs web` (The `web` at the end is our web server, db would be the database). Alternatively you can see the logs in the free Docker tool [Kitematic](https://kitematic.com), which is very useful when working with multiple Docker projects.
 
-Then you have a fresh REDAXO together with the [Demo-Website](https://github.com/FriendsOfREDAXO/demo_base) available in the browser through:
+Finally, you got a fresh REDAXO setup bundled with the [demo website](https://github.com/FriendsOfREDAXO/demo_base), which you can access in your browser:
 
     http://localhost:20080
 
