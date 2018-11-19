@@ -276,7 +276,7 @@ This means: like the database, your REDAXO is also permanently stored on your sy
 
     .dockerignore
 
-The File [dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore-file) defines which files and folders will not be given to the Docker daemon. If your project folder is very busy, you can bypass Docker's unimportant data and save resources.
+The file [dockerignore](https://docs.docker.com/engine/reference/builder/#dockerignore-file) defines which files and folders are _not_ handed over to the Docker daemon. If your project folder is very large, you can skip data that is not important for Docker and save resources.
 
 #### Compose
 
