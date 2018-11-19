@@ -260,7 +260,7 @@ In the `docker/` folder is the __configuration for the containers__ we use, name
 
 The Dockerfiles for Mailhog and MySQL are quite simple, because they only contain the indication which image is used, without adapting it further. The PHP Apache Dockerfile is more complex: Here we first determine the image, but make several adjustments. For example we enable some Apache modules and install PHP extensions that REDAXO needs. Afterwards we check if our webroot - more about that follows - is still empty, and if it is, we pull a fresh REDAXO from GitHub and unpack it into the webroot.
 
-The other folders contain setup scripts, configurations for PHP, Apache, and the database.
+The other folders contain setup scripts, configurations for PHP, Apache and the database.
 
 #### Webroot
 
