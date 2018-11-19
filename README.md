@@ -238,7 +238,7 @@ In this folder, the __database__ of the container is _persisted_, i.e. it is per
 
 :point_right: _Keep in mind: if the folder is empty when the container starts, Docker will set up a fresh database for you. However, if the folder already contains content, Docker does not change it and just starts the container._
 
-#### Container-Configuration
+#### Container configuration
 
     docker/
         mailhog/
