@@ -37,10 +37,10 @@ demo_community:
 
 demo_onepage:
   addons:
-    - {addonkey: demo_onepage,   file: 2325}  # 1.0
+    - {addonkey: demo_onepage,   file: 2641}  # 1.2.2
     - {addonkey: developer,      file: 2274}  # 3.7.0
-    - {addonkey: markitup,       file: 2170}  # 3.0.3
-    - {addonkey: mblock,         file: 2082}  # 2.1.0
+    - {addonkey: markitup,       file: 2588}  # 3.2.0
+    - {addonkey: mblock,         file: 2557}  # 2.2.3
   activate:
     - developer
     - markitup
