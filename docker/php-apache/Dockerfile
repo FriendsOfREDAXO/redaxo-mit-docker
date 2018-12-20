@@ -27,7 +27,7 @@ RUN apt-get update -q && apt-get install -qy \
 
 # decide which REDAXO version to use
 # generate checksum like this: `curl -Ls https://github.com/redaxo/redaxo/releases/download/5.6.4/redaxo_5.6.4.zip | shasum`
-ENV REDAXO_VERSION=5.6.4 REDAXO_SHA=6cd0be12f7bcfba7221304f37cfd63709541625d
+ENV REDAXO_VERSION=5.6.5 REDAXO_SHA=ef05d9c4d27abe65d332a0c86a5662f6cfa2b9bb
 
 # fetch REDAXO, validate checksum and extract to tmp folder
 RUN set -e; \
