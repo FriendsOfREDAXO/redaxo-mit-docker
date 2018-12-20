@@ -1,4 +1,4 @@
-FROM php:7.2-apache
+FROM php:7.3-apache
 
 # copy custom configs
 COPY php.ini /usr/local/etc/php/
@@ -18,6 +18,7 @@ RUN apt-get update -q && apt-get install -qy \
        libjpeg62-turbo-dev \
        libmcrypt-dev \
        libpng-dev \
+       libzip-dev \
        ssmtp \
        unzip \
        dos2unix \
