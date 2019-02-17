@@ -5,7 +5,7 @@ demo_base:
     - {addonkey: phpmailer,      file: 1821}  # 2.1.2
     - {addonkey: redactor2,      file: 2514}  # 3.5.0
     - {addonkey: sprog,          file: 1446}  # 1.1.0
-    - {addonkey: yform,          file: 2640}  # 3.0-beta6
+    - {addonkey: yform,          file: 2695}  # 3.0.0
   activate:
     - phpmailer
     - markitup
