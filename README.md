@@ -1,6 +1,6 @@
 <p align="right">🌎 <a href="https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/README.de.md">Deutsch</a></p>
 
-# REDAXO with Docker :whale:
+# REDAXO with Docker 🐳
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_01.jpg)
 
@@ -16,7 +16,7 @@
 
 ## Introduction
 
-:rocket: _No experience with Docker yet? No worries, find a [Beginner’s guide](#beginners-guide-rocket) below!_
+🚀 _No experience with Docker yet? No worries, find a [Beginner’s guide](#beginners-guide-rocket) below!_
 
 __In short, what is the purpose of this Docker setup?__
 
@@ -33,7 +33,7 @@ __Who benefits?__
 __Okay cool, how to start?__
 
 * If you already have experience with Docker: `docker-compose up -d`, look at [Usage](#usage).
-* If Docker is still pretty new to you: no worries, there’s a [Beginner’s guide](#beginners-guide-rocket). :rocket: If you have questions or need help, feel free to join the Slack chat! You will receive an invitation here: https://redaxo.org/slack/
+* If Docker is still pretty new to you: no worries, there’s a [Beginner’s guide](#beginners-guide-rocket). 🚀 If you have questions or need help, feel free to join the Slack chat! You will receive an invitation here: https://redaxo.org/slack/
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/demo_base/assets/demo_base_01.jpg)
 
@@ -42,8 +42,8 @@ __Okay cool, how to start?__
 ## Package Content
 
 * Apache 2.4
-* PHP 7.2
-* MySQL 5.7
+* PHP 7.x
+* MySQL 5.x
 * [Mailhog](https://github.com/mailhog/MailHog) (email testing)
 * REDAXO 5.x
 * [REDAXO demo website](https://github.com/FriendsOfREDAXO/demo_base) (optional)
@@ -76,10 +76,10 @@ __Access REDAXO in your browser:__
      http://localhost:20080
     https://localhost:20443
 
-:point_right: _We use Port `20080` for HTTP, `20443` for HTTPS and `23306` for the database, so as not to interfere with the standard ports `80`/`443`/`3306` if they are already in use. That makes our setup more robust.
+👉 _We use Port `20080` for HTTP, `20443` for HTTPS and `23306` for the database, so as not to interfere with the standard ports `80`/`443`/`3306` if they are already in use. That makes our setup more robust.
 If you run multiple Docker projects, you have to keep in mind that all of them use the same ports and therefore can only run one at a time, not several at the same time._
 
-:point_right: _To access via HTTPS, an SSL certificate will be generated that works only for testing purposes. Your browser will alert you that the connection is not secure. For local testing, however, that's enough, and you can skip the safety note._
+👉 _To access via HTTPS, an SSL certificate will be generated that works only for testing purposes. Your browser will alert you that the connection is not secure. For local testing, however, that's enough, and you can skip the safety note._
 
 ---
 
@@ -102,13 +102,13 @@ If Docker automatically sets up REDAXO for you, `REDAXO_USER` and `REDAXO_PASSWO
 If you want Docker to automatically install a website demo for you, you can set it up at `REDAXO_DEMO`. Leave the value empty if you do not want a demo to be installed.
 The list of existing demos can be found in `docker/php-apache/demos.yml`.
 
-:point_up: Long story short: if you use this setup for your local REDAXO development, you probably only need to pay attention to point 1, which means customizing the container names for each project.
+☝️ Long story short: if you use this setup for your local REDAXO development, you probably only need to pay attention to point 1, which means customizing the container names for each project.
 
 ---
 
 ## Configuration and tips
 
-:warning: Keep in mind: whenever you make changes to the container, you have to rebuild it afterwards!
+⚠️ Keep in mind: whenever you make changes to the container, you have to rebuild it afterwards!
 
     $ docker-compose build
 
@@ -137,7 +137,7 @@ Some extensions need to be configured, like GD, but most of them you just have t
     && docker-php-ext-install -j$(nproc) gd pdo_mysql exif opcache
 ```
 
-:point_right: _Hint: to find out which extensions are included in the PHP/Apache image, you can use `<?php phpinfo (); ?>`._
+👉 _Hint: to find out which extensions are included in the PHP/Apache image, you can use `<?php phpinfo (); ?>`._
 
 ### Database configuration
 
@@ -145,7 +145,7 @@ Just customize `docker/mysql/my.cnf` and build again.
 If you want to use a different version, all you have to do is adapt and rebuild the Dockerfile:
 
 ```dockerfile
-FROM mysql:5.7
+FROM mysql:5
 ```
 
 ### Use Mailhog 
@@ -156,7 +156,7 @@ We’ve integrated [Mailhog](https://github.com/mailhog/MailHog) to be able to t
 
     http://localhost:28025
 
-:point_right: _Tip: in the REDAXO backend, you do not have to configure anything within the PHPMailer addOn. Use the standard dispatch via `mail()` and send a test mail to yourself. This should appear directly within Mailhog._
+👉 _Tip: In the REDAXO backend, configure the PHPMailer addOn to use **mail** oder **sendmail**. They do not require further configuration. If you want to use **smtp** for local testing, host should be `mailhog` and port `1025`._
 
 ### Integrate phpMyAdmin
 
@@ -179,7 +179,7 @@ phpmyadmin:
     PMA_PASSWORD: redaxo
 ```
 
-:point_right: _Keep in mind: Here we use a ready-made image for the container, which we do not modify afterwards. Therefore, we can fetch it with `image: phpmyadmin/phpmyadmin` and don’t need a separate dockerfile in the `docker/` folder, just like with our other containers._
+👉 _Keep in mind: Here we use a ready-made image for the container, which we do not modify afterwards. Therefore, we can fetch it with `image: phpmyadmin/phpmyadmin` and don’t need a separate dockerfile in the `docker/` folder, just like with our other containers._
 
 Restart the Docker container:
 
@@ -191,7 +191,7 @@ After that you can access phpMyAdmin in your browser:
 
 ---
 
-## Beginner’s Guide :rocket:
+## Beginner’s Guide 🚀
 
 ### What is it all about?
 
@@ -202,7 +202,7 @@ We use Docker in this project to build a dev environment from different containe
 1. The containers are transportable. You can distribute them within your team, so that all team members work in the same dev environment without any special effort.
 2. You can customize your local environment to match the live environment.
 
-:point_right: _As you move forward with Docker, you’re about to get into topics like [micro services](https://en.wikipedia.org/wiki/Microservices), scaling and automation. We don’t care about that for now, because we want to keep our Docker setup simple and only use it for local REDAXO development._
+👉 _As you move forward with Docker, you’re about to get into topics like [micro services](https://en.wikipedia.org/wiki/Microservices), scaling and automation. We don’t care about that for now, because we want to keep our Docker setup simple and only use it for local REDAXO development._
 
 ### What is needed?
 
@@ -212,7 +212,7 @@ You only have to install [Docker (Community Edition) for your System](https://ww
 
 That’s gonna take a good while the first time, as it requires to download the images from which Docker then builds executable containers. A lot of text will pass through your console.
 
-:warning: When the console is ready again and the command line appears, you will have to wait __another 1-2 minutes__ until REDAXO is fully installed. You will not see the status of the REDAXO installation in your console, because the process is taking place inside of the container. You can look at the container logs using `docker-compose logs web` (The `web` at the end is our web server, db would be the database). Alternatively you can see the logs in the free Docker tool [Kitematic](https://kitematic.com), which is very useful when working with multiple Docker projects.
+⚠️ When the console is ready again and the command line appears, you will have to wait __another 1-2 minutes__ until REDAXO is fully installed. You will not see the status of the REDAXO installation in your console, because the process is taking place inside of the container. You can look at the container logs using `docker-compose logs web` (The `web` at the end is our web server, db would be the database). Alternatively you can see the logs in the free Docker tool [Kitematic](https://kitematic.com), which is very useful when working with multiple Docker projects.
 
 Finally, you got a fresh REDAXO setup bundled with the [demo website](https://github.com/FriendsOfREDAXO/demo_base), which you can access in your browser:
 
@@ -220,7 +220,7 @@ Finally, you got a fresh REDAXO setup bundled with the [demo website](https://gi
 
 Log in to the REDAXO backend using `admin`/`admin`.
 
-:tada:
+🎉
 
 ### What are the next steps?
 
@@ -236,7 +236,7 @@ Let’s walk through from top to bottom:
     
 In this folder, the __database__ of the container is _persisted_, i.e. it is permanently stored on your system. If we wouldn’t do this, the database would be empty every time you build the container. But because we want to work permanently on the REDAXO inside this package, we have to keep the database outside the container.
 
-:point_right: _Keep in mind: if the folder is empty when the container starts, Docker will set up a fresh database for you. However, if the folder already contains content, Docker does not change it and just starts the container._
+👉 _Keep in mind: if the folder is empty when the container starts, Docker will set up a fresh database for you. However, if the folder already contains content, Docker does not change it and just starts the container._
 
 #### Container configuration
 
@@ -270,7 +270,7 @@ This directory acts as the __webroot__, which has already been mentioned above. 
 This means: like the database, your REDAXO is also permanently stored on your system and can be edited by you, while Docker only provides you with the necessary server environment.
 
 
-:point_right: _Keep in mind: if the folder is empty when you start the container, Docker will install a fresh REDAXO for you, and depending on your configuration (in `docker-compose.yml`) even a website demo. However, if the folder already contains content, Docker does not change it and just starts the container._
+👉 _Keep in mind: if the folder is empty when you start the container, Docker will install a fresh REDAXO for you, and depending on your configuration (in `docker-compose.yml`) even a website demo. However, if the folder already contains content, Docker does not change it and just starts the container._
 
 #### Ignore
 
