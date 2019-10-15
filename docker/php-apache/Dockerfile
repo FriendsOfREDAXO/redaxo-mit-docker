@@ -3,7 +3,8 @@ FROM php:7.3-apache
 # copy custom configs
 COPY php.ini /usr/local/etc/php/
 COPY apache.conf /etc/apache2/sites-available/000-default.conf
-COPY ssmtp.conf /etc/ssmtp/
+COPY msmtprc /etc/msmtprc
+COPY .mailrc ~/.mailrc
 
 # generate SSL cert for testing purposes
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -subj "/CN=localhost"
@@ -12,6 +13,10 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private
 RUN a2enmod expires headers rewrite ssl
 RUN a2ensite default-ssl
 
+# use noninteractive frontend to install extionsions
+# http://manpages.org/debconf/
+ENV DEBIAN_FRONTEND noninteractive
+
 # install extensions
 RUN apt-get update -q && apt-get install -qy \
        libfreetype6-dev \
@@ -19,11 +24,13 @@ RUN apt-get update -q && apt-get install -qy \
        libmcrypt-dev \
        libpng-dev \
        libzip-dev \
-       ssmtp \
+       msmtp \
+       msmtp-mta \
        unzip \
        dos2unix \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd pdo_mysql zip
+    && docker-php-ext-install -j$(nproc) gd pdo_mysql zip \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # decide which REDAXO version to use
 # generate checksum like this: `curl -Ls https://github.com/redaxo/redaxo/releases/download/5.6.4/redaxo_5.6.4.zip | shasum`
