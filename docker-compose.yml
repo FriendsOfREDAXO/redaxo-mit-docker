@@ -12,10 +12,10 @@ services:
       - ./html:/var/www/html:cached         # webroot `/var/www/html` will be synced with your local folder `./html`
     depends_on:
       - db
-      - mail
+      - mailhog
     links:
       - db
-      - mail
+      - mailhog
     environment:
       REDAXO_USER: admin                    # username of your new REDAXO admin
       REDAXO_PASSWORD: admin                # password of your new REDAXO admin
@@ -35,9 +35,10 @@ services:
       MYSQL_PASSWORD: redaxo
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
 
-  mail:
-    container_name: redaxodocker_mail
-    hostname: redaxodocker_mail
+  mailhog:
+    container_name: redaxodocker_mailhog
+    hostname: redaxodocker_mailhog
     build: ./docker/mailhog                 # location for mailhog dockerfile and config
     ports:
       - 28025:8025                          # mailhog will use port 28025 (for its web interface)
+      - 1025:1025                           # mailhog will use port 1025 (for smtp)
