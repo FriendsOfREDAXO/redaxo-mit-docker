@@ -40,5 +40,5 @@ services:
     hostname: redaxodocker_mailhog
     build: ./docker/mailhog                 # location for mailhog dockerfile and config
     ports:
-      - 28025:8025                          # mailhog will use port 28025 (for its web interface)
       - 1025:1025                           # mailhog will use port 1025 (for smtp)
+      - 28025:8025                          # mailhog will use port 28025 (for its web interface)
