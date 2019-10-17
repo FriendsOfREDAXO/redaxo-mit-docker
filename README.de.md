@@ -9,14 +9,14 @@
 * [Verwendung](#verwendung)
 * [Anpassungen für deine Projekte](#anpassungen-für-deine-projekte)
 * [Konfiguration und Tipps](#konfiguration-und-tipps)
-* [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen-rocket)
+* [Anleitung für Einsteiger_innen](#anleitung-für-einsteiger_innen-)
 * [Fragen oder Anmerkungen?](#fragen-oder-anmerkungen)
 
 ---
 
 ## Einleitung
 
-🚀 _Noch keine Erfahrung mit Docker? Gar kein Problem, weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-rocket)!_
+🚀 _Noch keine Erfahrung mit Docker? Gar kein Problem, weiter unten findest du eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-)!_
 
 __Ganz kurz, welchen Zweck erfüllt dieses Docker-Setup?__
 
@@ -33,7 +33,7 @@ __Für wen ist sowas sinnvoll?__
 __Okay cool, wie geht’s los?__
 
 * Falls du schon Docker-Erfahrung hast: `docker-compose up -d`, siehe [Verwendung](#verwendung).
-* Falls Docker für dich noch ziemlich neu ist: Gar kein Problem, es gibt eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-rocket). 🚀 Falls du Fragen hast oder Hilfe benötigst, kontakte uns jederzeit gerne im Slack-Chat! Eine Einladung bekommst du hier: https://redaxo.org/slack/
+* Falls Docker für dich noch ziemlich neu ist: Gar kein Problem, es gibt eine [Anleitung für Einsteiger\_innen](#anleitung-für-einsteiger_innen-). 🚀 Falls du Fragen hast oder Hilfe benötigst, kontakte uns jederzeit gerne im Slack-Chat! Eine Einladung bekommst du hier: https://redaxo.org/slack/
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/demo_base/assets/demo_base_01.jpg)
 
@@ -206,7 +206,7 @@ Wir benutzen Docker in diesem Projekt, um uns aus verschiedenen Containern eine 
 
 ### Was wird benötigt?
 
-Du musst nur [Docker (Community Edition) für dein System](https://www.docker.com/community-edition#/download) installieren, mehr wird nicht benötigt. In der Konfiguration musst du die Ordner freigeben, in denen Docker-Projekte laufen dürfen. Hier gibst du nun erstmal nur den Ordner an, in dem dieses Git-Repo liegt. Danach begibst du dich in deiner Konsole in diesen Ordner und startest die Container:
+Du musst nur [Docker (Community Edition) für dein System](https://hub.docker.com/search/?type=edition&offering=community) installieren, mehr wird nicht benötigt. In der Konfiguration musst du die Ordner freigeben, in denen Docker-Projekte laufen dürfen. Hier gibst du nun erstmal nur den Ordner an, in dem dieses Git-Repo liegt. Danach begibst du dich in deiner Konsole in diesen Ordner und startest die Container:
 
     $ docker-compose up -d
 

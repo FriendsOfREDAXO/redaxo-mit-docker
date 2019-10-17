@@ -9,14 +9,14 @@
 * [Usage](#usage)
 * [Customize for your project](#customize-for-your-project)
 * [Configuration and Tips](#configuration-and-tips)
-* [Beginner’s Guide](#beginners-guide-rocket)
+* [Beginner’s Guide](#beginners-guide-)
 * [Questions or comments?](#questions-or-comments)
 
 ---
 
 ## Introduction
 
-🚀 _No experience with Docker yet? No worries, find a [Beginner’s guide](#beginners-guide-rocket) below!_
+🚀 _No experience with Docker yet? No worries, find a [Beginner’s guide](#beginners-guide-) below!_
 
 __In short, what is the purpose of this Docker setup?__
 
@@ -33,7 +33,7 @@ __Who benefits?__
 __Okay cool, how to start?__
 
 * If you already have experience with Docker: `docker-compose up -d`, look at [Usage](#usage).
-* If Docker is still pretty new to you: no worries, there’s a [Beginner’s guide](#beginners-guide-rocket). 🚀 If you have questions or need help, feel free to join the Slack chat! You will receive an invitation here: https://redaxo.org/slack/
+* If Docker is still pretty new to you: no worries, there’s a [Beginner’s guide](#beginners-guide-). 🚀 If you have questions or need help, feel free to join the Slack chat! You will receive an invitation here: https://redaxo.org/slack/
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/demo_base/assets/demo_base_01.jpg)
 
@@ -206,7 +206,7 @@ We use Docker in this project to build a dev environment from different containe
 
 ### What is needed?
 
-You only have to install [Docker (Community Edition) for your System](https://www.docker.com/community-edition#/download), that’s all. In the settings, you need to select the folders where Docker projects are allowed to be executed in. Start by just selecting the one folder in which this Git repo is located. Afterwards, open the folder in your console and start the containers:
+You only have to install [Docker (Community Edition) for your System](https://hub.docker.com/search/?type=edition&offering=community), that’s all. In the settings, you need to select the folders where Docker projects are allowed to be executed in. Start by just selecting the one folder in which this Git repo is located. Afterwards, open the folder in your console and start the containers:
 
     $ docker-compose up -d
 
