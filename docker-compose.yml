@@ -42,3 +42,11 @@ services:
     ports:
       - 1025:1025                           # mailhog will use port 1025 (for smtp)
       - 28025:8025                          # mailhog will use port 28025 (for its web interface)
+      
+  blackfire:
+    image: blackfire/blackfire
+    environment:
+      BLACKFIRE_CLIENT_ID: BLACKFIRE_CLIENT_ID          #replace with credentials found on https://blackfire.io/my/settings/credentials
+      BLACKFIRE_CLIENT_TOKEN: BLACKFIRE_CLIENT_TOKEN    #replace with credentials found on https://blackfire.io/my/settings/credentials
+      BLACKFIRE_SERVER_ID: BLACKFIRE_SERVER_ID          #replace with credentials found on https://blackfire.io/my/settings/credentials
+      BLACKFIRE_SERVER_TOKEN: BLACKFIRE_SERVER_TOKEN    #replace with credentials found on https://blackfire.io/my/settings/credentials
