@@ -1,4 +1,4 @@
-FROM php:7.3-apache
+FROM friendsofredaxo/redaxo:5
 
 # copy custom configs
 COPY php.ini /usr/local/etc/php/
