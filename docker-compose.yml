@@ -53,6 +53,7 @@ services:
       PMA_HOST: db
       PMA_USER: redaxo
       PMA_PASSWORD: redaxo
+      UPLOAD_LIMIT: 256M
 
   mailhog:
     container_name: redaxodocker_mailhog
