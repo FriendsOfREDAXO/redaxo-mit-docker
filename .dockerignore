@@ -1,2 +1,6 @@
+# Ignore files from being sent to Docker daemon
+# https://docs.docker.com/engine/reference/builder/#dockerignore-file
+#
+# ignore everything except the docker folder:
 *
 !docker
