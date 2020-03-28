@@ -6,14 +6,13 @@ _Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet s
 **Eine Entwicklungsumgebung für REDAXO auf Basis von Docker.**
 
 - [Einleitung](#einleitung)
-- [Häufige Fragen](#faq)
-- [Hilfe und Support](#support)
+- [Häufige Fragen](#häufige-fragen)
+- [Hilfe und Support](#hilfe-und-support)
 
 
 &nbsp;
 
 
-<a name="einleitung"></a>
 ## Einleitung
 
 …
@@ -22,16 +21,15 @@ _Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet s
 &nbsp;
 
 
-<a name="faq"></a>
 ## Häufige Fragen
 
 
-#### …? <a name="faq-1">#</a>
+#### test?
 
 …
 
 
-#### …? <a name="faq-2">#</a>
+#### viele fragen?
 
 …
 
@@ -39,7 +37,6 @@ _Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet s
 &nbsp;
 
 
-<a name="support"></a>
 ## Hilfe und Support
 
 Falls du Fragen hast oder Hilfe benötigst, kontakte uns gerne im **Slack-Chat**! Eine Einladung bekommst du hier: [https://redaxo.org/slack/](https://redaxo.org/slack/).
