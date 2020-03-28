@@ -10,3 +10,6 @@ html/redaxo/cache
 
 # redaxo media files (except in subfolders)
 html/media/*.*
+
+# diverse
+.idea
