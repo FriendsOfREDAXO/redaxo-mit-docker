@@ -1,6 +1,5 @@
 # database
-db/*
-!db/.gitkeep
+db
 
 # redaxo config
 html/redaxo/data/core/config.yml
