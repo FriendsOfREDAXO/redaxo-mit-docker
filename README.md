@@ -26,14 +26,12 @@ _Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet s
 ## Häufige Fragen
 
 
-<a name="faq-1"></a>
-#### …?
+#### …? <a name="faq-1">#</a>
 
 …
 
 
-<a name="faq-2"></a>
-#### …?
+#### …? <a name="faq-2">#</a>
 
 …
 
