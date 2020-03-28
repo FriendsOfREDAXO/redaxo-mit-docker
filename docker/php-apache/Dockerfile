@@ -1,4 +1,4 @@
-FROM friendsofredaxo/redaxo:5
+FROM friendsofredaxo/demo:base
 
 # copy custom configs
 COPY php.ini /usr/local/etc/php/
