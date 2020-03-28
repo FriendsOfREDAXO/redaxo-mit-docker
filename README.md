@@ -3,11 +3,16 @@ _Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet s
 
 # REDAXO mit Docker 🐳
 
-**Eine Entwicklungsumgebung für REDAXO auf Basis von Docker.**
+**Eine flexible Entwicklungsumgebung für REDAXO auf Basis von Docker:**
 
-- [Einleitung](#einleitung)
-- [Häufige Fragen](#häufige-fragen)
-- [Hilfe und Support](#hilfe-und-support)
+- **REDAXO mit Demo-Website**
+- **Apache** (Optional: NGINX)
+- **MySQL** (Optional: MariaDB)
+- **SSL** zum lokalen Testen
+- **ImageMagick** als Bildgenerator
+- **PhpMyAdmin** zur Datenbank-Verwaltung
+- **Mailhog** zum Testen des E-Mail-Versands
+- **Blackfire** zur Performance-Analyse
 
 
 &nbsp;
@@ -24,12 +29,12 @@ _Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet s
 ## Häufige Fragen
 
 
-#### test?
+#### …?
 
 …
 
 
-#### viele fragen?
+#### …?
 
 …
 
