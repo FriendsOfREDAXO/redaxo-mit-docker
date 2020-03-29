@@ -60,9 +60,53 @@ Tipp: Es bietet sich an, einen gemeinsamen »Projektordner« anzulegen, in dem d
 
 ### Schritt 2: Richte Docker auf deinem System ein
 
-…
+Lade [Docker Desktop](https://www.docker.com/products/docker-desktop) runter, wenn du Windows oder Mac benutzt. Linux-Nutzer benötigen die [Docker-Engine](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux) als kostenlose Community-Edition.
+
+Nach der Installation startest du das Programm. An den Einstellungen muss normalerweise nichts geändert werden, allerdings musst du den Projektordner für Docker freigeben (Preferences > Resources > **File Sharing**).
 
 ### Schritt 3: Starte das Projekt!
+
+Docker bedienst du am besten auf der **Kommandozeile**. Zwar kannst du auch im grafischen Dashboard, das du eben für die Einstellungen aufgerufen hast, Container starten und stoppen. Besser ist jedoch, du gewöhnst dich von Anfang an an die Kommandozeile.
+
+Öffne also die Kommandozeile und wechsle in den Ordner deines Projekts (etwa so: `cd /projekte/redaxo-mit-docker`).
+
+Benutze nun `docker-compose up -d`, um die Container zu starten! 🚀
+
+&nbsp;
+
+## Images und Container
+
+Was nun passiert, nachdem du `docker-compose up -d` abgefeuert hast:
+
+### 1. Pull
+
+Docker erkennt, dass du in deiner `docker-compose.yml` verschiedene **Images** angegeben hast, z. B. für die Datenbank `image: mysql:8` oder für Mailhog `image: mailhog/mailhog`. Diese wird Docker nun für dich besorgen, und zwar aus dem **Docker Hub**. Das ist die offizielle *Registry* und damit sowas wie npm für JavaScript oder Composers Packagist für PHP.
+
+Docker erkennt außerdem, dass ganz oben in der `docker-compose.yml` beim Service für »redaxo« kein Image angegeben ist. Stattdessen ist dort ein Build-Pfad hinterlegt: `build: ./docker/redaxo`. In diesem Ordner erwartet Docker nun ein `Dockerfile` mit der Bauanleitung eines Images.
+
+Das besagte Dockerfile enthält als erste Zeile `FROM friendsofredaxo/demo:base`. Das wiederum ist erneut der Hinweis auf ein Image aus dem Docker Hub, nämlich die **Demo-Website** von Friends Of REDAXO. Also unser eigenes Image! 🙌  
+
+Docker wird nun auch dieses Image runterladen (»pull«).
+
+### 2. Build
+
+Nun liegen alle Inhalte aus dem Docker Hub vor, und der **Build**-Prozess startet, also das *Bauen* der Images.
+
+Die Images aus dem Docker Hub müssen allerdings gar nicht mehr gebaut werden, denn das hat der Hub bereits selbst erledigt. Es ist seine Aufgabe, Images zu bauen und zum Download bereit zu stellen!
+
+Was wir noch selbst bauen müssen, ist das, was im eben genannten `Dockerfile` steht. Alles ab Zeile 2. Das ist allerdings gar nicht mehr viel, denn das Image unserer Demo-Website bringt bereits ganz viel mit — dazu später mehr —, und wir wollen lediglich ein paar Dinge anpassen und ergänzen.
+
+Wenn du in den Code des Dockerfiles schaust, siehst du anhand der Kommentare, was ungefähr passiert:
+
+* Es werden verschiedene **Konfigurationsdateien** in den Container kopiert, etwa für PHP oder Apache
+* Es wird ein **SSL-Testzertifikat** angelegt
+* Es werden weitere **Apache-Module** aktiviert
+* Es wird **Blackfire** aktiviert
+* Am Ende wird der **Apache** gestartet 
+
+🥳 In unserem vorherigen Docker-Setup, das nachwievor im Branch [`version-1`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/tree/version-1) verfügbar ist, haben wir viel mehr selbst gebaut. Wir haben uns lediglich ein Image für PHP mit Apache aus dem Hub geholt und mussten danach diverse PHP-Extensions installieren, die wir für REDAXO benötigen, um anschließend REDAXO selbst runter zu laden und zu installieren. Das war sehr aufwendig und hat viel Zeit benötigt. Weil Friends Of REDAXO inzwischen fertige Images im Hub anbieten, sind diese Build-Schritte nicht mehr notwendig!
+
+### 3. Up
 
 …
 
