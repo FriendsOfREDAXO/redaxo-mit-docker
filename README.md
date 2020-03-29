@@ -36,7 +36,33 @@ Deine Projektdaten bleiben dauerhaft auf deinem Computer erhalten und können wi
 &nbsp;
 
 
+## Technische Anforderungen
+
+Du benötigst **zwei Bauteile**, um dieses Projekt zum Laufen zu bringen:
+
+Das erste Bauteil ist die **Konfiguration**, sozusagen der Bauplan, für die Docker-Container. Dieser Teil liegt dir bereits vor, wenn du dieses Git-Repository auf deinem Rechner gespeichert hast. Er besteht aus einer Datei `docker-compose.yml`, in der angegeben ist, welche Container mit welchen Einstellungen verwendet werden. Und er besteht weiterhin aus dem Ordner `docker` und seinen Unterverzeichnissen, in denen wir *Images* konfigurieren und anpassen, bevor daraus *Container* gestartet werden. — Das wird später noch genauer erklärt!
+
+Das zweite Bauteil, was du benötigst, ist **Docker** selbst, sozusagen die Maschine in unserem Setup. Das Programm muss auf deinem Computer installiert werden. Es kann als »Community Edition« kostenlos für alle gängigen Systeme (Windows, Mac, Linux) runtergeladen werden.
+
+
+&nbsp;
+
+
 ## Installation
+
+Wenn du erstmalig mit Docker arbeitest, sind dies die 3 Schritte, die du ausführen musst, um das Projekt zum Laufen zu bringen:
+
+### Schritt 1: Bereite deinen Projektordner vor
+
+Vielleicht hast du diesen Schritt bereits erledigt, wenn du dies liest. Falls nicht: Lade den Inhalt dieses Git-Repos runter und speichere ihn in einen passenden Ordner auf deinem Computer.
+
+Tipp: Es bietet sich an, einen gemeinsamen »Projektordner« anzulegen, in dem du deine Projekte jeweils in Unterordnern ablegst.
+
+### Schritt 2: Richte Docker auf deinem System ein
+
+…
+
+### Schritt 3: Starte das Projekt!
 
 …
 
