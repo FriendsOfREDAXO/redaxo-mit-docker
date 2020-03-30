@@ -42,7 +42,7 @@ Du benötigst **zwei Bauteile**, um dieses Projekt zum Laufen zu bringen:
 
 Das erste Bauteil ist die **Konfiguration**, sozusagen der Bauplan, für die Docker-Container. Dieser Teil liegt dir bereits vor, wenn du dieses Git-Repository auf deinem Rechner gespeichert hast. Er besteht aus einer Datei `docker-compose.yml`, in der angegeben ist, welche Container mit welchen Einstellungen verwendet werden. Und er besteht weiterhin aus dem Ordner `docker` und seinen Unterverzeichnissen, in denen wir *Images* konfigurieren und anpassen, bevor daraus *Container* gestartet werden. — Das wird später noch genauer erklärt!
 
-Das zweite Bauteil, was du benötigst, ist **Docker** selbst, sozusagen die Maschine in unserem Setup. Das Programm muss auf deinem Computer installiert werden. Es kann als »Community Edition« kostenlos für alle gängigen Systeme (Windows, Mac, Linux) runtergeladen werden.
+Das zweite Bauteil, was du benötigst, ist **Docker** selbst, sozusagen die Maschine in unserem Setup. Das Programm muss auf deinem Computer installiert werden. Es kann kostenlos für alle gängigen Systeme (Windows, Mac, Linux) runtergeladen werden.
 
 
 &nbsp;
@@ -72,7 +72,9 @@ Docker bedienst du am besten auf der **Kommandozeile**. Zwar kannst du auch im g
 
 Benutze nun `docker-compose up -d`, um die Container zu starten! 🚀
 
+
 &nbsp;
+
 
 ## Images und Container
 
@@ -80,7 +82,7 @@ Was nun passiert, nachdem du `docker-compose up -d` abgefeuert hast:
 
 ### 1. Pull
 
-Docker erkennt, dass du in deiner `docker-compose.yml` verschiedene **Images** angegeben hast, z. B. für die Datenbank `image: mysql:8` oder für Mailhog `image: mailhog/mailhog`. Diese wird Docker nun für dich besorgen, und zwar aus dem **Docker Hub**. Das ist die offizielle *Registry* und damit sowas wie npm für JavaScript oder Composers Packagist für PHP.
+Docker erkennt, dass du in deiner `docker-compose.yml` verschiedene **Images** angegeben hast, z. B. für die Datenbank `image: mysql:8` oder für Mailhog `image: mailhog/mailhog`. Diese wird Docker nun für dich besorgen, und zwar aus dem [Docker Hub](https://hub.docker.com/). Das ist die offizielle *Registry* und damit sowas wie [npm](https://www.npmjs.com/) für JavaScript oder Composers [Packagist](https://packagist.org/) für PHP.
 
 Docker erkennt außerdem, dass ganz oben in der `docker-compose.yml` beim Service für »redaxo« kein Image angegeben ist. Stattdessen ist dort ein Build-Pfad hinterlegt: `build: ./docker/redaxo`. In diesem Ordner erwartet Docker nun ein `Dockerfile` mit der Bauanleitung eines Images.
 
@@ -114,7 +116,15 @@ Wenn du in den Code des Dockerfiles schaust, siehst du anhand der Kommentare, wa
 &nbsp;
 
 
-## Verwendung
+## REDAXO-Images im Docker Hub
+
+…
+
+
+&nbsp;
+
+
+## Betrieb deiner Container
 
 …
 
