@@ -2,7 +2,7 @@ version: "3"
 services:
 
   redaxo:
-    build: ./docker/php-apache              # location for web server dockerfile and config
+    build: ./docker/redaxo                  # build folder for redaxo image
     ports:
       - 20080:80                            # web server will use port 20080 for http
       - 20443:443                           # web server will use port 20443 for https
