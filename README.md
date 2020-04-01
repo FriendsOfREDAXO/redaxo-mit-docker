@@ -90,15 +90,21 @@ Was nun passiert, nachdem du `docker-compose up -d` aufgerufen hast:
 
 Docker erkennt, dass du in deiner `docker-compose.yml` verschiedene **Images** angegeben hast, z. B. für die Datenbank `image: mysql:8` oder für Mailhog `image: mailhog/mailhog`. Weil diese auf deinem Rechner noch nicht vorliegen, wird Docker sie nun für dich besorgen, und zwar aus dem [Docker Hub](https://hub.docker.com/). Das ist die offizielle *Registry* und damit sowas wie [npm](https://www.npmjs.com/) für JavaScript oder Composers [Packagist](https://packagist.org/) für PHP.
 
+&nbsp;
+
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_03.png)
 
 Docker erkennt außerdem, dass ganz oben in der `docker-compose.yml` unter »services« für »redaxo« kein Image angegeben ist. Stattdessen ist dort ein **Build-Pfad** hinterlegt: `build: ./docker/redaxo`. Das bedeutet, dass hier nicht einfach ein fertiges Image verwendet wird, sondern dass es in dem angegebenen Ordner ein `Dockerfile` mit der Bauanleitung eines Images geben muss.
+
+&nbsp;
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_04.png)
 
 Das besagte Dockerfile enthält als erste Zeile `FROM friendsofredaxo/demo:base`. Das wiederum ist erneut der Hinweis auf ein Image aus dem Docker Hub, nämlich die **Demo-Website** von Friends Of REDAXO. — Also unser eigenes Image! 🙌  
 
 Docker wird nun auch dieses Image runterladen (»pull«).
+
+&nbsp;
 
 ### 2. Build
 
@@ -112,9 +118,9 @@ Docker erkennt nun, dass zwar alle Images vorliegen, wir jedoch Anpassungen vorg
 
 🍄 *Vielleicht interessant zu wissen an dieser Stelle: In unserem vorherigen Docker-Setup, das nachwievor im Branch [`version-1`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/tree/version-1) verfügbar ist, haben wir viel mehr selbst gebaut. Wir haben uns lediglich ein Image für PHP mit Apache aus dem Hub geholt und mussten danach diverse PHP-Extensions installieren, die wir für REDAXO benötigen, um anschließend REDAXO selbst runter zu laden und zu installieren. Das war sehr aufwendig und hat viel Zeit benötigt. Weil Friends Of REDAXO inzwischen fertig gebaute Images im Hub anbieten, sind diese Build-Schritte nun nicht mehr notwendig!*
 
-### 3. Up (Start)
+&nbsp;
 
-(📸 Screenshot: konsole)
+### 3. Up (Start)
 
 Sobald alle Images fertig gebaut sind, können daraus lauffähige **Container** gestartet werden. Der Unterschied zwischen Images und Containern ist ein bisschen vergleichbar mit Klassen und Instanzen bei objekt-orientierter Programmierung (OOP): Das Image ist die *Klasse*, die alle notwendigen Ressourcen enthält. Container sind die *Instanzen*, die daraus erzeugt werden.
 
