@@ -42,7 +42,7 @@ Du benötigst **zwei Bauteile**, um dieses Projekt zum Laufen zu bringen:
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_01.png)
 
-Das erste Teil ist die **Konfiguration**, sozusagen der Bauplan, für die Docker-Container. Dieser Teil liegt dir bereits vor, wenn du dieses Git-Repository auf deinem Rechner gespeichert hast. Er besteht aus einer Datei `docker-compose.yml`, in der angegeben ist, welche Container mit welchen Einstellungen verwendet werden. Und er besteht weiterhin aus dem Ordner `docker` und seinen Unterverzeichnissen, in denen wir *Images* konfigurieren und anpassen, bevor daraus *Container* gestartet werden. — Das wird später noch genauer erklärt!
+Das erste Teil ist die **Konfiguration**, sozusagen der Bauplan, für die Docker-Container. Dieser Teil liegt dir bereits vor, wenn du dieses Git-Repository auf deinem Rechner gespeichert hast. Er besteht aus einer Datei `docker-compose.yml`, in der angegeben ist, welche Container mit welchen Einstellungen verwendet werden. Und er besteht weiterhin aus dem Ordner `docker/redaxo`, in dem wir das REDAXO-*Image* erweitern und zusammenbauen, bevor daraus ein *Container* gestartet wird. — Das wird später noch genauer erklärt!
 
 Das zweite Bauteil, was du benötigst, ist **Docker** selbst, sozusagen die Maschine in unserem Setup. Das Programm muss auf deinem Computer installiert werden. Es kann kostenlos für alle gängigen Systeme (Windows, Mac, Linux) runtergeladen werden.
 
@@ -94,13 +94,13 @@ Docker erkennt, dass du in deiner `docker-compose.yml` verschiedene **Images** a
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_03.png)
 
-Docker erkennt außerdem, dass ganz oben in der `docker-compose.yml` unter »services« für »redaxo« kein Image angegeben ist. Stattdessen ist dort ein **Build-Pfad** hinterlegt: `build: ./docker/redaxo`. Das bedeutet, dass hier nicht einfach ein fertiges Image verwendet wird, sondern dass es in dem angegebenen Ordner ein `Dockerfile` mit der Bauanleitung eines Images geben muss.
+Docker erkennt außerdem, dass ganz oben in der `docker-compose.yml` unter »services« für »redaxo« kein Image angegeben ist. Stattdessen ist dort ein **Build-Pfad** hinterlegt: `build: ./docker/redaxo`. Das bedeutet, dass hier nicht einfach ein fertiges Image verwendet wird, sondern dass es in dem angegebenen Ordner ein `Dockerfile` mit der Bauanleitung eines Images geben muss!
 
 &nbsp;
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_04.png)
 
-Das besagte Dockerfile enthält als erste Zeile `FROM friendsofredaxo/demo:base`. Das wiederum ist erneut der Hinweis auf ein Image aus dem Docker Hub, nämlich die **Demo-Website** von Friends Of REDAXO. — Also unser eigenes Image! 🙌  
+Wenn du dir das besagte `Dockerfile` anschaust, findest du in der ersten Zeile ein `FROM friendsofredaxo/demo:base`. Das wiederum ist erneut der Hinweis auf ein Image aus dem Docker Hub, nämlich die **Demo-Website** von Friends Of REDAXO — Unser eigenes Image! 🙌  
 
 Docker wird nun auch dieses Image runterladen (»pull«).
 
@@ -108,7 +108,11 @@ Docker wird nun auch dieses Image runterladen (»pull«).
 
 ### 2. Build
 
-Docker erkennt nun, dass zwar alle Images vorliegen, wir jedoch Anpassungen vorgenommen haben, die noch *gebaut* werden müssen. Deshalb startet nun ein **Build**-Prozess mit dem Dockerfile. Wenn du in den Code schaust, siehst du anhand der Kommentare, was ungefähr passiert:
+Alle Images aus dem Hub liegen nun lokal vor, und die vier aus unserer `docker-compose.yml` verwenden wir ohne Anpassungen so, wie sie aus dem Hub kommen. Sie sind bereits fertig *gebaut*, denn das Bauen und Verteilen ist die Aufgabe des Docker Hubs.
+
+Das Image mit der REDAXO-Demo-Website könnten wir nun in gleicher Weise verwenden. Allerdings möchten wir es stattdessen innerhalb dieses Projekts weiter anpassen und um Features erweitern! Deshalb haben wir in der `docker-compose.yml` einen Build-Ordner angegeben, in dem ein `Dockerfile` — also eine Bauanleitung für ein Image — liegt.
+
+In Zeile 1 wird also mittels `FROM` das Image mit der Demo-Website als Basis angegeben, so ist es Konvention innerhalb von Dockerfiles. Ab Zeile 2 folgen dann unsere Anpassungen:
 
 * Es werden verschiedene **Konfigurationsdateien** kopiert, etwa für PHP oder Apache
 * Es wird ein **SSL-Testzertifikat** angelegt
@@ -116,7 +120,9 @@ Docker erkennt nun, dass zwar alle Images vorliegen, wir jedoch Anpassungen vorg
 * Es wird **Blackfire** aktiviert (Ein Dienst zur Performance-Analyse)
 * Am Ende wird der **Apache**-Webserver gestartet 
 
-🍄 *Vielleicht interessant zu wissen an dieser Stelle: In unserem vorherigen Docker-Setup, das nachwievor im Branch [`version-1`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/tree/version-1) verfügbar ist, haben wir viel mehr selbst gebaut. Wir haben uns lediglich ein Image für PHP mit Apache aus dem Hub geholt und mussten danach diverse PHP-Extensions installieren, die wir für REDAXO benötigen, um anschließend REDAXO selbst runter zu laden und zu installieren. Das war sehr aufwendig und hat viel Zeit benötigt. Weil Friends Of REDAXO inzwischen fertig gebaute Images im Hub anbieten, sind diese Build-Schritte nun nicht mehr notwendig!*
+Aus dem Image der Demo-Website und unseren Anpassungen muss nun ein neues Image *gebaut* werden. Docker erkennt, dass dies noch nicht geschehen ist, und startet deshalb einen **Build**-Prozess.
+
+🍄 *Zum Verständnis: Auch dieses neu entstandene Image könnten wir im Docker Hub veröffentlichen, z. B. als `friendsofredaxo/demo-base-extended` oder einem anderen Namen. Allerdings hat dieses Projekt nicht die Absicht, das zu tun, sondern wir möchten stattdessen die Anpassungen, die wir oben gemacht haben, für jedes unserer REDAXO-Projekte individuell vornehmen können. Deshalb verwenden wir nur die Demo-Website als Basis, stecken den Rest nach Bedarf dazu und bauen dann!*
 
 &nbsp;
 
@@ -126,11 +132,11 @@ Sobald alle Images fertig gebaut sind, können daraus lauffähige **Container** 
 
 Es starten nun also folgende Container:
 
-1. Ein Container mit **Apache-Webserver, PHP und REDAXO samt Demo-Website**
-2. Ein Container mit **MySQL-Datenbank**
-3. Ein Container mit **phpMyAdmin**
-4. Ein Container mit **Mailhog**
-5. Ein Container mit **Blackfire**
+1. Ein Container mit **MySQL-Datenbank**
+2. Ein Container mit **phpMyAdmin**
+3. Ein Container mit **Mailhog**
+4. Ein Container mit **Blackfire**
+5. Ein Container mit **Apache-Webserver, PHP und REDAXO samt Demo-Website und unseren Anpassungen** 🤹
 
 
 &nbsp;
