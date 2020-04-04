@@ -128,6 +128,8 @@ Aus dem Image der Demo-Website und unseren Anpassungen muss nun ein neues Image 
 
 ### 3. Up (Start)
 
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_05.png)
+
 Sobald alle Images fertig gebaut sind, können daraus lauffähige **Container** gestartet werden. Der Unterschied zwischen Images und Containern ist ein bisschen vergleichbar mit Klassen und Instanzen bei objekt-orientierter Programmierung (OOP): Das Image ist die *Klasse*, die alle notwendigen Ressourcen enthält. Container sind die *Instanzen*, die daraus erzeugt werden.
 
 Es starten nun also folgende Container:
@@ -137,6 +139,20 @@ Es starten nun also folgende Container:
 3. Ein Container mit **Mailhog**
 4. Ein Container mit **Blackfire**
 5. Ein Container mit **Apache-Webserver, PHP und REDAXO samt Demo-Website und unseren Anpassungen** 🤹
+
+Weiterhin wird ein **gemeinsames Netzwerk** für diese Container eingerichtet (Zeile 1 im Screenshot oben). Das passiert automatisch, weil wir `docker-compose` zur *Orchestrierung* 🎻 mehrerer Container verwenden. Würden wir unserer Container einzeln verwalten mittels `docker`, müssten wir auch das Netzwerk manuell anlegen.
+
+Die Benamung des Netzwerks und der Container richtet sich übrigens nach dem Ordnernamen auf deinem Computer — in diesem Fall `redaxo-mit-docker` —, gefolgt vom Namen des Services, etwa `db` oder `redaxo`, und einer fortlaufenden Zahl, hier also jeweils die 1. Die Benamung lässt sich bei Bedarf innerhalb der `docker-compose.yml` anpassen.
+
+An dieser Stelle ist unser Setup beinahe vollständig. Alle *Services* sind in Betrieb, allerdings sind manche von ihnen noch nicht vollständig eingerichtet. Das folgt im nächsten — letzten! — Schritt.
+
+
+&nbsp;
+
+
+## Container: Einrichtung nach dem Start
+
+…
 
 
 &nbsp;
