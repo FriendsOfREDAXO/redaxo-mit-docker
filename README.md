@@ -122,7 +122,7 @@ In Zeile 1 wird also mittels `FROM` das Image mit der Demo-Website als Basis ang
 
 Aus dem Image der Demo-Website und unseren Anpassungen muss nun ein neues Image *gebaut* werden. Docker erkennt, dass dies noch nicht geschehen ist, und startet deshalb einen **Build**-Prozess.
 
-🍄 *Zum Verständnis: Auch dieses neu entstandene Image könnten wir im Docker Hub veröffentlichen, z. B. als `friendsofredaxo/demo-base-extended` oder einem anderen Namen. Allerdings hat dieses Projekt nicht die Absicht, das zu tun, sondern wir möchten stattdessen die Anpassungen, die wir oben gemacht haben, für jedes unserer REDAXO-Projekte individuell vornehmen können. Deshalb verwenden wir nur die Demo-Website als Basis, stecken den Rest nach Bedarf dazu und bauen dann!*
+🍄 *Zum Verständnis: Auch dieses neu entstandene Image könnten wir im Docker Hub veröffentlichen, z. B. als `friendsofredaxo/demo-base-extended` oder einem anderen Namen. Allerdings hat dieses Projekt nicht die Absicht, das zu tun, sondern wir möchten stattdessen die Anpassungen, die wir oben gemacht haben, für jedes unserer REDAXO-Projekte individuell vornehmen können. Deshalb verwenden wir nur die Demo-Website als Basis, stecken den Rest nach Bedarf dazu und bauen dann selbst!*
 
 &nbsp;
 
@@ -134,17 +134,17 @@ Sobald alle Images fertig gebaut sind, können daraus lauffähige **Container** 
 
 Es starten nun also folgende Container:
 
-1. Ein Container mit **MySQL-Datenbank**
-2. Ein Container mit **phpMyAdmin**
-3. Ein Container mit **Mailhog**
-4. Ein Container mit **Blackfire**
+1. Ein Container mit **Mailhog**
+2. Ein Container mit **Blackfire**
+3. Ein Container mit **MySQL-Datenbank**
+4. Ein Container mit **phpMyAdmin**
 5. Ein Container mit **Apache-Webserver, PHP und REDAXO samt Demo-Website und unseren Anpassungen** 🤹
 
-Weiterhin wird ein **gemeinsames Netzwerk** für diese Container eingerichtet (Zeile 1 im Screenshot oben). Das passiert automatisch, weil wir `docker-compose` zur *Orchestrierung* 🎻 mehrerer Container verwenden. Würden wir unserer Container einzeln verwalten mittels `docker`, müssten wir auch das Netzwerk manuell anlegen.
+Weiterhin wird ein **gemeinsames Netzwerk** für diese Container eingerichtet (Zeile 1 im Screenshot oben). Das passiert automatisch, weil wir [docker-compose](https://docs.docker.com/compose/) zur *Orchestrierung* 🎻 mehrerer Container verwenden. Würden wir unserer Container einzeln verwalten mittels [docker](https://docs.docker.com/engine/reference/commandline/cli/), müssten wir auch das *Network* manuell anlegen.
 
-Die Benamung des Netzwerks und der Container richtet sich übrigens nach dem Ordnernamen auf deinem Computer — in diesem Fall `redaxo-mit-docker` —, gefolgt vom Namen des Services, etwa `db` oder `redaxo`, und einer fortlaufenden Zahl, hier also jeweils die 1. Die Benamung lässt sich bei Bedarf innerhalb der `docker-compose.yml` anpassen.
+Was übrigens die Benamung der Container und des Netzwerks angeht: Wir verzichten innerhalb dieses Projekts auf spezifische Angaben dazu. Dann nämlich verwendet Docker ganz pragmatisch den Namen des Ordners, in dem du das Setup ausführst, in diesem Fall `redaxo-mit-docker`. Es folgt die Bezeichnung der Services, etwa `db` oder `redaxo`, und eine fortlaufende Zahl, hier ist es `1`.
 
-An dieser Stelle ist unser Setup beinahe vollständig. Alle *Services* sind in Betrieb, allerdings sind manche von ihnen noch nicht vollständig eingerichtet. Das folgt im nächsten — letzten! — Schritt.
+An dieser Stelle ist unser Setup nun fast vollständig. Alle *Services* sind in Betrieb, allerdings sind manche von ihnen noch nicht vollständig eingerichtet. Das folgt im nächsten — letzten! — Schritt.
 
 
 &nbsp;
