@@ -154,6 +154,9 @@ An dieser Stelle ist unser Setup nun fast vollständig. Alle *Services* sind in 
 
 Oftmals müssen Services noch weiter eingerichtet werden, sobald ihr Container gestartet worden ist. Für diesen Zweck gibt es im `Dockerfile` die beiden Werkzeuge [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd) und [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#entrypoint). Deren Anwendung und Unterschiede sind nicht ganz einfach zu verstehen, aber es reicht hier zu wissen, dass sie benutzt werden, um Kommandos oder Skripte **innerhalb des Containers** auszuführen, wenn diese starten.
 
+🍄 *Zum Verständnis: In deiner Konsole passiert jetzt nichts mehr. Die ist fertig, und der Cursor blinkt. Alle nachfolgenden Prozesse finden innerhalb der Container statt, und es wird später noch erkärt, wie du damit umgehst!*
+
+
 ### Datenbank
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_06.png)
@@ -168,7 +171,26 @@ Der MySQL-Dienst beginnt nun also, eine frische Datenbank `redaxo` einzurichten,
 
 ### REDAXO
 
-Parallel zur Datenbank und den anderen Services (PhpMyAdmin, Mailhog, Blackfire) beginnt auch der REDAXO-Container…
+Parallel zur Datenbank und den anderen Services (PhpMyAdmin, Mailhog, Blackfire) beginnt auch der REDAXO-Container mit der Einrichtung.
+
+In der `docker-compose.yml` befinden sich einige **Environment-Variablen** für REDAXO, viel mehr als eben für die Datenbank. Informationen dazu findest du wieder im Docker Hub auf der Seite des REDAXO-Images: [https://hub.docker.com/r/friendsofredaxo/redaxo](https://hub.docker.com/r/friendsofredaxo/redaxo).
+
+Ohne zu viele Details anzubringen, passiert nun etwa folgendes — vorher tief Luft holen:
+
+1. Das von uns verwendete **Image mit der Demo-Website** nutzt keinen eigenen `ENTRYPOINT`, führt also keine Kommandos oder Skripte beim Start des Containers aus.
+2. Das Image benutzt als Basis das **REDAXO-Image** — Zeile 1 im Dockerfile: `FROM friendsofredaxo/redaxo:5` —, und das nutzt als `ENTRYPOINT` ein Shell-Skript namens [`docker-entrypoint.sh`](https://github.com/FriendsOfREDAXO/docker-redaxo/blob/master/php7.4/apache/docker-entrypoint.sh). Dieses Skript wird nun ausgeführt.
+3. Das Skript prüft als erstes, ob das Root-Verzeichnis des Webservers leer ist. Ist dies der Fall, wird **REDAXO hinein kopiert**.
+4. Anschließend prüft es in einer Schleife mit 5 Sekunden Abstand immer wieder, ob die **Datenbank fertig eingerichtet** ist.
+5. Sobald die Datenbank bereit steht, wird **REDAXO installiert**. Mit Hilfe der Konsolen-Kommandos übrigens, die REDAXO seit 5.9 anbietet. 🤖
+6. Achtung, [Inception](https://de.wikipedia.org/wiki/Inception): Das Skript versucht nun, ein anderes Shell-Skript namens `custom-setup.sh` auszuführen, sofern dies vorhanden ist. In unserem Fall ist es das, denn das Image der Demo-Website (!) hat es beim Bauen an die richtige Stelle kopiert.
+7. Nun wird also [`custom-setup.sh`](https://github.com/FriendsOfREDAXO/docker-demos/blob/master/base/custom-setup.sh) ausgeführt, und das benutzt wiederum REDAXOs Konsolen-Kommandos, um das Basis-Demo-AddOn aus dem Installer zu laden, es zu installieren und schließlich **die Demo zu installieren**.
+8. Demo ist fertig, REDAXO ist fertig. Jetzt wird noch der **Apache gestartet** und…
+
+**BÄMM!** 🚀
+
+Vor dir steht, wenn alles gut gegangen ist, eine fertig eingerichtete Entwicklungsumgebung mit allem PiPaPo! Und während du gelesen hast, was alles passiert, hatte es genug Zeit, um wirklich zu passieren. Deshalb kannst du dir nun das Ergebnis im Browser anschauen:  
+
+**[http://localhost:20080](http://localhost:20080)**
 
 
 &nbsp;
