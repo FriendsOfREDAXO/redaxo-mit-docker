@@ -152,7 +152,23 @@ An dieser Stelle ist unser Setup nun fast vollständig. Alle *Services* sind in 
 
 ## Container: Einrichtung nach dem Start
 
-…
+Oftmals müssen Services noch weiter eingerichtet werden, sobald ihr Container gestartet worden ist. Für diesen Zweck gibt es im `Dockerfile` die beiden Werkzeuge [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd) und [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#entrypoint). Deren Anwendung und Unterschiede sind nicht ganz einfach zu verstehen, aber es reicht hier zu wissen, dass sie benutzt werden, um Kommandos oder Skripte **innerhalb des Containers** auszuführen, wenn diese starten.
+
+### Datenbank
+
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_06.png)
+
+Wir haben zwar jetzt einen MySQL-Dienst am Start, aber noch keine **Datenbank**. Diese muss erst eingerichtet werden, und die notwendigen Angaben dazu stehen in der `docker-compose.yml`. Im Abschnitt `environment` haben wir Werte hinterlegt für den Nutzer, das Passwort und den Namen der Datenbank, die angelegt werden soll.
+
+Welche **Environment-Variablen** benötigt werden und genutzt werden können, ist übrigens Sache der Images. Informationen dazu findest du jeweils im Docker Hub, für MySQL etwa hier: [https://hub.docker.com/_/mysql/](https://hub.docker.com/_/mysql/).
+
+Der MySQL-Dienst beginnt nun also, eine frische Datenbank `redaxo` einzurichten, und das kann 30–60 Sekunden dauern.
+
+&nbsp;
+
+### REDAXO
+
+Parallel zur Datenbank und den anderen Services (PhpMyAdmin, Mailhog, Blackfire) beginnt auch der REDAXO-Container…
 
 
 &nbsp;
