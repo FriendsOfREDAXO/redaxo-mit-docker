@@ -204,29 +204,32 @@ Vor dir steht, wenn alles gut gegangen ist, eine fertig eingerichtete Entwicklun
 
 Ein Überblick der Werkzeuge und der gängigen Konsolen-Kommandos, die du für den Betrieb deiner Container vermutlich benötigst. Manche häufiger, manche seltener:
 
-### Das Docker-Dashboard (App)
+### Das Dashboard (GUI)
 
-…
+Docker bringt eine **grafische Benutzeroberfläche** mit, das Dashboard. Dort siehst du alle Container, kannst sie starten oder stoppen, kannst dir deren Logs ausgeben lassen — sehr praktisch! —, kannst Einstellungen vornehmen und diverse Details aufrufen.
+
+Die Dokumentation zum Dashboard findest du hier: [Windows](https://docs.docker.com/docker-for-windows/dashboard/), [Mac](https://docs.docker.com/docker-for-mac/dashboard/).
+
+🍄 *Zum Verständnis: (TODO: Logs beim Start)*
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_08.png)
 
 
 ### Starten, Stoppen und Verwerfen (`up`, `stop`, `down`)
 
-…
+**Container starten** und im Hintergrund weiterlaufen lassen (`-d` für *detached mode*). Ohne das `-d` ist deine Konsole für weitere Aktionen blockiert, und sobald du den Prozess beendest, stoppen auch deine Container:
 
 	$ docker-compose up -d
 
-…
+**Container stoppen.** Eigentlich eher: pausieren. Sie behalten ihren aktuellen Zustand bei und laufen nahtlos weiter, wenn sie wieder (mittels `up`) gestartet werden:
 
 	$ docker-compose stop
 
-…
+**Container stoppen und entfernen.** Daten gehen dabei verloren, sofern sie nicht mit deinem Rechner gesynct werden, so wie REDAXO im `html`-Ordner und die Datenbank im `db`-Ordner. Dieses Kommando brauchst du in der Praxis eher selten:
 
 	$ docker-compose down
 
-…
-
+&nbsp;
 
 ### Updates holen (`pull`)
 
@@ -238,8 +241,7 @@ Ein Überblick der Werkzeuge und der gängigen Konsolen-Kommandos, die du für d
 
 	$ docker pull friendsofredaxo/redaxo:5
 
-…
-
+&nbsp;
 
 ### Images bauen (`build`)
 
@@ -247,8 +249,7 @@ Ein Überblick der Werkzeuge und der gängigen Konsolen-Kommandos, die du für d
 
 	$ docker-compose build
 
-…
-
+&nbsp;
 
 ### Kommandos im Container ausführen (`exec`)
 
@@ -256,19 +257,9 @@ Ein Überblick der Werkzeuge und der gängigen Konsolen-Kommandos, die du für d
 
 	$ docker-compose exec redaxo /bin/bash
 
-…
+&nbsp;
 
-
-### Container-Logs anschauen (`logs`)
-
-…
-
-	$ docker-compose logs redaxo
-
-…
-
-
-### Aufräumen
+### Aufräumen (`prune`)
 
 Docker benötigt viel Platz. Im Laufe der Zeit können sich einige Images oder vergessene Container auf deinem Rechner ansammeln, die nicht mehr benötigt werden.
 
