@@ -208,29 +208,73 @@ Ein Überblick der Werkzeuge und der gängigen Konsolen-Kommandos, die du für d
 
 …
 
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_08.png)
+
+
 ### Starten, Stoppen und Verwerfen (`up`, `stop`, `down`)
 
 …
+
+	$ docker-compose up -d
+
+…
+
+	$ docker-compose stop
+
+…
+
+	$ docker-compose down
+
+…
+
 
 ### Updates holen (`pull`)
 
 …
 
+	$ docker-compose pull
+
+…
+
+	$ docker pull friendsofredaxo/redaxo:5
+
+…
+
+
 ### Images bauen (`build`)
 
 …
+
+	$ docker-compose build
+
+…
+
 
 ### Kommandos im Container ausführen (`exec`)
 
 …
 
+	$ docker-compose exec redaxo /bin/bash
+
+…
+
+
 ### Container-Logs anschauen (`logs`)
 
 …
 
-### Aufräumen
+	$ docker-compose logs redaxo
 
 …
+
+
+### Aufräumen
+
+Docker benötigt viel Platz. Im Laufe der Zeit können sich einige Images oder vergessene Container auf deinem Rechner ansammeln, die nicht mehr benötigt werden.
+
+Dieses Kommando löscht alle Daten, die keinem Container mehr zugeordnet sind, und du kannst es bedenkenlos ausführen, um Platz zu schaffen:
+
+	$ docker system prune
 
 
 &nbsp;
@@ -252,17 +296,21 @@ Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen
 
 …
 
+
 ### Apache-Konfiguration anpassen
 
 …
+
 
 ### NGINX statt Apache nutzen
 
 …
 
+
 ### MariaDB statt MySQL nutzen
 
 …
+
 
 ### Nicht benötigte Dienste deaktivieren
 
