@@ -200,6 +200,34 @@ Vor dir steht, wenn alles gut gegangen ist, eine fertig eingerichtete Entwicklun
 
 ## Betrieb deiner Container
 
+Ein Überblick der Werkzeuge und der gängigen Konsolen-Kommandos, die du für den Betrieb deiner Container vermutlich benötigst. Manche häufiger, manche seltener:
+
+### Das Docker-Dashboard (App)
+
+…
+
+### Starten, Stoppen und Verwerfen (`up`, `stop`, `down`)
+
+…
+
+### Updates holen (`pull`)
+
+…
+
+### Images bauen (`build`)
+
+…
+
+### Kommandos im Container ausführen (`exec`)
+
+…
+
+### Container-Logs anschauen (`logs`)
+
+…
+
+### Aufräumen
+
 …
 
 
@@ -216,7 +244,51 @@ Vor dir steht, wenn alles gut gegangen ist, eine fertig eingerichtete Entwicklun
 
 ## Konfiguration anpassen
 
+Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen kannst:
+
+### PHP-Konfiguration anpassen
+
 …
+
+### Apache-Konfiguration anpassen
+
+…
+
+### NGINX statt Apache nutzen
+
+…
+
+### MariaDB statt MySQL nutzen
+
+…
+
+### Nicht benötigte Dienste deaktivieren
+
+…
+
+
+&nbsp;
+
+
+## Dokumentation und ergänzende Links
+
+#### Dokumentation:
+
+* Dokumentation: [Overview](https://docs.docker.com/engine/docker-overview/), [Glossary](https://docs.docker.com/glossary/)
+* Docker Desktop: [Windows](https://docs.docker.com/docker-for-windows/), [Mac](https://docs.docker.com/docker-for-mac/)
+* `docker` [CLI](https://docs.docker.com/engine/reference/commandline/cli/)
+* `docker-compose` [CLI](https://docs.docker.com/compose/reference/overview/)
+* `DOCKERFILE` [Reference](https://docs.docker.com/engine/reference/builder/)
+* `docker-compose.yml` [Reference](https://docs.docker.com/compose/compose-file/)
+
+#### REDAXO-Images:
+
+* REDAXO: [Hub](https://hub.docker.com/r/friendsofredaxo/redaxo), [Git](https://github.com/FriendsOfREDAXO/docker-redaxo), [Recipes](https://github.com/FriendsOfREDAXO/docker-redaxo/tree/master/recipes)
+* Demos: [Hub](https://hub.docker.com/r/friendsofredaxo/demo), [Git](https://github.com/FriendsOfREDAXO/docker-demos)
+
+#### Nützliche Links:
+
+* [How To Remove Docker Images, Containers, and Volumes](https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes): A Docker Cheat Sheet
 
 
 &nbsp;
@@ -224,15 +296,13 @@ Vor dir steht, wenn alles gut gegangen ist, eine fertig eingerichtete Entwicklun
 
 ## Häufige Fragen
 
+#### Warum wird die Demo-Website verwendet und nicht einfach nur ein frisches REDAXO ohne Inhalte?
 
-#### …?
+Aus drei Gründen:
 
-…
-
-
-#### …?
-
-…
+1. Weil man dann schnell mal **Features testen oder Dinge ausprobieren kann**, ohne vorher selbst Inhalte erstellen zu müssen.
+2. Weil mit der Demo-Website ein paar zusätzliche **Themen zu Docker erklärt** werden können (etwa `custom-setup.sh`).
+3. Weil das Setup sehr **einfach angepasst** werden kann: Zeile 1 im Dockerfile ändern in `FROM friendsofredaxo/redaxo:5`, dann bekommst du beim nächsten Build REDAXO ohne Demo-Website.
 
 
 &nbsp;
@@ -240,4 +310,5 @@ Vor dir steht, wenn alles gut gegangen ist, eine fertig eingerichtete Entwicklun
 
 ## Hilfe und Support
 
-Falls du Fragen hast oder Hilfe benötigst, kontakte uns gerne im **Slack-Chat**! Eine Einladung bekommst du hier: [https://redaxo.org/slack/](https://redaxo.org/slack/).
+Falls du (weitere) Fragen hast oder Hilfe benötigst, kontakte uns gerne im **Slack-Chat**!  
+Eine Einladung bekommst du hier: [https://redaxo.org/slack/](https://redaxo.org/slack/).
