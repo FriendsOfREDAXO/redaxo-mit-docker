@@ -210,7 +210,7 @@ Docker bringt eine **grafische Benutzeroberfläche** mit, das Dashboard. Dort si
 
 Die Dokumentation zum Dashboard findest du hier: [Windows](https://docs.docker.com/docker-for-windows/dashboard/), [Mac](https://docs.docker.com/docker-for-mac/dashboard/).
 
-🍄 *Zum Verständnis: (TODO: Logs beim Start)*
+🍄 *Zum Verständnis: Wir haben weiter oben, als die Container erstmalig gestartet sind, die Logs nicht weiter verfolgt. Zukünftig solltest du das tun, denn die wichtigen Dinge passieren oftmals im Container. Das Dashboard ist ein praktisches Werkzeug.*
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_08.png)
 
@@ -221,7 +221,7 @@ Die Dokumentation zum Dashboard findest du hier: [Windows](https://docs.docker.c
 
 	$ docker-compose up -d
 
-**Container stoppen.** Eigentlich eher: pausieren. Sie behalten ihren aktuellen Zustand bei und laufen nahtlos weiter, wenn sie wieder (mittels `up`) gestartet werden:
+**Container stoppen.** Eigentlich eher: pausieren. Sie behalten ihren aktuellen Zustand bei und laufen nahtlos weiter, wenn sie wieder (mittels `up`) gestartet werden. Dieses Kommando benötigst du quasi täglich, wenn du zwischen verschiedenen Docker-Projekten wechselst, oder wenn du die Arbeit beendet hast und die Container anhältst, um auf deinem System Ressourcen zu sparen:
 
 	$ docker-compose stop
 
@@ -342,8 +342,12 @@ Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen
 Aus drei Gründen:
 
 1. Weil man dann schnell mal **Features testen oder Dinge ausprobieren kann**, ohne vorher selbst Inhalte erstellen zu müssen.
-2. Weil mit der Demo-Website ein paar zusätzliche **Themen zu Docker erklärt** werden können (etwa `custom-setup.sh`).
+2. Weil mit der Demo-Website ein paar zusätzliche **Themen zu Docker erklärt** werden können, etwa `custom-setup.sh`.
 3. Weil das Setup sehr **einfach angepasst** werden kann: Zeile 1 im Dockerfile ändern in `FROM friendsofredaxo/redaxo:5`, dann bekommst du beim nächsten Build REDAXO ohne Demo-Website.
+
+#### Kann ich nicht mehrere REDAXO-Projekte mit Docker gleichzeitig laufen lassen?
+
+Doch, das geht, allerdings musst du dann verschiedene Ports für deine Container verwenden, damit es keine Konflikte gibt. Einfacher — vom Verständnis — ist es, die gleichen Ports für alle Projekte zu verwenden und immer nur eines am Laufen zu haben.
 
 
 &nbsp;
