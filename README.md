@@ -200,11 +200,7 @@ Vor dir steht, wenn alles gut gegangen ist, eine fertig eingerichtete Entwicklun
 &nbsp;
 
 
-## Betrieb deiner Container
-
-Ein Überblick der Werkzeuge und der gängigen Konsolen-Kommandos, die du für den Betrieb deiner Container vermutlich benötigst. Manche häufiger, manche seltener:
-
-### Das Dashboard (GUI)
+## Das Dashboard (GUI)
 
 Docker bringt eine **grafische Benutzeroberfläche** mit, das Dashboard. Dort siehst du alle Container, kannst sie starten oder stoppen, kannst dir deren Logs ausgeben lassen — sehr praktisch! —, kannst Einstellungen vornehmen und diverse Details aufrufen.
 
@@ -215,13 +211,15 @@ Die Dokumentation zum Dashboard findest du hier: [Windows](https://docs.docker.c
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_08.png)
 
 
+## Gängige Konsolen-Kommandos
+
 ### Container starten (`up`)
 
 	$ docker-compose up -d
 
 Das `-d` (*detached mode*) ermöglicht, dass deine Container im Hintergrund laufen und nicht stoppen, wenn dein Konsolenprozess beendet wird.
 
-Das Kommando `up` startet nicht nur die Container, sondern ist vielseitiger: Vorm Start werden noch nicht vorliegende Images aus dem Hub geholt (`pull`), noch nicht gebaute Images gebaut (`build`) und bereits gestartete Container neu gestartet (recreate), falls das aufgrund von Anpassungen notwendig ist.
+Das Kommando `up` startet nicht nur die Container, sondern ist vielseitiger: Vorm Start werden noch nicht vorliegende Images aus dem Hub geholt (pull), noch nicht gebaute Images gebaut (build) und bereits gestartete Container neu gestartet (recreate), falls das aufgrund von Anpassungen notwendig ist.
 
 Zu beachten ist allerdings, dass `up` nicht prüft, ob es Updates im Docker Hub gibt.
 
@@ -230,14 +228,14 @@ Zu beachten ist allerdings, dass `up` nicht prüft, ob es Updates im Docker Hub 
 
 	$ docker-compose stop
 
-Stoppt deine Container, so dass sie keine weiteren Systemressourcen benötigten. Sie behalten ihren aktuellen Zustand bei und laufen nahtlos weiter, wenn sie wieder (mittels `up`) gestartet werden.
+Stoppt die Container, so dass sie keine weiteren Systemressourcen benötigten. Sie behalten ihren aktuellen Zustand bei und laufen nahtlos weiter, wenn sie wieder (mittels `up`) gestartet werden.
 
 
 ### Container stoppen und verwerfen (`down`)
 
 	$ docker-compose down
 
-Beachte, dass dabei Daten verloren gehen, sofern sie nicht mit deinem Rechner gesynct werden! Gesynct werden in unserem Setup REDAXO im `html`-Ordner und die Datenbank im `db`-Ordner, diese Daten bleiben also dauerhaft erhalten.
+Beachte, dass dabei Daten verloren gehen, sofern sie nicht mit deinem Rechner synchronisiert werden! Synchronisiert werden in unserem Setup REDAXO im `html`-Ordner und die Datenbank im `db`-Ordner, diese Daten bleiben also dauerhaft erhalten. Solche Ordner nennt Docker übrigens *[bind mounts](https://docs.docker.com/storage/bind-mounts/)*.
 
 Das Kommando `down` benötigst du in der Praxis eher selten, und du solltest es dir lieber *nicht* als Gegenteil von `up` merken, sondern stattdessen `stop` verwenden!
 
@@ -248,7 +246,7 @@ Das Kommando `down` benötigst du in der Praxis eher selten, und du solltest es 
 
 Aktualisiert die Images für alle Services innerhalb der `docker-compose.yml`.
 
-Leider werden Images im `Dockerfile` nicht beachtet. Das bedeutet für uns, dass das **Image mit der Demo-Website** nicht aktualisiert wird.  Das müssen wir manuell erledigen, in diesem Fall nicht mittels `docker-compose`, sondern mittels `docker`:
+Leider werden Images im `Dockerfile` nicht beachtet. Das bedeutet für uns, dass das **Image mit der Demo-Website** nicht aktualisiert wird. Das müssen wir manuell erledigen, in diesem Fall nicht mittels `docker-compose`, sondern mittels `docker`:
 
 	$ docker pull friendsofredaxo/demo:base
 
@@ -261,31 +259,53 @@ Es kommt aber noch hinzu, dass damit nicht automatisch auch das **REDAXO-Image**
 
 	$ docker-compose build
 
-…
+Wenn du Anpassungen an einem Image vornimmst, konkret also, wenn du das `Dockerfile` oder Dateien innerhalb des Build-Ordners änderst, musst du das Image neu bauen, damit die Änderungen wirksam werden.
 
 
 ### Kommandos im Container ausführen (`exec`)
 
 	$ docker-compose exec redaxo /bin/bash
 
-…
+Dieses Zeile öffnet eine Bash Shell im `redaxo`-Container. Du kannst mittels `exec` auch andere Kommandos ausführen, aber die Shell ist das, was du vermutlich sehr häufig benötigen wirst, um z. B. REDAXO über die Konsole zu bedienen.
 
 
 ### Aufräumen (`prune`)
 
 	$ docker system prune
 
-Docker benötigt viel Platz. Im Laufe der Zeit können sich einige Images oder vergessene Container auf deinem Rechner ansammeln, die nicht mehr benötigt werden.
-
-Dieses Kommando löscht alle Daten, die keinem Container mehr zugeordnet sind, und du kannst es bedenkenlos ausführen, um Platz zu schaffen:
+Docker benötigt viel Platz. Im Laufe der Zeit können sich einige Images oder vergessene Container auf deinem Rechner ansammeln, die nicht mehr benötigt werden. Dieses Kommando löscht alle Daten, die keinem Container mehr zugeordnet sind, und du kannst es bedenkenlos ausführen, um Platz zu schaffen.
 
 
 &nbsp;
 
 
-## REDAXO-Images im Docker Hub
+## Daten speichern und versionieren
 
-…
+Sobald du dieses Setup erstmalig gestartet hast, wirst du zwei neue Ordner `db` und `html` vorfinden:
+
+![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_09.png)
+
+### *Bind Mounts:* Synchronisierte Daten
+
+Diese Ordner werden von Docker angelegt, weil wir in der `docker-compose.yml` sogenannte *[bind mounts](https://docs.docker.com/storage/bind-mounts/)* definieren, um Daten vom Host-System (dein Computer) in die Container zu *mounten*. Das bedeutet, dass die Inhalte dieser Ordner mit denen innerhalb der Container **synchronisiert** werden: Sobald Änderungen passieren, egal ob lokal oder im Container, werden diese unmittelbar an die jeweils andere Stelle durchgegeben.
+
+Wir verwenden den `db`-Ordner, um darin die **Datenbank** zu speichern. Wir *persistieren* damit die Datenbank auf dem Host-System, halten sie also dauerhaft vor, auch wenn die Container mal entfernt werden sollten.
+
+Der `html`-Ordner wird ins Root-Verzeichnis des Webservers *gemounted*, was konkret bedeutet: Er enthält **REDAXO**, das während des Setups automatisch von Docker installiert und mit der Website-Demo bestückt wird.
+
+### Versionierung mittels Git
+
+Dein Projektordner enthält alle notwendigen Daten, die du zum Betrieb des Projekts benötigst:
+
+1. REDAXO
+2. Die Datenbank
+3. Die Docker-Konfiguration, und damit also die komplette Serverumgebung! 🔥
+
+Sinnvoll ist, **alles außer der Datenbank** im Git zu versionieren. Die Datenbank eignet sich nicht dafür, und sie enthält außerdem sensible Daten, die nicht in ein Repository wandern sollten.
+
+In diesem Projekt ist bereits eine `.gitignore` enthalten, die du für die Praxis übernehmen kannst. Sie ignoriert den Datenbank-Ordner und auch ein paar Ressourcen im REDAXO-Ordner, die nicht versioniert werden sollten, etwa die Konfiguration (sensible Daten!), den Cache (nicht sinnvoll!) und den Media-Ordner (zu groß!).
+
+Als Ergebnis, um das nochmal zu sagen, hast du ein Projekt-Repository, in dem alle relevanten Daten enthalten sind. Und falls ihr im Team arbeitet, benutzen alle das gleiche Setup!
 
 
 &nbsp;
