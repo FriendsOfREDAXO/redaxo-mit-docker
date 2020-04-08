@@ -215,57 +215,69 @@ Die Dokumentation zum Dashboard findest du hier: [Windows](https://docs.docker.c
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_08.png)
 
 
-### Starten, Stoppen und Verwerfen (`up`, `stop`, `down`)
-
-**Container starten** und im Hintergrund weiterlaufen lassen (`-d` für *detached mode*). Ohne das `-d` ist deine Konsole für weitere Aktionen blockiert, und sobald du den Prozess beendest, stoppen auch deine Container:
+### Container starten (`up`)
 
 	$ docker-compose up -d
 
-**Container stoppen.** Eigentlich eher: pausieren. Sie behalten ihren aktuellen Zustand bei und laufen nahtlos weiter, wenn sie wieder (mittels `up`) gestartet werden. Dieses Kommando benötigst du quasi täglich, wenn du zwischen verschiedenen Docker-Projekten wechselst, oder wenn du die Arbeit beendet hast und die Container anhältst, um auf deinem System Ressourcen zu sparen:
+Das `-d` (*detached mode*) ermöglicht, dass deine Container im Hintergrund laufen und nicht stoppen, wenn dein Konsolenprozess beendet wird.
+
+Das Kommando `up` startet nicht nur die Container, sondern ist vielseitiger: Vorm Start werden noch nicht vorliegende Images aus dem Hub geholt (`pull`), noch nicht gebaute Images gebaut (`build`) und bereits gestartete Container neu gestartet (recreate), falls das aufgrund von Anpassungen notwendig ist.
+
+Zu beachten ist allerdings, dass `up` nicht prüft, ob es Updates im Docker Hub gibt.
+
+
+### Container stoppen (`stop`)
 
 	$ docker-compose stop
 
-**Container stoppen und entfernen.** Daten gehen dabei verloren, sofern sie nicht mit deinem Rechner gesynct werden, so wie REDAXO im `html`-Ordner und die Datenbank im `db`-Ordner. Dieses Kommando brauchst du in der Praxis eher selten:
+Stoppt deine Container, so dass sie keine weiteren Systemressourcen benötigten. Sie behalten ihren aktuellen Zustand bei und laufen nahtlos weiter, wenn sie wieder (mittels `up`) gestartet werden.
+
+
+### Container stoppen und verwerfen (`down`)
 
 	$ docker-compose down
 
-&nbsp;
+Beachte, dass dabei Daten verloren gehen, sofern sie nicht mit deinem Rechner gesynct werden! Gesynct werden in unserem Setup REDAXO im `html`-Ordner und die Datenbank im `db`-Ordner, diese Daten bleiben also dauerhaft erhalten.
+
+Das Kommando `down` benötigst du in der Praxis eher selten, und du solltest es dir lieber *nicht* als Gegenteil von `up` merken, sondern stattdessen `stop` verwenden!
+
 
 ### Updates holen (`pull`)
 
-…
-
 	$ docker-compose pull
 
-…
+Aktualisiert die Images für alle Services innerhalb der `docker-compose.yml`.
+
+Leider werden Images im `Dockerfile` nicht beachtet. Das bedeutet für uns, dass das **Image mit der Demo-Website** nicht aktualisiert wird.  Das müssen wir manuell erledigen, in diesem Fall nicht mittels `docker-compose`, sondern mittels `docker`:
+
+	$ docker pull friendsofredaxo/demo:base
+
+Es kommt aber noch hinzu, dass damit nicht automatisch auch das **REDAXO-Image** aktualisiert wird, auf das die Demo aufsetzt. Auch das müssen wir manuell pullen:
 
 	$ docker pull friendsofredaxo/redaxo:5
-
-&nbsp;
+	
 
 ### Images bauen (`build`)
 
-…
-
 	$ docker-compose build
 
-&nbsp;
+…
+
 
 ### Kommandos im Container ausführen (`exec`)
 
-…
-
 	$ docker-compose exec redaxo /bin/bash
 
-&nbsp;
+…
+
 
 ### Aufräumen (`prune`)
+
+	$ docker system prune
 
 Docker benötigt viel Platz. Im Laufe der Zeit können sich einige Images oder vergessene Container auf deinem Rechner ansammeln, die nicht mehr benötigt werden.
 
 Dieses Kommando löscht alle Daten, die keinem Container mehr zugeordnet sind, und du kannst es bedenkenlos ausführen, um Platz zu schaffen:
-
-	$ docker system prune
 
 
 &nbsp;
