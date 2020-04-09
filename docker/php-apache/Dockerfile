@@ -1,0 +1,65 @@
+FROM php:7.3-apache
+
+# copy custom configs
+COPY php.ini /usr/local/etc/php/
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
+COPY msmtprc /etc/msmtprc
+COPY .mailrc ~/.mailrc
+
+# generate SSL cert for testing purposes
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -subj "/CN=localhost"
+
+# enable apache modules
+RUN a2enmod expires headers rewrite ssl
+RUN a2ensite default-ssl
+
+# use noninteractive frontend to install extionsions
+# http://manpages.org/debconf/
+ENV DEBIAN_FRONTEND noninteractive
+
+# install extensions
+RUN apt-get update -q && apt-get install -qy \
+       libfreetype6-dev \
+       libjpeg62-turbo-dev \
+       libmcrypt-dev \
+       libpng-dev \
+       libzip-dev \
+       msmtp \
+       msmtp-mta \
+       unzip \
+       dos2unix \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd pdo_mysql zip \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# decide which REDAXO version to use
+# generate checksum like this: `curl -Ls https://github.com/redaxo/redaxo/releases/download/5.6.4/redaxo_5.6.4.zip | shasum`
+ENV REDAXO_VERSION=5.8.1 REDAXO_SHA=4f5175cdb55226e4f3fd8a34688e4199c9731062
+
+# fetch REDAXO, validate checksum and extract to tmp folder
+RUN set -e; \
+    mkdir /tmp/redaxo; \
+    curl -Ls -o /tmp/redaxo/redaxo_${REDAXO_VERSION}.zip https://github.com/redaxo/redaxo/releases/download/${REDAXO_VERSION}/redaxo_${REDAXO_VERSION}.zip; \
+    echo "${REDAXO_SHA} */tmp/redaxo/redaxo_${REDAXO_VERSION}.zip" | shasum -c -a 256; \
+    unzip -oq /tmp/redaxo/redaxo_${REDAXO_VERSION}.zip -d /tmp/redaxo/src; \
+    rm -f /tmp/redaxo/redaxo_${REDAXO_VERSION}.zip;
+
+# copy REDAXO configs and helpers
+COPY default.config.yml demos.yml docker-redaxo.php /tmp/redaxo/
+
+# copy REDAXO setup script and run setup
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN dos2unix /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+
+# start apache
+CMD ["apache2-foreground"]
+
+# enable blackfire
+RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
+    && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$version \
+    && mkdir -p /tmp/blackfire \
+    && tar zxpf /tmp/blackfire-probe.tar.gz -C /tmp/blackfire \
+    && mv /tmp/blackfire/blackfire-*.so $(php -r "echo ini_get ('extension_dir');")/blackfire.so \
+    && printf "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707\n" > $PHP_INI_DIR/conf.d/blackfire.ini \
+    && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz

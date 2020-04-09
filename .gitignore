@@ -1,0 +1,12 @@
+# database
+db/*
+!db/.gitkeep
+
+# redaxo config
+html/redaxo/data/core/config.yml
+
+# redaxo cache folder
+html/redaxo/cache
+
+# redaxo media files (except in subfolders)
+html/media/*.*
