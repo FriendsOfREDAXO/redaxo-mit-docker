@@ -1,4 +1,4 @@
-<p align="right">🌎 <a href="https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/master/README.de.md">Deutsch</a></p>
+<p align="right">🌎 <a href="https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/version-1/README.de.md">Deutsch</a></p>
 
 # REDAXO with Docker 🐳
 
