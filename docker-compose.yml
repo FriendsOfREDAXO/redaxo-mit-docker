@@ -1,10 +1,8 @@
 version: "3"
 services:
 
-  web:
-    container_name: redaxodocker
-    hostname: redaxodocker
-    build: ./docker/php-apache              # location for web server dockerfile and config
+  redaxo:
+    build: ./docker/redaxo                  # build folder for redaxo image
     ports:
       - 20080:80                            # web server will use port 20080 for http
       - 20443:443                           # web server will use port 20443 for https
@@ -12,21 +10,23 @@ services:
       - ./html:/var/www/html:cached         # webroot `/var/www/html` will be synced with your local folder `./html`
     depends_on:
       - db
-      - mailhog
-    links:
-      - db
-      - mailhog
     environment:
-      REDAXO_USER: admin                    # username of your new REDAXO admin
-      REDAXO_PASSWORD: admin                # password of your new REDAXO admin
-      REDAXO_DEMO: demo_base                # website demo to be installed. leave empty for a raw REDAXO!
+      REDAXO_SERVER: http://localhost:20080
+      REDAXO_SERVERNAME: REDAXO
+      REDAXO_ERROR_EMAIL: mail@you.example
+      REDAXO_LANG: de_de
+      REDAXO_TIMEZONE: Europe/London
+      REDAXO_DB_HOST: db                    # database container name
+      REDAXO_DB_NAME: redaxo
+      REDAXO_DB_LOGIN: redaxo
+      REDAXO_DB_PASSWORD: redaxo
+      REDAXO_DB_CHARSET: utf8mb4
+      REDAXO_ADMIN_USER: admin
+      REDAXO_ADMIN_PASSWORD: admin123
 
   db:
-    container_name: redaxodocker_db
-    hostname: redaxodocker_db
-    build: ./docker/mysql                   # location for database dockerfile and config
-    ports:
-      - 23306:3306                          # database will use port 23306
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
       - ./db:/var/lib/mysql:cached          # database in `/var/lib/mysql` will be synced with your local folder `./db`
     environment:
@@ -35,20 +35,29 @@ services:
       MYSQL_PASSWORD: redaxo
       MYSQL_RANDOM_ROOT_PASSWORD: "yes"
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 28080:80
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_USER: redaxo
+      PMA_PASSWORD: redaxo
+      UPLOAD_LIMIT: 256M
+
   mailhog:
-    container_name: redaxodocker_mailhog
-    hostname: redaxodocker_mailhog
-    build: ./docker/mailhog                 # location for mailhog dockerfile and config
+    image: mailhog/mailhog
     ports:
       - 1025:1025                           # mailhog will use port 1025 (for smtp)
       - 28025:8025                          # mailhog will use port 28025 (for its web interface)
-      
+
   blackfire:
-    container_name: redaxo_blackfire
-    hostname: redaxo_blackfire
     image: blackfire/blackfire
     environment:
-      BLACKFIRE_CLIENT_ID: BLACKFIRE_CLIENT_ID          #replace with credentials found on https://blackfire.io/my/settings/credentials
-      BLACKFIRE_CLIENT_TOKEN: BLACKFIRE_CLIENT_TOKEN    #replace with credentials found on https://blackfire.io/my/settings/credentials
-      BLACKFIRE_SERVER_ID: BLACKFIRE_SERVER_ID          #replace with credentials found on https://blackfire.io/my/settings/credentials
-      BLACKFIRE_SERVER_TOKEN: BLACKFIRE_SERVER_TOKEN    #replace with credentials found on https://blackfire.io/my/settings/credentials
+      # replace with credentials found on https://blackfire.io/my/settings/credentials
+      BLACKFIRE_CLIENT_ID:
+      BLACKFIRE_CLIENT_TOKEN:
+      BLACKFIRE_SERVER_ID:
+      BLACKFIRE_SERVER_TOKEN:

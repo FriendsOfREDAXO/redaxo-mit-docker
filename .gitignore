@@ -1,6 +1,5 @@
 # database
-db/*
-!db/.gitkeep
+db
 
 # redaxo config
 html/redaxo/data/core/config.yml
@@ -10,3 +9,6 @@ html/redaxo/cache
 
 # redaxo media files (except in subfolders)
 html/media/*.*
+
+# diverse
+.idea
