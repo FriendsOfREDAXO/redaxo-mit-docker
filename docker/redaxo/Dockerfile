@@ -13,6 +13,10 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private
 RUN a2enmod expires headers rewrite ssl
 RUN a2ensite default-ssl
 
+# use noninteractive frontend to install extionsions
+# http://manpages.org/debconf/
+ENV DEBIAN_FRONTEND noninteractive
+
 # install extensions
 RUN apt-get update -q && apt-get install -qy \
        msmtp \
