@@ -13,6 +13,12 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private
 RUN a2enmod expires headers rewrite ssl
 RUN a2ensite default-ssl
 
+# install extensions
+RUN apt-get update -q && apt-get install -qy \
+       msmtp \
+       msmtp-mta \
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # enable blackfire
 RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && curl -A "Docker" -o /tmp/blackfire-probe.tar.gz -D - -L -s https://blackfire.io/api/v1/releases/probe/php/linux/amd64/$version \
