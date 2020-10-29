@@ -18,6 +18,49 @@ _Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet s
 &nbsp;
 
 
+<a name="toc"></a>
+<details>
+<summary><b>Inhaltsverzeichnis aufklappen</b></summary>
+
+- [Einleitung](#einleitung)
+- [Technische Anforderungen](#anforderungen)
+- [Installation](#installation)
+	- [Schritt 1: Bereite deinen Projektordner vor](#installation-1)
+	- [Schritt 2: Richte Docker auf deinem System ein](#installation-2)
+	- [Schritt 3: Starte das Projekt!](#installation-3)
+- [Images und Container](#images-und-container)
+	- [1. Pull](#images-und-container-1)
+	- [2. Build](#images-und-container-2)
+	- [3. Up (Start)](#images-und-container-3)
+- [Container: Einrichtung nach dem Start](#container-einrichtung)
+	- [Datenbank](#container-einrichtung-datenbank)
+	- [REDAXO](#container-einrichtung-redaxo)
+- [Das Dashboard (GUI)](#dashboard)
+- [Gängige Konsolen-Kommandos](#konsole)
+	- [Container starten (`up`)](#konsole-up)
+	- [Container stoppen (`stop`)](#konsole-stop)
+	- [Container stoppen und verwerfen (`down`)](#konsole-down)
+	- [Updates holen (`pull`)](#konsole-pull)
+	- [Images bauen (`build`)](#konsole-build)
+	- [Kommandos im Container ausführen (`exec`)](#konsole-exec)
+	- [Aufräumen (`prune`)](#konsole-prune)
+- [Daten speichern und versionieren](#speichern-und-versionieren)
+	- [*Bind Mounts:* Synchronisierte Daten](#speichern-und-versionieren-bind-mounts)
+	- [Versionierung mittels Git](#speichern-und-versionieren-git)
+- [Konfiguration anpassen](#konfiguration)
+	- [PHP-Konfiguration anpassen](#konfiguration-php)
+	- [Apache-Konfiguration anpassen](#konfiguration-apache)
+	- [NGINX statt Apache nutzen](#konfiguration-nginx)
+	- [MariaDB statt MySQL nutzen](#konfiguration-mariadb)
+	- [Nicht benötigte Dienste deaktivieren](#konfiguration-dienste-deaktivieren)
+- [Dokumentation und ergänzende Links](#doku-und-links)
+- [Häufige Fragen](#faq)
+- [Hilfe und Support](#support)
+
+</details>
+
+
+<a name="einleitung"></a>
 ## Einleitung
 
 Dieses Setup stellt dir und deinem Team für jedes eurer REDAXO-Projekte eine flexible Entwicklungsumgebung (Apache, PHP, MySQL) bereit. Dafür kommt [Docker](https://de.wikipedia.org/wiki/Docker_(Software)) zum Einsatz, und das funktioniert so ähnlich wie eine *Virtuelle Maschine*, benötigt aber viel weniger Ressourcen.
@@ -36,6 +79,7 @@ Deine Projektdaten bleiben dauerhaft auf deinem Computer erhalten und können wi
 &nbsp;
 
 
+<a name="anforderungen"></a>
 ## Technische Anforderungen
 
 Du benötigst **zwei Bauteile**, um dieses Projekt zum Laufen zu bringen:
@@ -50,22 +94,26 @@ Das zweite Bauteil, was du benötigst, ist **Docker** selbst, sozusagen die Masc
 &nbsp;
 
 
+<a name="installation"></a>
 ## Installation
 
 Wenn du erstmalig mit Docker arbeitest, sind dies die 3 Schritte, die du ausführen musst, um das Projekt zum Laufen zu bringen:
 
+<a name="installation-1"></a>
 ### Schritt 1: Bereite deinen Projektordner vor
 
 Vielleicht hast du diesen Schritt bereits erledigt, wenn du dies liest. Falls nicht: Lade den Inhalt dieses Git-Repos runter und speichere ihn in einen passenden Ordner auf deinem Computer.
 
 Tipp: Es bietet sich an, einen gemeinsamen »Projektordner« anzulegen, in dem du deine Projekte jeweils in Unterordnern ablegst.
 
+<a name="installation-2"></a>
 ### Schritt 2: Richte Docker auf deinem System ein
 
 Lade [Docker Desktop](https://www.docker.com/products/docker-desktop) runter, wenn du Windows oder Mac benutzt. Linux-Nutzer benötigen die [Docker-Engine](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux) als kostenlose Community-Edition.
 
 Nach der Installation startest du das Programm. An den Einstellungen muss normalerweise nichts geändert werden, allerdings musst du den Projektordner für Docker freigeben (Preferences > Resources > **File Sharing**).
 
+<a name="installation-3"></a>
 ### Schritt 3: Starte das Projekt!
 
 Docker bedienst du am besten auf der **Kommandozeile**. Zwar kannst du auch im grafischen Dashboard, das du eben für die Einstellungen aufgerufen hast, Container starten und stoppen. Besser ist jedoch, du gewöhnst dich von Anfang an an die Kommandozeile.
@@ -80,10 +128,12 @@ Und dort startest du deine Container! 🚀
 &nbsp;
 
 
+<a name="images-und-container"></a>
 ## Images und Container
 
 Was nun passiert, nachdem du `docker-compose up -d` aufgerufen hast:
 
+<a name="images-und-container-1"></a>
 ### 1. Pull
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_02.png)
@@ -106,6 +156,7 @@ Docker wird nun auch dieses Image runterladen (»pull«).
 
 &nbsp;
 
+<a name="images-und-container-2"></a>
 ### 2. Build
 
 Alle Images aus dem Hub liegen nun lokal vor, und die vier aus unserer `docker-compose.yml` verwenden wir ohne Anpassungen so, wie sie aus dem Hub kommen. Sie sind bereits fertig *gebaut*, denn das Bauen und Verteilen ist die Aufgabe des Docker Hubs.
@@ -126,6 +177,7 @@ Aus dem Image der Demo-Website und unseren Anpassungen muss nun ein neues Image 
 
 &nbsp;
 
+<a name="images-und-container-3"></a>
 ### 3. Up (Start)
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_05.png)
@@ -150,6 +202,7 @@ An dieser Stelle ist unser Setup nun fast vollständig. Alle *Services* sind in 
 &nbsp;
 
 
+<a name="container-einrichtung"></a>
 ## Container: Einrichtung nach dem Start
 
 Oftmals müssen Services noch weiter eingerichtet werden, sobald ihr Container gestartet worden ist. Für diesen Zweck gibt es im `Dockerfile` die beiden Werkzeuge [`CMD`](https://docs.docker.com/engine/reference/builder/#cmd) und [`ENTRYPOINT`](https://docs.docker.com/engine/reference/builder/#entrypoint). Deren Anwendung und Unterschiede sind nicht ganz einfach zu verstehen, aber es reicht hier zu wissen, dass sie benutzt werden, um Kommandos oder Skripte **innerhalb des Containers** auszuführen, wenn diese starten.
@@ -157,6 +210,7 @@ Oftmals müssen Services noch weiter eingerichtet werden, sobald ihr Container g
 🍄 *Zum Verständnis: In deiner Konsole passiert jetzt nichts mehr. Die ist fertig, und der Cursor blinkt. Alle nachfolgenden Prozesse finden innerhalb der Container statt, und es wird später noch erkärt, wie du damit umgehst!*
 
 
+<a name="container-einrichtung-datenbank"></a>
 ### Datenbank
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_06.png)
@@ -169,6 +223,7 @@ Der MySQL-Dienst beginnt nun also, eine frische Datenbank `redaxo` einzurichten,
 
 &nbsp;
 
+<a name="container-einrichtung-redaxo"></a>
 ### REDAXO
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_07.png)
@@ -200,6 +255,7 @@ Vor dir steht, wenn alles gut gegangen ist, eine fertig eingerichtete Entwicklun
 &nbsp;
 
 
+<a name="dashboard"></a>
 ## Das Dashboard (GUI)
 
 Docker bringt eine **grafische Benutzeroberfläche** mit, das Dashboard. Dort siehst du alle Container, kannst sie starten oder stoppen, kannst dir deren Logs ausgeben lassen — sehr praktisch! —, kannst Einstellungen vornehmen und diverse Details aufrufen.
@@ -211,8 +267,10 @@ Die Dokumentation zum Dashboard findest du hier: [Windows](https://docs.docker.c
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_08.png)
 
 
+<a name="konsole"></a>
 ## Gängige Konsolen-Kommandos
 
+<a name="konsole-up"></a>
 ### Container starten (`up`)
 
 	$ docker-compose up -d
@@ -224,6 +282,7 @@ Das Kommando `up` startet nicht nur die Container, sondern ist vielseitiger: Vor
 Zu beachten ist allerdings, dass `up` nicht prüft, ob es Updates im Docker Hub gibt.
 
 
+<a name="konsole-stop"></a>
 ### Container stoppen (`stop`)
 
 	$ docker-compose stop
@@ -231,6 +290,7 @@ Zu beachten ist allerdings, dass `up` nicht prüft, ob es Updates im Docker Hub 
 Stoppt die Container, so dass sie keine weiteren Systemressourcen benötigten. Sie behalten ihren aktuellen Zustand bei und laufen nahtlos weiter, wenn sie wieder (mittels `up`) gestartet werden.
 
 
+<a name="konsole-down"></a>
 ### Container stoppen und verwerfen (`down`)
 
 	$ docker-compose down
@@ -240,6 +300,7 @@ Beachte, dass dabei Daten verloren gehen, sofern sie nicht mit deinem Rechner sy
 Das Kommando `down` benötigst du in der Praxis eher selten, und du solltest es dir lieber *nicht* als Gegenteil von `up` merken, sondern stattdessen `stop` verwenden!
 
 
+<a name="konsole-pull"></a>
 ### Updates holen (`pull`)
 
 	$ docker-compose pull
@@ -255,6 +316,7 @@ Es kommt aber noch hinzu, dass damit nicht automatisch auch das **REDAXO-Image**
 	$ docker pull friendsofredaxo/redaxo:5
 	
 
+<a name="konsole-build"></a>
 ### Images bauen (`build`)
 
 	$ docker-compose build
@@ -262,6 +324,7 @@ Es kommt aber noch hinzu, dass damit nicht automatisch auch das **REDAXO-Image**
 Wenn du Anpassungen an einem Image vornimmst, konkret also, wenn du das `Dockerfile` oder Dateien innerhalb des Build-Ordners änderst, musst du das Image neu bauen, damit die Änderungen wirksam werden.
 
 
+<a name="konsole-exec"></a>
 ### Kommandos im Container ausführen (`exec`)
 
 	$ docker-compose exec redaxo /bin/bash
@@ -269,6 +332,7 @@ Wenn du Anpassungen an einem Image vornimmst, konkret also, wenn du das `Dockerf
 Dieses Zeile öffnet eine Bash Shell im `redaxo`-Container. Du kannst mittels `exec` auch andere Kommandos ausführen, aber die Shell ist das, was du vermutlich sehr häufig benötigen wirst, um z. B. REDAXO über die Konsole zu bedienen.
 
 
+<a name="konsole-prune"></a>
 ### Aufräumen (`prune`)
 
 	$ docker system prune
@@ -279,12 +343,14 @@ Docker benötigt viel Platz. Im Laufe der Zeit können sich einige Images oder v
 &nbsp;
 
 
+<a name="speichern-und-versionieren"></a>
 ## Daten speichern und versionieren
 
 Sobald du dieses Setup erstmalig gestartet hast, wirst du zwei neue Ordner `db` und `html` vorfinden:
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_09.png)
 
+<a name="speichern-und-versionieren-bind-mounts"></a>
 ### *Bind Mounts:* Synchronisierte Daten
 
 Diese Ordner werden von Docker angelegt, weil wir in der `docker-compose.yml` sogenannte *[bind mounts](https://docs.docker.com/storage/bind-mounts/)* definieren, um Daten vom Host-System (dein Computer) in die Container zu *mounten*. Das bedeutet, dass die Inhalte dieser Ordner mit denen innerhalb der Container **synchronisiert** werden: Sobald Änderungen passieren, egal ob lokal oder im Container, werden diese unmittelbar an die jeweils andere Stelle durchgegeben.
@@ -293,6 +359,7 @@ Wir verwenden den `db`-Ordner, um darin die **Datenbank** zu speichern. Wir *per
 
 Der `html`-Ordner wird ins Root-Verzeichnis des Webservers *gemounted*, was konkret bedeutet: Er enthält **REDAXO**, das während des Setups automatisch von Docker installiert und mit der Website-Demo bestückt wird.
 
+<a name="speichern-und-versionieren-git"></a>
 ### Versionierung mittels Git
 
 Dein Projektordner enthält alle notwendigen Daten, die du zum Betrieb des Projekts benötigst:
@@ -311,30 +378,36 @@ Als Ergebnis, um das nochmal zu sagen, hast du ein Projekt-Repository, in dem al
 &nbsp;
 
 
+<a name="konfiguration"></a>
 ## Konfiguration anpassen
 
 Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen kannst:
 
+<a name="konfiguration-php"></a>
 ### PHP-Konfiguration anpassen
 
 …
 
 
+<a name="konfiguration-apache"></a>
 ### Apache-Konfiguration anpassen
 
 …
 
 
+<a name="konfiguration-nginx"></a>
 ### NGINX statt Apache nutzen
 
 …
 
 
+<a name="konfiguration-mariadb"></a>
 ### MariaDB statt MySQL nutzen
 
 …
 
 
+<a name="konfiguration-dienste-deaktivieren"></a>
 ### Nicht benötigte Dienste deaktivieren
 
 …
@@ -343,6 +416,7 @@ Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen
 &nbsp;
 
 
+<a name="doku-und-links"></a>
 ## Dokumentation und ergänzende Links
 
 #### Dokumentation:
@@ -367,6 +441,7 @@ Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen
 &nbsp;
 
 
+<a name="faq"></a>
 ## Häufige Fragen
 
 #### Warum wird die Demo-Website verwendet und nicht einfach nur ein frisches REDAXO ohne Inhalte?
@@ -385,6 +460,7 @@ Doch, das geht, allerdings musst du dann verschiedene Ports für deine Container
 &nbsp;
 
 
+<a name="support"></a>
 ## Hilfe und Support
 
 Falls du (weitere) Fragen hast oder Hilfe benötigst, kontakte uns gerne im **Slack-Chat**!  
