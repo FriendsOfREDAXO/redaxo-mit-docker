@@ -54,7 +54,7 @@ services:
       - 28025:8025                          # mailhog will use port 28025 (for its web interface)
 
   blackfire:
-    image: blackfire/blackfire
+    image: blackfire/blackfire:2
     environment:
       # replace with credentials found on https://blackfire.io/my/settings/credentials
       BLACKFIRE_CLIENT_ID:
