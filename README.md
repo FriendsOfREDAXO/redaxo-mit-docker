@@ -235,7 +235,7 @@ In der `docker-compose.yml` befinden sich einige **Environment-Variablen** für 
 Ohne zu viele Details anzubringen, passiert nun etwa folgendes — vorher tief Luft holen:
 
 1. Das von uns verwendete **Image mit der Demo-Website** nutzt keinen eigenen `ENTRYPOINT`, führt also keine Kommandos oder Skripte beim Start des Containers aus.
-2. Das Image benutzt als Basis das **REDAXO-Image** — Zeile 1 im Dockerfile: `FROM friendsofredaxo/redaxo:5` —, und das nutzt als `ENTRYPOINT` ein Shell-Skript namens [`docker-entrypoint.sh`](https://github.com/FriendsOfREDAXO/docker-redaxo/blob/master/php7.4/apache/docker-entrypoint.sh). Dieses Skript wird nun ausgeführt.
+2. Das Image benutzt als Basis das **REDAXO-Image** — Zeile 1 im [Dockerfile](https://github.com/FriendsOfREDAXO/docker-demos/blob/master/base/Dockerfile): `FROM friendsofredaxo/redaxo:5` —, und dieses nutzt als `ENTRYPOINT` ein Shell-Skript namens [`docker-entrypoint.sh`](https://github.com/FriendsOfREDAXO/docker-redaxo/blob/master/php7.4/apache/docker-entrypoint.sh). Dieses Skript wird nun ausgeführt.
 3. Das Skript prüft als erstes, ob das Root-Verzeichnis des Webservers leer ist. Ist dies der Fall, wird **REDAXO hinein kopiert**.
 4. Anschließend prüft es in einer Schleife mit 5 Sekunden Abstand immer wieder, ob die **Datenbank fertig eingerichtet** ist.
 5. Sobald die Datenbank bereit steht, wird **REDAXO installiert**. Mit Hilfe der Konsolen-Kommandos übrigens, die REDAXO seit 5.9 anbietet. 🤖
