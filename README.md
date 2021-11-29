@@ -13,6 +13,7 @@ _Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet s
 - **PhpMyAdmin** zur Datenbank-Verwaltung
 - **Mailhog** zum Testen des E-Mail-Versands
 - **Blackfire** zur Performance-Analyse
+- **Composer** zur Paketverwaltung
 
 
 &nbsp;
@@ -169,6 +170,7 @@ In Zeile 1 wird also mittels `FROM` das Image mit der Demo-Website als Basis ang
 * Es wird ein **SSL-Testzertifikat** angelegt
 * Es werden weitere **Apache-Module** aktiviert
 * Es wird **Blackfire** aktiviert (Ein Dienst zur Performance-Analyse)
+* Es wird **Composer** installiert
 * Am Ende wird der **Apache**-Webserver gestartet 
 
 Aus dem Image der Demo-Website und unseren Anpassungen muss nun ein neues Image *gebaut* werden. Docker erkennt, dass dies noch nicht geschehen ist, und startet deshalb einen **Build**-Prozess.

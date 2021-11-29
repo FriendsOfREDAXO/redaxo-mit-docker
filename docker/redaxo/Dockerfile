@@ -33,5 +33,8 @@ RUN version=$(php -r "echo PHP_MAJOR_VERSION.PHP_MINOR_VERSION;") \
     && printf "extension=blackfire.so\nblackfire.agent_socket=tcp://blackfire:8707\n" > $PHP_INI_DIR/conf.d/blackfire.ini \
     && rm -rf /tmp/blackfire /tmp/blackfire-probe.tar.gz
 
+# install composer
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
 # start apache
 CMD ["apache2-foreground"]
