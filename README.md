@@ -139,7 +139,7 @@ Was nun passiert, nachdem du `docker-compose up -d` aufgerufen hast:
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_02.png)
 
-Docker erkennt, dass du in deiner `docker-compose.yml` verschiedene **Images** angegeben hast, z. B. für die Datenbank `image: mysql:8` oder für Mailhog `image: mailhog/mailhog`. Weil diese auf deinem Rechner noch nicht vorliegen, wird Docker sie nun für dich besorgen, und zwar aus dem [Docker Hub](https://hub.docker.com/). Das ist die offizielle *Registry* und damit sowas wie [npm](https://www.npmjs.com/) für JavaScript oder Composers [Packagist](https://packagist.org/) für PHP.
+Docker erkennt, dass du in deiner [`docker-compose.yml`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker-compose.yml) verschiedene **Images** angegeben hast, z. B. für die Datenbank `image: mysql:8` oder für Mailhog `image: mailhog/mailhog`. Weil diese auf deinem Rechner noch nicht vorliegen, wird Docker sie nun für dich besorgen, und zwar aus dem [Docker Hub](https://hub.docker.com/). Das ist die offizielle *Registry* und damit sowas wie [npm](https://www.npmjs.com/) für JavaScript oder Composers [Packagist](https://packagist.org/) für PHP.
 
 &nbsp;
 
@@ -151,7 +151,7 @@ Docker erkennt außerdem, dass ganz oben in der `docker-compose.yml` unter »ser
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_04.png)
 
-Wenn du dir das besagte `Dockerfile` anschaust, findest du in der ersten Zeile ein `FROM friendsofredaxo/demo:base`. Das wiederum ist erneut der Hinweis auf ein Image aus dem Docker Hub, nämlich die **Demo-Website** von Friends Of REDAXO — Unser eigenes Image! 🙌  
+Wenn du dir das besagte [`Dockerfile`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile) anschaust, findest du in der ersten Zeile ein `FROM friendsofredaxo/demo:base`. Das wiederum ist erneut der Hinweis auf ein Image aus dem Docker Hub, nämlich die **Demo-Website** von Friends Of REDAXO — Unser eigenes Image! 🙌  
 
 Docker wird nun auch dieses Image runterladen (»pull«).
 
