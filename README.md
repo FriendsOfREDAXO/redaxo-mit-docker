@@ -446,7 +446,7 @@ Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen
 <a name="faq"></a>
 ## Häufige Fragen
 
-#### Warum wird die Demo-Website verwendet und nicht einfach nur ein frisches REDAXO ohne Inhalte?
+#### 🙋 Warum wird die Demo-Website verwendet und nicht einfach nur ein frisches REDAXO ohne Inhalte?
 
 Aus drei Gründen:
 
@@ -454,9 +454,17 @@ Aus drei Gründen:
 2. Weil mit der Demo-Website ein paar zusätzliche **Themen zu Docker erklärt** werden können, etwa `custom-setup.sh`.
 3. Weil das Setup sehr **einfach angepasst** werden kann: Zeile 1 im Dockerfile ändern in `FROM friendsofredaxo/redaxo:5`, dann bekommst du beim nächsten Build REDAXO ohne Demo-Website.
 
-#### Kann ich nicht mehrere REDAXO-Projekte mit Docker gleichzeitig laufen lassen?
+#### 🙋 Kann ich nicht mehrere REDAXO-Projekte mit Docker gleichzeitig laufen lassen?
 
 Doch, das geht, allerdings musst du dann verschiedene Ports für deine Container verwenden, damit es keine Konflikte gibt. Einfacher — vom Verständnis — ist es, die gleichen Ports für alle Projekte zu verwenden und immer nur eines am Laufen zu haben.
+
+#### 🙋 Warum gibt es drei verschiedene Docker-Projekte bei Friends Of REDAXO und was ist ihr Zweck?
+
+Technische __Basis__ für alles ist [docker-redaxo](https://github.com/FriendsOfREDAXO/docker-redaxo), denn dort liegen die Baupläne für unsere REDAXO-Images, die im Docker Hub publiziert werden, und auf denen alle anderen Projekt aufbauen.
+
+Das Projekt [docker-demos](https://github.com/FriendsOfREDAXO/docker-demos) ergänzt die REDAXO-Images um die drei __Website-Demos__ (Base, Community, OnePage) und publiziert diese im Docker Hub. Ziel des Projekts ist, schnell ein fertig befülltes REDAXO starten zu können, um es vielleicht zu präsentieren oder daran Funktionen zu testen.
+
+Und das Projekt [redaxo-mit-docker](https://github.com/FriendsOfREDAXO/redaxo-mit-docker), in dem du gerade liest, ist eine **Anleitung** dafür, wie Docker grundsätzlich funktioniert, und wie die zuvor genannten Images mit zusätzlichen Tools und Funktionen erweitert werden können, um damit eine praktische **Entwicklungsumgebung** für REDAXO-Projekte zu schaffen.
 
 
 &nbsp;
