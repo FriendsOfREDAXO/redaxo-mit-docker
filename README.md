@@ -48,6 +48,7 @@ _Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet s
 - [Daten speichern und versionieren](#speichern-und-versionieren)
 	- [*Bind Mounts:* Synchronisierte Daten](#speichern-und-versionieren-bind-mounts)
 	- [Versionierung mittels Git](#speichern-und-versionieren-git)
+- [🦊 Spezialwissen!](#spezialwissen)
 - [Konfiguration anpassen](#konfiguration)
 	- [PHP-Konfiguration anpassen](#konfiguration-php)
 	- [Apache-Konfiguration anpassen](#konfiguration-apache)
@@ -375,6 +376,22 @@ Sinnvoll ist, **alles außer der Datenbank** im Git zu versionieren. Die Datenba
 In diesem Projekt ist bereits eine `.gitignore` enthalten, die du für die Praxis übernehmen kannst. Sie ignoriert den Datenbank-Ordner und auch ein paar Ressourcen im REDAXO-Ordner, die nicht versioniert werden sollten, etwa die Konfiguration (sensible Daten!), den Cache (nicht sinnvoll!) und den Media-Ordner (zu groß!).
 
 Als Ergebnis, um das nochmal zu sagen, hast du ein Projekt-Repository, in dem alle relevanten Daten enthalten sind. Und falls ihr im Team arbeitet, benutzen alle das gleiche Setup!
+
+
+&nbsp;
+
+
+<a name="spezialwissen"></a>
+## 🦊 Spezialwissen!
+
+Eine Sache, die sehr relevant für deine Praxis ist, und die aber vielleicht nicht immer eindeutig vermittelt wird: Wenn du einen Container auf Basis des REDAXO-Images startest, wird REDAXO nur dann automatisch im Webroot abgelegt und installiert, wenn der Webroot leer ist! Ist er nicht leer, bleibt dessen Inhalt unangetastet und wird nicht etwa mit REDAXO überschrieben.  
+
+Unsere REDAXO-Images haben also zwei wichtige Funktionen:
+
+1. Sie stellen eine für REDAXO vorkonfigurierte **Serverumgebung** bereit mit Apache, PHP, allen notwendigen Extensions und passender Konfiguration.
+2. Sie hinterlegen REDAXO im Webroot der Serverumgebung und installieren es automatisch.
+
+Punkt 1 ist dabei der wichtigere von beiden, denn was wir eigentlich wollen, ist eine lauffähige Umgebung für REDAXO. Punkt 2 ist nur *Zucker*.
 
 
 &nbsp;
