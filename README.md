@@ -3,7 +3,7 @@ _Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet s
 
 # REDAXO mit Docker 🐳
 
-**Eine flexible Entwicklungsumgebung für REDAXO auf Basis von Docker:**
+**Anleitung für eine flexible Entwicklungsumgebung für REDAXO auf Basis von Docker:**
 
 - **REDAXO** mit **Demo-Website**
 - **Apache** (Optional: NGINX)
