@@ -383,19 +383,25 @@ Als Ergebnis, um das nochmal zu sagen, hast du ein Projekt-Repository, in dem al
 <a name="konfiguration"></a>
 ## Konfiguration anpassen
 
-Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen kannst:
+Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen kannst. Beachte, dass du nach jeder Änderung neu bauen (`docker-compose build`) und die Container neustarten (`docker-compose up -d`) musst, damit die Änderungen wirksam werden.
 
 <a name="konfiguration-php"></a>
 ### PHP-Konfiguration anpassen
 
-…
+Im [Dockerfile](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile) wird eine eigene `php.ini`-Datei benutzt, um damit die Standardkonfiguration zu überschreiben. Die Datei kannst du für eigene Zwecke anpassen.
 
+Um die PHP-Version zu ändern, musst du zuerst das Docker-Image wechseln, denn die [Demos](https://hub.docker.com/r/friendsofredaxo/demo) werden nicht in verschiedenen PHP-Versionen angeboten. Das normale [REDAXO-Image](https://hub.docker.com/r/friendsofredaxo/redaxo) jedoch kommt in mehreren PHP-Versionen. Um beispielsweise REDAXO mit PHP 8.1 zu verwenden, würdest du im [Dockerfile](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile) die erste Zeile anpassen auf:
+
+```Dockerfile
+FROM friendsofredaxo/redaxo:5-php8.1-apache
+```
+
+Für eine Entwicklungsumgebung bietet sich übrigens an, die normalen REDAXO-Images anstelle der Demos zu verwenden. Hier, in diesem Projekt, benutzen wir die Demos nur deshalb, um daran ein paar Details zur Funktion von Docker erklären zu können.
 
 <a name="konfiguration-apache"></a>
 ### Apache-Konfiguration anpassen
 
-…
-
+Der passende Ort für die Apache-Konfiguration ist wieder das [Dockerfile](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile). Dort wird bereits eine `apache.conf`-Datei verwendet, um die Standardkonfiguration zu ergänzen. Die Datei kannst du für eigene Zwecke anpassen.
 
 <a name="konfiguration-nginx"></a>
 ### NGINX statt Apache nutzen
