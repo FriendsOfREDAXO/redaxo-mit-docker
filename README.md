@@ -388,7 +388,7 @@ Eine Sache, die sehr relevant für deine Praxis ist, und die aber vielleicht nic
 
 Unsere REDAXO-Images haben also zwei wichtige Funktionen:
 
-1. Sie stellen eine für REDAXO vorkonfigurierte **Serverumgebung** bereit mit Apache, PHP, allen notwendigen Extensions und passender Konfiguration.
+1. Sie stellen eine für REDAXO vorkonfigurierte **Serverumgebung** bereit mit Debian GNU/Linux, Apache, PHP, allen notwendigen Extensions und passender Konfiguration.
 2. Sie hinterlegen REDAXO im Webroot der Serverumgebung und installieren es automatisch.
 
 Punkt 1 ist dabei der wichtigere von beiden, denn was wir eigentlich wollen, ist eine lauffähige Umgebung für REDAXO. Punkt 2 ist nur *Zucker*.
