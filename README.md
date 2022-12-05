@@ -1,6 +1,3 @@
-_Das frühere Docker-Setup, was zuvor an dieser Stelle zu finden war, befindet sich nun im Branch [`version-1`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/tree/version-1)._
-
-
 # REDAXO mit Docker 🐳
 
 **Anleitung für eine flexible Entwicklungsumgebung für REDAXO auf Basis von Docker:**
