@@ -402,12 +402,13 @@ Punkt 1 ist dabei der wichtigere von beiden, denn was wir eigentlich wollen, ist
 
 Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen kannst. Beachte, dass du nach jeder Änderung neu bauen (`docker-compose build`) und die Container neustarten (`docker-compose up -d`) musst, damit die Änderungen wirksam werden.
 
+
 <a name="konfiguration-php"></a>
 ### PHP-Konfiguration anpassen
 
-Im [Dockerfile](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile) wird eine eigene `php.ini`-Datei benutzt, um damit die Standardkonfiguration zu überschreiben. Die Datei kannst du für eigene Zwecke anpassen.
+Im [`Dockerfile`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile) wird eine eigene `php.ini`-Datei benutzt, um damit die Standardkonfiguration zu überschreiben. Die Datei kannst du für eigene Zwecke anpassen.
 
-Um die PHP-Version zu ändern, musst du zuerst das Docker-Image wechseln, denn die [Demos](https://hub.docker.com/r/friendsofredaxo/demo) werden nicht in verschiedenen PHP-Versionen angeboten. Das normale [REDAXO-Image](https://hub.docker.com/r/friendsofredaxo/redaxo) jedoch kommt in mehreren PHP-Versionen. Um beispielsweise REDAXO mit PHP 8.1 zu verwenden, würdest du im [Dockerfile](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile) die erste Zeile anpassen auf:
+Um die PHP-Version zu ändern, musst du zuerst das Docker-Image wechseln, denn die [Demos](https://hub.docker.com/r/friendsofredaxo/demo) werden nicht in verschiedenen PHP-Versionen angeboten. Das normale [REDAXO-Image](https://hub.docker.com/r/friendsofredaxo/redaxo) jedoch kommt in mehreren PHP-Versionen. Um beispielsweise REDAXO mit PHP 8.1 zu verwenden, würdest du im [`Dockerfile`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile) die erste Zeile anpassen auf:
 
 ```Dockerfile
 FROM friendsofredaxo/redaxo:5-php8.1-apache
@@ -415,27 +416,39 @@ FROM friendsofredaxo/redaxo:5-php8.1-apache
 
 Für eine Entwicklungsumgebung bietet sich übrigens an, die normalen REDAXO-Images anstelle der Demos zu verwenden. Hier, in diesem Projekt, benutzen wir die Demos nur deshalb, um daran ein paar Details zur Funktion von Docker erklären zu können.
 
+
 <a name="konfiguration-apache"></a>
 ### Apache-Konfiguration anpassen
 
-Der passende Ort für die Apache-Konfiguration ist wieder das [Dockerfile](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile). Dort wird bereits eine `apache.conf`-Datei verwendet, um die Standardkonfiguration zu ergänzen. Die Datei kannst du für eigene Zwecke anpassen.
+Der passende Ort für die Apache-Konfiguration ist wieder das [`Dockerfile`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile). Dort wird bereits eine `apache.conf`-Datei verwendet, um die Standardkonfiguration zu ergänzen. Die Datei kannst du für eigene Zwecke anpassen.
+
 
 <a name="konfiguration-nginx"></a>
 ### NGINX statt Apache nutzen
 
-…
+Um auf NGINX zu wechseln, musst du ein anderes Image verwenden, denn die [Demos](https://hub.docker.com/r/friendsofredaxo/demo) werden nur mit Apache angeboten. Das normale [REDAXO-Image](https://hub.docker.com/r/friendsofredaxo/redaxo) jedoch kommt in verschiedenen Varianten, und du benötigst die FPM-Variante.
+
+Anders als Apache läuft NGINX nicht mit im REDAXO-Container, sondern wird als separater Container gestartet. Die Konfiguration wird üblicherweise in Form einer `nginx.conf`-Datei übergeben.
+
+🧁 Ein passendes Rezept für dieses Setup mit einer auf REDAXO ausgerichteten NGINX-Konfiguration findest du hier: [REDAXO (FPM) + NGINX + MariaDB](https://github.com/FriendsOfREDAXO/docker-redaxo/tree/master/recipes/nginx-mariadb)
 
 
 <a name="konfiguration-mariadb"></a>
 ### MariaDB statt MySQL nutzen
 
-…
+Die Datenbank läuft im eigenständigen Container. Um auf MariaDB zu wechseln, musst du deshalb lediglich deine [`docker-compose.yml`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker-compose.yml) anpassen und beispielsweise `image: mariadb:10` verwenden.
+
+🧁 Ein passendes Rezept für dieses Setup findest du hier: [REDAXO + Apache + MariaDB](https://github.com/FriendsOfREDAXO/docker-redaxo/tree/master/recipes/apache-mariadb)
 
 
 <a name="konfiguration-dienste-deaktivieren"></a>
 ### Nicht benötigte Dienste deaktivieren
 
-…
+Um keine unnötigen Resourcen zu verbrauchen, kannst du alle Dienste, die du nicht benötigst, aus dem Setup entfernen oder auskommentieren. Das betrifft einmal die Datei [`docker-compose.yml`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker-compose.yml), in der etwa PhpMyAdmin, Mailhog und Blackfire als Container gestartet werden. Und es betrifft das [`Dockerfile`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile), in dem unter anderem ein SSL-Testzertifikat generiert wird, Apache-Module aktiviert und Extensions installiert werden oder Blackfire und Composer installiert werden. Die jeweils zugehörigen Dateien im Docker-Verzeichnis können auch entfernt werden.
+
+Falls du keinen der Dienste benötigst, gibt es übrigens auch keinen Grund mehr, ein `Dockerfile` zu verwenden, um damit lokal ein Image zu bauen. Dann reicht es aus, innerhalb der `docker-compose.yml` ein REDAXO-Image aus dem Docker Hub anzugeben, das bereits fertig gebaut vorliegt und nur noch als Container gestartet werden muss.
+
+🧁 Ein passendes Rezept für dieses Setup findest du hier: [REDAXO + Apache + MySQL](https://github.com/FriendsOfREDAXO/docker-redaxo/tree/master/recipes/apache-mysql)
 
 
 &nbsp;
