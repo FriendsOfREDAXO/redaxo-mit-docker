@@ -108,7 +108,7 @@ Tipp: Es bietet sich an, einen gemeinsamen »Projektordner« anzulegen, in dem d
 <a name="installation-2"></a>
 ### Schritt 2: Richte Docker auf deinem System ein
 
-Lade [Docker Desktop](https://www.docker.com/products/docker-desktop) runter, wenn du Windows oder Mac benutzt. Linux-Nutzer benötigen die [Docker-Engine](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux) als kostenlose Community-Edition.
+Lade [Docker Desktop](https://www.docker.com/products/docker-desktop) runter, wenn du Windows oder Mac benutzt. Linux-Nutzer finden weitere Informationen zur [Installation unter Linux](https://docs.docker.com/desktop/install/linux-install/).
 
 Nach der Installation startest du das Programm. An den Einstellungen muss normalerweise nichts geändert werden, allerdings musst du den Projektordner für Docker freigeben (Preferences > Resources > **File Sharing**).
 
