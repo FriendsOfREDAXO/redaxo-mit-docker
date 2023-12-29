@@ -404,10 +404,12 @@ Ein paar Informationen darüber, wie du die Konfiguration deines Setups anpassen
 
 Im [`Dockerfile`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile) wird eine eigene `php.ini`-Datei benutzt, um damit die Standardkonfiguration zu überschreiben. Die Datei kannst du für eigene Zwecke anpassen.
 
-Um die PHP-Version zu ändern, musst du zuerst das Docker-Image wechseln, denn die [Demos](https://hub.docker.com/r/friendsofredaxo/demo) werden nicht in verschiedenen PHP-Versionen angeboten. Das normale [REDAXO-Image](https://hub.docker.com/r/friendsofredaxo/redaxo) jedoch kommt in mehreren PHP-Versionen. Um beispielsweise REDAXO mit PHP 8.1 zu verwenden, würdest du im [`Dockerfile`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile) die erste Zeile anpassen auf:
+Um die PHP-Version zu ändern, musst du zuerst das Docker-Image wechseln, denn die [Demos](https://hub.docker.com/r/friendsofredaxo/demo) werden nicht in verschiedenen PHP-Versionen angeboten. Das normale [REDAXO-Image](https://hub.docker.com/r/friendsofredaxo/redaxo) jedoch kommt in zwei Varianten `stable` und `edge`. Stable nutzt die älteste der [aktiv unterstützten PHP-Versionen](https://www.php.net/supported-versions.php), während Edge immer die neuste Version einsetzt, manchmal sogar schon Release Candidates (RC).
+
+Um REDAXO mit der neusten PHP-Version zu verwenden, würdest du im [`Dockerfile`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile) die erste Zeile anpassen auf:
 
 ```Dockerfile
-FROM friendsofredaxo/redaxo:5-php8.1-apache
+FROM friendsofredaxo/redaxo:5-edge
 ```
 
 Für eine Entwicklungsumgebung bietet sich übrigens an, die normalen REDAXO-Images anstelle der Demos zu verwenden. Hier, in diesem Projekt, benutzen wir die Demos nur deshalb, um daran ein paar Details zur Funktion von Docker erklären zu können.
