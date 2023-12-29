@@ -424,6 +424,8 @@ Der passende Ort für die Apache-Konfiguration ist wieder das [`Dockerfile`](htt
 <a name="konfiguration-nginx"></a>
 ### NGINX statt Apache nutzen
 
+__Update 29.12.2023: FPM-Images werden aktuell nicht mehr angeboten, weil der Pflegeaufwand innerhalb der Community zu aufwändig war. Der nachfolgende Abschnitt ist deshalb nicht mehr gültig.__
+
 Um auf NGINX zu wechseln, musst du ein anderes Image verwenden, denn die [Demos](https://hub.docker.com/r/friendsofredaxo/demo) werden nur mit Apache angeboten. Das normale [REDAXO-Image](https://hub.docker.com/r/friendsofredaxo/redaxo) jedoch kommt in verschiedenen Varianten, und du benötigst die FPM-Variante.
 
 Anders als Apache läuft NGINX nicht mit im REDAXO-Container, sondern wird als separater Container gestartet. Die Konfiguration wird üblicherweise in Form einer `nginx.conf`-Datei übergeben.
