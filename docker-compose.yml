@@ -47,11 +47,11 @@ services:
       PMA_PASSWORD: redaxo
       UPLOAD_LIMIT: 256M
 
-  mailhog:
-    image: mailhog/mailhog
+  mailpit:
+    image: axllent/mailpit
     ports:
-      - 1025:1025                           # mailhog will use port 1025 (for smtp)
-      - 28025:8025                          # mailhog will use port 28025 (for its web interface)
+      - 1025:1025                           # mailpit will use port 1025 (for smtp)
+      - 28025:8025                          # mailpit will use port 28025 (for its web interface)
 
   blackfire:
     image: blackfire/blackfire:2

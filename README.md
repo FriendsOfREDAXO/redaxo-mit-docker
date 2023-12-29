@@ -8,7 +8,7 @@
 - **SSL** zum lokalen Testen
 - **ImageMagick** als Bildgenerator
 - **PhpMyAdmin** zur Datenbank-Verwaltung
-- **Mailhog** zum Testen des E-Mail-Versands
+- **Mailpit** zum Testen des E-Mail-Versands
 - **Blackfire** zur Performance-Analyse
 - **Composer** zur Paketverwaltung
 
@@ -68,7 +68,7 @@ Docker startet für dein Projekt einen *Container*, der einen **Webserver** enth
 
 Ein weiterer Docker-Container enthält die **Datenbank**. Auch deren Inhalte werden auf deinem Computer gespeichert und synchronisiert.
 
-Je nach Bedarf kommen weitere Container hinzu, die *jeweils eine Aufgabe* (Das Konzept von »[Microservices](https://de.wikipedia.org/wiki/Microservices)«) übernehmen. PhpMyAdmin etwa, mit dem du deine Datenbank verwalten kannst. Oder Mailhog, das alle E-Mails abfängt, die deine REDAXO-Installation versendet, und diese in einer Weboberfläche anzeigt.
+Je nach Bedarf kommen weitere Container hinzu, die *jeweils eine Aufgabe* (Das Konzept von »[Microservices](https://de.wikipedia.org/wiki/Microservices)«) übernehmen. PhpMyAdmin etwa, mit dem du deine Datenbank verwalten kannst. Oder Mailpit, das alle E-Mails abfängt, die deine REDAXO-Installation versendet, und diese in einer Weboberfläche anzeigt.
 
 Alle Container eines Projekts sind miteinander vernetzt, und du kannst beliebige weitere hinzufügen oder die bestehenden anpassen — zum Beispiel auch, um NGINX statt Apache zu verwenden oder MariaDB statt MySQL.
 
@@ -137,7 +137,7 @@ Was nun passiert, nachdem du `docker-compose up -d` aufgerufen hast:
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_02.png)
 
-Docker erkennt, dass du in deiner [`docker-compose.yml`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker-compose.yml) verschiedene **Images** angegeben hast, z. B. für die Datenbank `image: mysql:8` oder für Mailhog `image: mailhog/mailhog`. Weil diese auf deinem Rechner noch nicht vorliegen, wird Docker sie nun für dich besorgen, und zwar aus dem [Docker Hub](https://hub.docker.com/). Das ist die offizielle *Registry* und damit sowas wie [npm](https://www.npmjs.com/) für JavaScript oder Composers [Packagist](https://packagist.org/) für PHP.
+Docker erkennt, dass du in deiner [`docker-compose.yml`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker-compose.yml) verschiedene **Images** angegeben hast, z. B. für die Datenbank `image: mysql:8` oder für Mailpit `image: axllent/mailpit`. Weil diese auf deinem Rechner noch nicht vorliegen, wird Docker sie nun für dich besorgen, und zwar aus dem [Docker Hub](https://hub.docker.com/). Das ist die offizielle *Registry* und damit sowas wie [npm](https://www.npmjs.com/) für JavaScript oder Composers [Packagist](https://packagist.org/) für PHP.
 
 &nbsp;
 
@@ -186,7 +186,7 @@ Sobald alle Images fertig gebaut sind, können daraus lauffähige **Container** 
 
 Es starten nun also folgende Container:
 
-1. Ein Container mit **Mailhog**
+1. Ein Container mit **Mailpit**
 2. Ein Container mit **Blackfire**
 3. Ein Container mit **MySQL-Datenbank**
 4. Ein Container mit **phpMyAdmin**
@@ -228,7 +228,7 @@ Der MySQL-Dienst beginnt nun also, eine frische Datenbank `redaxo` einzurichten,
 
 ![Screenshot](https://raw.githubusercontent.com/FriendsOfREDAXO/redaxo-mit-docker/assets/redaxo-mit-docker_v2_07.png)
 
-Parallel zur Datenbank und den anderen Services (PhpMyAdmin, Mailhog, Blackfire) beginnt auch der REDAXO-Container mit der Einrichtung.
+Parallel zur Datenbank und den anderen Services (PhpMyAdmin, Mailpit, Blackfire) beginnt auch der REDAXO-Container mit der Einrichtung.
 
 In der `docker-compose.yml` befinden sich einige **Environment-Variablen** für REDAXO, viel mehr als eben für die Datenbank. Informationen dazu findest du wieder im Docker Hub auf der Seite des REDAXO-Images: [https://hub.docker.com/r/friendsofredaxo/redaxo](https://hub.docker.com/r/friendsofredaxo/redaxo).
 
@@ -441,7 +441,7 @@ Die Datenbank läuft im eigenständigen Container. Um auf MariaDB zu wechseln, m
 <a name="konfiguration-dienste-deaktivieren"></a>
 ### Nicht benötigte Dienste deaktivieren
 
-Um keine unnötigen Resourcen zu verbrauchen, kannst du alle Dienste, die du nicht benötigst, aus dem Setup entfernen oder auskommentieren. Das betrifft einmal die Datei [`docker-compose.yml`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker-compose.yml), in der etwa PhpMyAdmin, Mailhog und Blackfire als Container gestartet werden. Und es betrifft das [`Dockerfile`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile), in dem unter anderem ein SSL-Testzertifikat generiert wird, Apache-Module aktiviert und Extensions installiert werden oder Blackfire und Composer installiert werden. Die jeweils zugehörigen Dateien im Docker-Verzeichnis können auch entfernt werden.
+Um keine unnötigen Resourcen zu verbrauchen, kannst du alle Dienste, die du nicht benötigst, aus dem Setup entfernen oder auskommentieren. Das betrifft einmal die Datei [`docker-compose.yml`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker-compose.yml), in der etwa PhpMyAdmin, Mailpit und Blackfire als Container gestartet werden. Und es betrifft das [`Dockerfile`](https://github.com/FriendsOfREDAXO/redaxo-mit-docker/blob/main/docker/redaxo/Dockerfile), in dem unter anderem ein SSL-Testzertifikat generiert wird, Apache-Module aktiviert und Extensions installiert werden oder Blackfire und Composer installiert werden. Die jeweils zugehörigen Dateien im Docker-Verzeichnis können auch entfernt werden.
 
 Falls du keinen der Dienste benötigst, gibt es übrigens auch keinen Grund mehr, ein `Dockerfile` zu verwenden, um damit lokal ein Image zu bauen. Dann reicht es aus, innerhalb der `docker-compose.yml` ein REDAXO-Image aus dem Docker Hub anzugeben, das bereits fertig gebaut vorliegt und nur noch als Container gestartet werden muss.
 
