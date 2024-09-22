@@ -26,7 +26,7 @@ services:
 
   db:
     image: mysql:8
-    command: --default-authentication-plugin=mysql_native_password
+    command: --mysql-native-password=ON
     volumes:
       - ./db:/var/lib/mysql:cached          # database in `/var/lib/mysql` will be synced with your local folder `./db`
     environment:
